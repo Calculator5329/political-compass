@@ -26,3 +26,14 @@
 - docs/figures/QUESTION-PROPOSALS.md: differentiation analysis + 8 candidate items
   (foreign-policy dim, loyalist-splitters, left-shelf splitters) — Ethan-gated.
 - Themed SVG favicon (public/favicon.svg): ink compass rose on paper, red-ink ✕.
+
+## 2026-07-18 — figures UX round 2
+- Label de-overlap rewritten: 8 candidate anchors per label, collision-checked
+  against labels AND dots; denser font at 30+ marks.
+- Figures page: "Mark my position" toggle (persisted), take-the-survey link when
+  unanswered; second Economic × Social chart from the dim tags (roadmap item).
+- Results: Nearest company / Farthest remove (top-3 each) + jump to Figures.
+- New Factions page: six hand-drawn shaded territories (MAGA & the New Right,
+  The Heterodox, Socialist Left, Liberal Establishment, Disaffected Centre,
+  Old Guard Right) on the compass + legend; src/factions.js is display-only.
+- compass.js: axis labels + region ellipses now parametrized (opts).

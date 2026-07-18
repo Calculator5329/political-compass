@@ -264,3 +264,57 @@ canvas.compass {
   font-size: 0.74rem;
   color: var(--ink-soft);
 }
+
+/* show-me toggle + chart notes */
+.chart-note { margin-top: -0.8rem; }
+.me-toggle {
+  font-family: var(--font-caps);
+  font-size: 0.92rem;
+  cursor: pointer;
+  user-select: none;
+}
+.me-toggle input { accent-color: var(--accent); margin-right: 0.35rem; }
+.me-x { color: var(--accent); font-weight: bold; }
+.chart-note a { color: var(--accent); }
+h2.smallcaps { font-family: var(--font-caps); font-weight: normal; font-size: 1.25rem; }
+
+/* nearest / farthest company on results */
+.company {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  max-width: 34rem;
+  margin: 1.4rem auto 0.4rem;
+}
+.company-col h3 {
+  font-family: var(--font-caps);
+  font-weight: normal;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.45rem;
+}
+.company-col ul { list-style: none; margin: 0; padding: 0; }
+.company-col li { margin: 0.3rem 0; }
+.company-col li .muted { display: block; font-size: 0.82rem; }
+@media (max-width: 480px) { .company { grid-template-columns: 1fr; } }
+
+/* faction legend */
+.faction-list { max-width: 36rem; margin: 1.2rem auto; }
+.faction {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+  margin: 0.9rem 0;
+}
+.faction-swatch {
+  flex: 0 0 auto;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-top: 0.3rem;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+}
+.faction-name { font-family: var(--font-display); font-size: 1.12rem; }
+.faction-blurb { margin: 0.15rem 0 0.1rem; font-size: 0.95rem; }
+.faction-members { font-size: 0.84rem; font-family: var(--font-caps); }

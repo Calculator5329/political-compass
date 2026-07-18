@@ -37,7 +37,7 @@ function waveringLine(ctx, x1, y1, x2, y2, segments = 24) {
   ctx.stroke();
 }
 
-export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks = []) {
+export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks = [], opts = {}) {
   const th = theme();
   AMP = th.wobbleAmp;
   const INK = th.ink;
@@ -64,6 +64,41 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   for (const [color, x, y] of washes) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, half, half);
+  }
+
+  // faction territories — translucent pigment ellipses, clipped to the plot
+  if (opts.regions?.length) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(pad, pad, half * 2, half * 2);
+    ctx.clip();
+    for (const rg of opts.regions) {
+      const cx = c + (rg.x / 10) * half;
+      const cy = c - (rg.y / 10) * half;
+      const rx = (rg.rx / 10) * half;
+      const ry = (rg.ry / 10) * half;
+      ctx.fillStyle = rg.fill;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx, ry, rg.rot ?? 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = rg.stroke ?? alpha(INK, 0.2);
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 3]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    // labels after every fill so overlapping territories can't swallow them
+    ctx.textAlign = 'center';
+    ctx.font = `${Math.max(10, Math.round(s * 0.024))}px ${th.font}`;
+    for (const rg of opts.regions) {
+      if (!rg.label) continue;
+      const cx = c + (rg.x / 10) * half;
+      const cy = c - (rg.y / 10) * half;
+      const ry = (rg.ry / 10) * half;
+      ctx.fillStyle = rg.ink ?? alpha(INK, 0.7);
+      ctx.fillText(rg.label, cx, rg.labelAt === 'center' ? cy : cy - ry - 5);
+    }
+    ctx.restore();
   }
 
   // faint ring grid + rose
@@ -101,27 +136,33 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   }
 
   // labels
+  const axisLabels = opts.labels ?? {
+    top: 'Insurgent', bottom: 'Institutionalist', left: 'Left', right: 'Right',
+  };
   ctx.fillStyle = INK;
   ctx.textAlign = 'center';
   ctx.font = `${Math.round(s * 0.042)}px ${th.font}`;
-  ctx.fillText('Insurgent', c, pad - s * 0.032);
-  ctx.fillText('Institutionalist', c, s - pad + s * 0.055);
+  ctx.fillText(axisLabels.top, c, pad - s * 0.032);
+  ctx.fillText(axisLabels.bottom, c, s - pad + s * 0.055);
   ctx.save();
   ctx.translate(pad - s * 0.035, c);
   ctx.rotate(-Math.PI / 2);
-  ctx.fillText('Left', 0, 0);
+  ctx.fillText(axisLabels.left, 0, 0);
   ctx.restore();
   ctx.save();
   ctx.translate(s - pad + s * 0.035, c);
   ctx.rotate(Math.PI / 2);
-  ctx.fillText('Right', 0, 0);
+  ctx.fillText(axisLabels.right, 0, 0);
   ctx.restore();
 
   // labeled marks (figures / leaderboard dots) with label de-overlap:
-  // labels default beside their dot, then get nudged downward until no two
-  // label boxes intersect; a faint leader line ties displaced labels home.
+  // each label tries eight anchor positions around its dot (right/left ×
+  // mid/up/down, then above/below-centred) and takes the first that collides
+  // with no placed label and no dot; failing all, it slides downward on a
+  // faint leader line.
   if (marks.length) {
-    const fs = Math.max(11, Math.round(s * 0.026));
+    const dense = marks.length > 30;
+    const fs = Math.max(dense ? 10 : 11, Math.round(s * (dense ? 0.022 : 0.026)));
     ctx.font = `${fs}px ${th.font}`;
     const items = marks.map((m) => ({
       m,
@@ -134,23 +175,40 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
       ctx.arc(it.mx, it.my, it.m.label ? 4.5 : 3, 0, Math.PI * 2);
       ctx.fill();
     }
-    const placed = [];
+    const placed = items.map((it) => ({ x1: it.mx - 6, x2: it.mx + 6, y1: it.my - 6, y2: it.my + 6 }));
     const hits = (r) => placed.some((p) => r.x1 < p.x2 && r.x2 > p.x1 && r.y1 < p.y2 && r.y2 > p.y1);
+    const box = (lx, ly, w) => ({ x1: lx - 2, x2: lx + w + 2, y1: ly - fs, y2: ly + 3 });
     ctx.textAlign = 'left';
     for (const it of items.filter((i) => i.m.label).sort((a, b) => a.my - b.my || a.mx - b.mx)) {
       const w = ctx.measureText(it.m.label).width;
-      const flip = it.mx + 10 + w > s - pad * 0.4;
-      const lx = flip ? it.mx - 9 - w : it.mx + 9;
-      let ly = it.my + fs * 0.35;
-      let guard = 0;
-      while (guard++ < 60 && hits({ x1: lx - 2, x2: lx + w + 2, y1: ly - fs, y2: ly + 3 })) ly += 3;
-      placed.push({ x1: lx - 2, x2: lx + w + 2, y1: ly - fs, y2: ly + 3 });
-      if (ly - it.my > fs) {
+      const right = it.mx + 9;
+      const left = it.mx - 9 - w;
+      const mid = it.my + fs * 0.35;
+      const candidates = [
+        [right, mid], [left, mid],
+        [right, it.my - fs * 0.55], [left, it.my - fs * 0.55],
+        [right, it.my + fs * 1.15], [left, it.my + fs * 1.15],
+        [it.mx - w / 2, it.my - 8], [it.mx - w / 2, it.my + 8 + fs * 0.7],
+      ].filter(([lx]) => lx >= pad * 0.25 && lx + w <= s - pad * 0.25);
+      let spot = candidates.find(([lx, ly]) => !hits(box(lx, ly, w)));
+      let leader = false;
+      if (!spot) {
+        const flip = it.mx + 10 + w > s - pad * 0.4;
+        const lx = flip ? left : right;
+        let ly = mid;
+        let guard = 0;
+        while (guard++ < 60 && hits(box(lx, ly, w))) ly += 3;
+        spot = [lx, ly];
+        leader = ly - it.my > fs;
+      }
+      const [lx, ly] = spot;
+      placed.push(box(lx, ly, w));
+      if (leader) {
         ctx.strokeStyle = alpha(INK, 0.3);
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(it.mx, it.my + 5);
-        ctx.lineTo(flip ? lx + w : lx, ly - fs * 0.35);
+        ctx.lineTo(lx > it.mx ? lx : lx + w, ly - fs * 0.35);
         ctx.stroke();
       }
       ctx.fillStyle = INK;

@@ -4,3 +4,6 @@
 {"kind":"session","event":"end","holder":"session:fable-figures-research","at":"2026-07-18T21:22:30.377Z"}
 {"kind":"session","event":"start","holder":"session:fable-figures-research","at":"2026-07-18T21:23:25.457Z","purpose":"Figures-chart hover tooltips"}
 {"kind":"session","event":"heartbeat","holder":"session:fable-figures-research","at":"2026-07-18T21:23:25.573Z"}
+{"kind":"session","event":"end","holder":"session:fable-figures-research","at":"2026-07-18T21:28:19.751Z"}
+{"kind":"session","event":"start","holder":"session:fable-figures-research","at":"2026-07-18T21:29:58.628Z","purpose":"Figures UX: label de-overlap, show-me toggle, nearest/farthest, Factions page + econ/social chart"}
+{"kind":"session","event":"heartbeat","holder":"session:fable-figures-research","at":"2026-07-18T21:29:58.736Z"}

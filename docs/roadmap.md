@@ -9,8 +9,9 @@
       docs/figures/ (deep-research pass 2026-07-18)
 - [ ] [ETHAN] Review docs/figures/QUESTION-PROPOSALS.md (new differentiating
       questions + possible retirements)
-- [ ] Split 4-axis view from the dim tags (econ/social/system)
+- [x] Split econ×social chart from the dim tags (2026-07-18; system axis is the main y)
 
 ## Later
-- [ ] Compare view: your ✕ against chosen figures
+- [x] Compare view v1: show-me toggle on Figures + nearest/farthest on results (2026-07-18)
+- [ ] Compare view v2: pick figures, overlay per-dimension deltas
 - [x] DEPLOYED (Ethan-directed 2026-07-18): https://political-test-2026.web.app

@@ -3,6 +3,7 @@ import { LIKERT, score, subScores, quadrant, describe } from './scoring.js';
 import { drawCompass, fitCanvas, hitMark } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
+import { FACTIONS } from './factions.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -58,6 +59,7 @@ function render() {
   if (state.screen === 'intro') renderIntro();
   else if (state.screen === 'quiz') renderQuiz();
   else if (state.screen === 'figures') renderFigures();
+  else if (state.screen === 'factions') renderFactions();
   else if (state.screen === 'board') renderBoard();
   else renderResults();
 }
@@ -65,6 +67,7 @@ function render() {
 const NAV = [
   ['intro', 'The Test'],
   ['figures', 'Figures'],
+  ['factions', 'Factions'],
   ['board', 'Leaderboard'],
 ];
 
@@ -85,25 +88,60 @@ function renderNav() {
   app.append(nav);
 }
 
-function drawOn(selector, point, marks) {
+function drawOn(selector, point, marks, opts) {
   const canvas = app.querySelector(selector);
   fitCanvas(canvas);
-  drawCompass(canvas, point, marks);
-  window.addEventListener('resize', () => { fitCanvas(canvas); drawCompass(canvas, point, marks); }, { once: true });
+  drawCompass(canvas, point, marks, opts);
+  window.addEventListener('resize', () => { fitCanvas(canvas); drawCompass(canvas, point, marks, opts); }, { once: true });
+}
+
+// Every figure scored on the main plane and the sub-dimensions, once.
+function placedFigures() {
+  return FIGURES.map((f) => ({
+    ...f,
+    pt: score(f.answers, QUESTIONS),
+    subs: subScores(f.answers, QUESTIONS),
+  }));
+}
+
+function myPoint() {
+  return Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
+}
+
+function figureMarks(placed) {
+  return placed.map((f) => ({
+    x: f.pt.x, y: f.pt.y,
+    label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
+    name: f.name,
+    blurb: BLURBS[f.slug] ?? '',
+    place: `${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}`,
+  }));
 }
 
 function renderFigures() {
-  const placed = FIGURES.map((f) => {
-    const pt = score(f.answers, QUESTIONS);
-    return { ...f, pt };
-  });
+  const placed = placedFigures();
+  const mine = myPoint();
+  const showMe = state.showMe ?? true;
   app.append(el(`
     <p class="kicker center">Charted from the public record</p>
     <h1 class="center">The Figures</h1>
-    <div class="chart-wrap">
+    <div class="chart-wrap" id="wrap-main">
       <canvas class="compass"></canvas>
       <div class="fig-tip" hidden></div>
     </div>
+    <p class="center chart-note">
+      ${mine
+        ? `<label class="me-toggle"><input type="checkbox" id="showme" ${showMe ? 'checked' : ''} />
+           Mark my position <span class="me-x">✕</span> among them</label>`
+        : `<span class="muted"><a href="#" id="gotest">Take the survey</a> to set your own ✕ among them.</span>`}
+    </p>
+    <h2 class="center smallcaps mt">The Economic × Social Plane</h2>
+    <div class="chart-wrap" id="wrap-sub">
+      <canvas class="compass sub"></canvas>
+      <div class="fig-tip" hidden></div>
+    </div>
+    <p class="muted center">The same record, split by dimension: the horizontal is purely
+    economic, the vertical purely social — the system axis set aside.</p>
     <p class="muted center">Each mark is the instrument scored from documented votes,
     policies, and on-record statements — the same 36 questions you answer. Sources below.</p>
     <div class="figure-list">
@@ -116,21 +154,34 @@ function renderFigures() {
         </details>`).join('')}
     </div>
   `));
-  const marks = placed.map((f) => ({
-    x: f.pt.x, y: f.pt.y,
+  const marks = figureMarks(placed);
+  drawOn('#wrap-main canvas', showMe ? mine : null, marks);
+  attachFigureTip(app.querySelector('#wrap-main'), marks);
+
+  // econ (x) × social (y): social-right scores plot upward as Traditional
+  const subMarks = placed.map((f) => ({
+    x: f.subs.econ.x, y: f.subs.social.x,
     label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
     name: f.name,
     blurb: BLURBS[f.slug] ?? '',
-    place: quadrant(f.pt),
+    place: `econ ${fmt(f.subs.econ.x)} · social ${fmt(f.subs.social.x)}`,
   }));
-  const mine = Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
-  drawOn('canvas.compass', mine, marks);
-  attachFigureTip(marks);
+  const mySubs = mine ? subScores(state.answers, QUESTIONS) : null;
+  const subLabels = { top: 'Traditional', bottom: 'Progressive', left: 'Econ Left', right: 'Econ Right' };
+  drawOn('#wrap-sub canvas',
+    showMe && mySubs ? { x: mySubs.econ.x, y: mySubs.social.x } : null,
+    subMarks, { labels: subLabels });
+  attachFigureTip(app.querySelector('#wrap-sub'), subMarks);
+
+  app.querySelector('#showme')?.addEventListener('change', (e) => set({ showMe: e.target.checked }));
+  app.querySelector('#gotest')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    set({ screen: state.idx > 0 ? 'quiz' : 'intro' });
+  });
 }
 
 // Hover (or tap) a dot → a marginalia-style tooltip beside it.
-function attachFigureTip(marks) {
-  const wrap = app.querySelector('.chart-wrap');
+function attachFigureTip(wrap, marks) {
   const canvas = wrap.querySelector('canvas');
   const tip = wrap.querySelector('.fig-tip');
   let shown = null;
@@ -147,7 +198,7 @@ function attachFigureTip(marks) {
     tip.innerHTML = `
       <span class="fig-tip-name">${hit.mark.name}</span>
       <span class="fig-tip-desc">${hit.mark.blurb}</span>
-      <span class="fig-tip-place">${hit.mark.place} · x ${fmt(hit.mark.x)} · y ${fmt(hit.mark.y)}</span>`;
+      <span class="fig-tip-place">${hit.mark.place}</span>`;
     tip.hidden = false;
     // place beside the dot, flipping to stay on the paper
     const w = wrap.clientWidth;
@@ -171,6 +222,39 @@ function attachFigureTip(marks) {
   canvas.addEventListener('mousemove', onMove);
   canvas.addEventListener('click', onMove); // touch taps
   canvas.addEventListener('mouseleave', hide);
+}
+
+function renderFactions() {
+  const placed = placedFigures();
+  const mine = myPoint();
+  app.append(el(`
+    <p class="kicker center">The territories of the moment</p>
+    <h1 class="center">The Factions</h1>
+    <div class="chart-wrap" id="wrap-factions">
+      <canvas class="compass"></canvas>
+      <div class="fig-tip" hidden></div>
+    </div>
+    <p class="muted center">Territories are drawn by hand around the charted record, not
+    computed — coalitions overlap, and some figures stand in two camps at once.</p>
+    <div class="faction-list">
+      ${FACTIONS.map((fa) => `
+        <div class="faction">
+          <span class="faction-swatch" style="background:${fa.fill.replace(/[\d.]+\)$/, '0.55)')}"></span>
+          <div>
+            <span class="faction-name">${fa.name}</span>
+            <p class="faction-blurb">${fa.blurb}</p>
+            <p class="faction-members muted">${fa.members
+              .map((slug) => FIGURES.find((f) => f.slug === slug)?.name)
+              .filter(Boolean).join(' · ')}</p>
+          </div>
+        </div>`).join('')}
+    </div>
+  `));
+  const marks = figureMarks(placed);
+  drawOn('#wrap-factions canvas', mine, marks.map((m) => ({ ...m, label: '' })), {
+    regions: FACTIONS.map((fa) => ({ ...fa, label: fa.name })),
+  });
+  attachFigureTip(app.querySelector('#wrap-factions'), marks);
 }
 
 async function renderBoard() {
@@ -270,6 +354,13 @@ function advance() {
 function renderResults() {
   const pt = score(state.answers, QUESTIONS);
   const subs = subScores(state.answers, QUESTIONS);
+  const ranked = placedFigures()
+    .map((f) => ({ f, d: Math.hypot(f.pt.x - pt.x, f.pt.y - pt.y) }))
+    .sort((a, b) => a.d - b.d);
+  const neighbours = ranked.slice(0, 3);
+  const antipodes = ranked.slice(-3).reverse();
+  const company = (r) => `<li><span class="fig-name">${r.f.name}</span>
+    <span class="muted">${quadrant(r.f.pt)} · ${r.d.toFixed(1)} away</span></li>`;
 
   app.append(el(`
     <p class="kicker center">The instrument renders its verdict</p>
@@ -282,6 +373,17 @@ function renderResults() {
       <p class="muted mt">Sub-dimensions — econ ${fmt(subs.econ.x)}, social ${fmt(subs.social.x)},
       system ${fmt(subs.system.y)}</p>
     </div>
+    <div class="company">
+      <div class="company-col">
+        <h3 class="smallcaps">Nearest company</h3>
+        <ul>${neighbours.map(company).join('')}</ul>
+      </div>
+      <div class="company-col">
+        <h3 class="smallcaps">Farthest remove</h3>
+        <ul>${antipodes.map(company).join('')}</ul>
+      </div>
+    </div>
+    <p class="center"><button class="ghost" id="seefigs">See yourself among the figures →</button></p>
     <div class="actions save-row">
       ${state.savedId
         ? `<span class="muted">Saved to the leaderboard ✓</span>`
@@ -312,6 +414,7 @@ function renderResults() {
 
   drawOn('canvas.compass', pt);
 
+  app.querySelector('#seefigs').addEventListener('click', () => set({ screen: 'figures', showMe: true }));
   app.querySelector('#retake').addEventListener('click', () => {
     state = fresh();
     save();
