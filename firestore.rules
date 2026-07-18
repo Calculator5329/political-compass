@@ -4,7 +4,13 @@ service cloud.firestore {
     match /scores/{id} {
       allow read: if true;
       // Create-only, exact schema: short name, in-range coords, server timestamp.
-      allow create: if request.resource.data.keys().hasOnly(['name', 'x', 'y', 'q', 'ts'])
+      allow create: if request.resource.data.keys().hasOnly(['name', 'x', 'y', 'q', 'ts', 'es', 'ss'])
+        && (!request.resource.data.keys().hasAny(['es'])
+            || (request.resource.data.es is number
+                && request.resource.data.es >= -10 && request.resource.data.es <= 10))
+        && (!request.resource.data.keys().hasAny(['ss'])
+            || (request.resource.data.ss is number
+                && request.resource.data.ss >= -10 && request.resource.data.ss <= 10))
         && request.resource.data.name is string
         && request.resource.data.name.size() >= 1
         && request.resource.data.name.size() <= 24

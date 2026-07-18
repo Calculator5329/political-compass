@@ -159,7 +159,10 @@ function renderFigures() {
     <p class="center chart-note">
       ${mine
         ? `<label class="me-toggle"><input type="checkbox" id="showme" ${showMe ? 'checked' : ''} />
-           Mark my position <span class="me-x">✕</span>${state.claimed && !myPoint() ? ` (as ${esc(state.claimed.name)})` : ''} among them</label>`
+           Mark my position <span class="me-x">✕</span>${state.claimed && !myPoint() ? ` (as ${esc(state.claimed.name)})` : ''} among them</label>${
+             state.claimed && !myPoint() && state.claimed.es == null
+               ? `<br /><span class="muted claim-hint">This ledger entry predates the second plane; retake the survey to appear there.</span>`
+               : ''}`
         : `<span class="muted">Already signed the ledger? Claim your mark:</span>
            <select id="claim"><option value="">the ledger</option></select>`}
     </p>
@@ -194,12 +197,17 @@ function renderFigures() {
     blurb: BLURBS[f.slug] ?? '',
     place: `econ ${fmt(f.subs.econ.x)} · social ${fmt(f.subs.social.x)}`,
   }));
-  // a claimed ledger mark has no per-question answers, so no sub-plane ✕
-  const mySubs = myPoint() ? subScores(state.answers, QUESTIONS) : null;
+  // sub-plane ✕: from answers when we have them, else from the claimed
+  // ledger entry's stored econ/social sub-scores (older entries lack them)
+  let subPt = null;
+  if (myPoint()) {
+    const mySubs = subScores(state.answers, QUESTIONS);
+    subPt = { x: mySubs.econ.x, y: mySubs.social.x };
+  } else if (state.claimed && state.claimed.es != null && state.claimed.ss != null) {
+    subPt = { x: state.claimed.es, y: state.claimed.ss };
+  }
   const subLabels = { top: 'Traditional', bottom: 'Progressive', left: 'Econ Left', right: 'Econ Right' };
-  drawOn('#wrap-sub canvas',
-    showMe && mySubs ? { x: mySubs.econ.x, y: mySubs.social.x } : null,
-    subMarks, { labels: subLabels });
+  drawOn('#wrap-sub canvas', showMe ? subPt : null, subMarks, { labels: subLabels });
   attachFigureTip(app.querySelector('#wrap-sub'), subMarks);
 
   app.querySelector('#showme')?.addEventListener('change', (e) => set({ showMe: e.target.checked }));
@@ -217,7 +225,7 @@ function renderFigures() {
         }
         claim.addEventListener('change', () => {
           const r = rows[claim.value];
-          if (r) set({ claimed: { name: r.name, x: r.x, y: r.y }, showMe: true });
+          if (r) set({ claimed: { name: r.name, x: r.x, y: r.y, es: r.es ?? null, ss: r.ss ?? null }, showMe: true });
         });
       })
       .catch(() => claim.remove());
@@ -467,7 +475,7 @@ function renderResults() {
     saveBtn.textContent = 'Inscribing…';
     try {
       const { saveScore } = await import('./firebase.js');
-      const id = await saveScore(name, pt, quadrant(pt));
+      const id = await saveScore(name, pt, quadrant(pt), subs);
       set({ savedId: id });
     } catch (e) {
       saveBtn.disabled = false;

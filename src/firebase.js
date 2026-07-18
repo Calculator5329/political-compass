@@ -14,12 +14,17 @@ const app = initializeApp({
 const db = getFirestore(app);
 const scores = collection(db, 'scores');
 
-export async function saveScore(name, pt, quadrant) {
+export async function saveScore(name, pt, quadrant, subs = null) {
   const doc = await addDoc(scores, {
     name: name.slice(0, 24),
     x: Math.round(pt.x * 100) / 100,
     y: Math.round(pt.y * 100) / 100,
     q: quadrant,
+    // econ/social sub-scores let a claimed mark appear on the second plane
+    ...(subs ? {
+      es: Math.round(subs.econ.x * 100) / 100,
+      ss: Math.round(subs.social.x * 100) / 100,
+    } : {}),
     ts: serverTimestamp(),
   });
   return doc.id;

@@ -65,3 +65,9 @@
 - Charts and card grid break out to min(1020px, 94vw); nav spacing halved.
 - Tabs restyled as a manuscript running head: chromeless small caps with
   fleuron separators and a tilted red-ink underline on the active page.
+
+## 2026-07-18 — sub-plane mark everywhere
+- Ledger entries now store econ/social sub-scores (es/ss; firestore.rules
+  extended with optional validated fields, deployed).
+- Claimed marks with sub-scores draw the ✕ on the Economic × Social plane too;
+  older entries show a retake hint instead of a wrong mark.

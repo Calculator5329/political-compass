@@ -4,10 +4,11 @@
     {
       "holder": "session:fable-figures-research",
       "paths": [
-        "src"
+        "src",
+        "firestore.rules"
       ],
-      "acquiredAt": "2026-07-18T21:56:53.920Z",
-      "expiresAt": "2026-07-18T23:56:53.920Z"
+      "acquiredAt": "2026-07-18T22:00:43.633Z",
+      "expiresAt": "2026-07-19T00:00:43.633Z"
     }
   ]
 }
