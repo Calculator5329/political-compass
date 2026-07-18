@@ -1,0 +1,168 @@
+/* Ink on paper. */
+
+:root {
+  --ink: #2b2620;
+  --ink-soft: #574d40;
+  --accent: #7a1f1f;
+  --paper: #ede4d0;
+  --rule: rgba(43, 38, 32, 0.25);
+  --font-display: 'IM Fell English', serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-caps: 'IM Fell English SC', serif;
+  --fleuron: '❧';
+  --grain-opacity: 0.5;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.55;
+  background:
+    radial-gradient(ellipse at 20% 12%, rgba(255, 252, 240, 0.55), transparent 55%),
+    radial-gradient(ellipse at 82% 88%, rgba(120, 94, 38, 0.12), transparent 60%),
+    radial-gradient(ellipse at 50% 50%, var(--paper), #e2d5ba 85%);
+  min-height: 100vh;
+}
+
+/* paper grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.15 0 0 0 0 0.12 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3.2rem 1.4rem 4rem;
+  position: relative;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+h1 { font-size: 2.7rem; line-height: 1.15; }
+h2 { font-size: 1.7rem; }
+
+.smallcaps, .kicker {
+  font-family: var(--font-caps);
+  letter-spacing: 0.08em;
+}
+
+.kicker { color: var(--ink-soft); font-size: 0.95rem; }
+
+.rule {
+  border: none;
+  height: 14px;
+  margin: 1.3rem 0;
+  background:
+    linear-gradient(var(--rule), var(--rule)) center / 100% 1px no-repeat;
+  position: relative;
+}
+.rule::after {
+  content: var(--fleuron);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -54%);
+  background: var(--paper);
+  padding: 0 0.7rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.lede { font-size: 1.12rem; }
+.muted { color: var(--ink-soft); }
+em { font-style: italic; }
+
+button {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink-soft);
+  border-radius: 2px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  transition: background 120ms, box-shadow 120ms, transform 60ms;
+  box-shadow: 1px 1px 0 rgba(43, 38, 32, 0.25);
+}
+button:hover { background: rgba(43, 38, 32, 0.06); }
+button:active { transform: translate(1px, 1px); box-shadow: none; }
+
+.primary {
+  font-family: var(--font-caps);
+  letter-spacing: 0.06em;
+  font-size: 1.15rem;
+  padding: 0.7rem 1.8rem;
+  border-width: 2px;
+  border-color: var(--ink);
+}
+
+/* question card */
+.statement {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-style: italic;
+  line-height: 1.35;
+  margin: 1.6rem 0 2rem;
+  min-height: 5.4rem;
+}
+
+.likert { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.likert button { flex: 1 1 8.5rem; }
+.likert button.picked { background: rgba(43, 38, 32, 0.12); border-color: var(--ink); }
+
+.progress { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.4rem; }
+.progress .bar {
+  flex: 1;
+  height: 3px;
+  margin: 0 1rem;
+  background: rgba(43, 38, 32, 0.12);
+  position: relative;
+}
+.progress .bar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--ink-soft);
+  transition: width 200ms;
+}
+
+.nav { display: flex; justify-content: space-between; margin-top: 2rem; }
+.ghost { border-color: transparent; box-shadow: none; color: var(--ink-soft); }
+
+/* results */
+canvas.compass {
+  display: block;
+  width: min(560px, 92vw);
+  margin: 1.6rem auto;
+  aspect-ratio: 1;
+}
+
+.verdict { text-align: center; margin-top: 0.6rem; }
+.verdict .place {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+}
+.verdict .coords { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.verdict .desc { max-width: 34rem; margin: 0.8rem auto 0; }
+
+.actions { display: flex; gap: 0.8rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+
+.center { text-align: center; }
+.mt { margin-top: 1.6rem; }
+
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  h1 { font-size: 2.1rem; }
+  .statement { font-size: 1.3rem; }
+}
