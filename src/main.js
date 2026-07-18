@@ -131,35 +131,44 @@ function renderFigures() {
   app.append(el(`
     <p class="kicker center">Charted from the public record</p>
     <h1 class="center">The Figures</h1>
-    <div class="chart-wrap" id="wrap-main">
-      <canvas class="compass"></canvas>
-      <div class="fig-tip" hidden></div>
+    <div class="charts-row">
+      <div class="chart-col">
+        <h2 class="center smallcaps chart-cap">The Political Plane</h2>
+        <div class="chart-wrap" id="wrap-main">
+          <canvas class="compass"></canvas>
+          <div class="fig-tip" hidden></div>
+        </div>
+      </div>
+      <div class="chart-col">
+        <h2 class="center smallcaps chart-cap">The Economic × Social Plane</h2>
+        <div class="chart-wrap" id="wrap-sub">
+          <canvas class="compass sub"></canvas>
+          <div class="fig-tip" hidden></div>
+        </div>
+      </div>
     </div>
     <p class="center chart-note">
       ${mine
         ? `<label class="me-toggle"><input type="checkbox" id="showme" ${showMe ? 'checked' : ''} />
            Mark my position <span class="me-x">✕</span>${state.claimed && !myPoint() ? ` (as ${esc(state.claimed.name)})` : ''} among them</label>`
-        : `<span class="muted"><a href="#" id="gotest">Take the survey</a> to set your own ✕ —
-           or, if you already signed the ledger, claim your mark:</span>
-           <select id="claim"><option value="">— the ledger —</option></select>`}
+        : `<span class="muted">Already signed the ledger? Claim your mark:</span>
+           <select id="claim"><option value="">the ledger</option></select>`}
     </p>
-    <h2 class="center smallcaps mt">The Economic × Social Plane</h2>
-    <div class="chart-wrap" id="wrap-sub">
-      <canvas class="compass sub"></canvas>
-      <div class="fig-tip" hidden></div>
-    </div>
-    <p class="muted center">The same record, split by dimension: the horizontal is purely
-    economic, the vertical purely social — the system axis set aside.</p>
+    <p class="muted center">On the right, the same record split by dimension: the horizontal
+    is purely economic, the vertical purely social, with the system axis set aside.</p>
     <p class="muted center">Each mark is the instrument scored from documented votes,
-    policies, and on-record statements — the same 36 questions you answer. Sources below.</p>
-    <div class="figure-list">
+    policies, and on-record statements, answering the same 36 questions you do.</p>
+    <div class="figure-cards">
       ${placed.map((f) => `
-        <details>
-          <summary><span class="fig-name">${f.name}</span>
-          <span class="muted">${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}</span></summary>
-          <p>${f.note}</p>
-          <ul>${f.sources.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener">${s.title}</a></li>`).join('')}</ul>
-        </details>`).join('')}
+        <div class="fig-card">
+          <span class="fig-seal">${seal(f.name)}</span>
+          <div class="fig-card-body">
+            <span class="fig-name" title="${esc(f.note)}">${f.name}</span>
+            <span class="fig-card-place muted">${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}</span>
+            <span class="fig-card-links">${f.sources.slice(0, 5).map((s, i) =>
+              `<a href="${s.url}" target="_blank" rel="noopener" title="${esc(s.title)}">${i + 1}</a>`).join('')}</span>
+          </div>
+        </div>`).join('')}
     </div>
   `));
   const marks = figureMarks(placed);
@@ -183,10 +192,6 @@ function renderFigures() {
   attachFigureTip(app.querySelector('#wrap-sub'), subMarks);
 
   app.querySelector('#showme')?.addEventListener('change', (e) => set({ showMe: e.target.checked }));
-  app.querySelector('#gotest')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    set({ screen: state.idx > 0 ? 'quiz' : 'intro' });
-  });
 
   const claim = app.querySelector('#claim');
   if (claim) {
@@ -476,6 +481,12 @@ function renderResults() {
 
 function fmt(n) {
   return (n > 0 ? '+' : '') + n.toFixed(1);
+}
+
+// Initials for the figure-card seal: first letter of first and last words.
+function seal(name) {
+  const parts = name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ');
+  return (parts[0][0] + (parts.length > 1 ? parts.at(-1)[0] : '')).toUpperCase();
 }
 
 render();

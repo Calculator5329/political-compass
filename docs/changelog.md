@@ -48,3 +48,12 @@
   entries to claim as your ✕ (answers don't cross origins/devices). Claimed
   marks skip the econ×social ✕ (no per-question data).
 - Scrollbar rail hidden (scrolling unaffected).
+
+## 2026-07-18 — figures page compaction + deploy
+- Charts side by side (The Political Plane / The Economic × Social Plane),
+  stacking on mobile; captions added.
+- Em dashes removed from the two figure-page paragraphs; take-the-survey line
+  removed (claim-your-mark stays).
+- Figure list converted to a compact 3-column card grid: initial seal, name
+  (note on hover), quadrant + coords, numbered source links.
+- Deployed to https://political-test-2026.web.app (Ethan-directed).
