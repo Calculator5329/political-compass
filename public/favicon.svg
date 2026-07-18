@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Ink-on-paper compass mark: tokens mirror src/style.css :root -->
+  <defs>
+    <radialGradient id="paper" cx="38%" cy="32%" r="85%">
+      <stop offset="0%" stop-color="#f2ead8"/>
+      <stop offset="70%" stop-color="#ede4d0"/>
+      <stop offset="100%" stop-color="#e2d5ba"/>
+    </radialGradient>
+  </defs>
+
+  <!-- paper disc with deckled ink edge -->
+  <circle cx="32" cy="32" r="30" fill="url(#paper)" stroke="#2b2620" stroke-width="2"/>
+  <circle cx="32" cy="32" r="26.5" fill="none" stroke="#2b2620" stroke-width="0.75" opacity="0.55"/>
+
+  <!-- faint quadrant washes -->
+  <path d="M32 32 L32 7 A25 25 0 0 0 7 32 Z" fill="#7a1f1f" opacity="0.06"/>
+  <path d="M32 32 L57 32 A25 25 0 0 0 32 7 Z" fill="#3a3f5e" opacity="0.07"/>
+  <path d="M32 32 L7 32 A25 25 0 0 0 32 57 Z" fill="#405437" opacity="0.07"/>
+  <path d="M32 32 L32 57 A25 25 0 0 0 57 32 Z" fill="#785e26" opacity="0.07"/>
+
+  <!-- compass axes, slightly hand-wobbled -->
+  <path d="M32 8.5 C31.6 20 32.3 44 32 55.5" fill="none" stroke="#2b2620" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M8.5 32 C20 31.6 44 32.4 55.5 32" fill="none" stroke="#2b2620" stroke-width="1.4" stroke-linecap="round"/>
+
+  <!-- rose points N/E/S/W -->
+  <path d="M32 8.5 L34.2 14.5 L32 13 L29.8 14.5 Z" fill="#2b2620"/>
+  <path d="M55.5 32 L49.5 34.2 L51 32 L49.5 29.8 Z" fill="#2b2620"/>
+  <path d="M32 55.5 L29.8 49.5 L32 51 L34.2 49.5 Z" fill="#2b2620"/>
+  <path d="M8.5 32 L14.5 29.8 L13 32 L14.5 34.2 Z" fill="#2b2620"/>
+
+  <!-- tick marks -->
+  <g stroke="#574d40" stroke-width="0.9" stroke-linecap="round" opacity="0.8">
+    <path d="M22 31.8 L22 33.6"/><path d="M27 32.2 L27 33.8"/>
+    <path d="M37 30.4 L37 32"/><path d="M42 30.6 L42 32.2"/>
+    <path d="M31.8 22 L33.5 22"/><path d="M32.2 27 L33.8 27"/>
+    <path d="M30.4 37 L32 37"/><path d="M30.6 42 L32.2 42"/>
+  </g>
+
+  <!-- red-ink ✕, upper-right quadrant, hand-drawn strokes -->
+  <g stroke="#7a1f1f" stroke-width="2.6" stroke-linecap="round" fill="none">
+    <path d="M39.5 15.5 C41.5 17.8 44.5 21 46.8 23.2"/>
+    <path d="M47 16 C44.6 18.2 41.6 21.4 39.8 23.5"/>
+  </g>
+</svg>

@@ -5,8 +5,10 @@
 - [ ] Share-card image export (canvas → PNG of the marked map)
 
 ## Next
-- [x] Public-figure mode: 14 figures, cited (2026-07-18; per-question evidence
-      links still an upgrade path)
+- [x] Public-figure mode: 42 figures, per-question evidence dossiers in
+      docs/figures/ (deep-research pass 2026-07-18)
+- [ ] [ETHAN] Review docs/figures/QUESTION-PROPOSALS.md (new differentiating
+      questions + possible retirements)
 - [ ] Split 4-axis view from the dim tags (econ/social/system)
 
 ## Later

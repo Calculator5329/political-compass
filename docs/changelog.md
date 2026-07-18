@@ -14,3 +14,15 @@
 - 2026-07-18 — v0.1: full quiz flow (36-statement draft bank, Likert, shuffle,
   localStorage resume), scoring with skip-proof normalization + sub-dimension
   scores, hand-drawn canvas compass, ink-on-paper UI. 7 vitest tests.
+
+## 2026-07-18 — deep-research figure pass
+- 14 research agents re-verified all 28 existing figures (per-question, cite-required)
+  and added 14 new ones (DeSantis, Warren, Buttigieg, Fetterman, MTG, Shapiro, Kirk,
+  Carlson, Gabbard, Owens, Maher, Haley, Stewart, Ramaswamy) — 42 total.
+- Evidence dossiers: docs/figures/<slug>.md (36 scores each, quote+URL per item);
+  rubric in docs/figures/METHOD.md; ~90 scores corrected (uncited inferences zeroed,
+  recency flips applied — e.g. RFK abortion, Destiny y-axis, Musk/Rogan economics).
+- docs/figures/analyze.mjs: per-question spread, axis correlations, map crowding.
+- docs/figures/QUESTION-PROPOSALS.md: differentiation analysis + 8 candidate items
+  (foreign-policy dim, loyalist-splitters, left-shelf splitters) — Ethan-gated.
+- Themed SVG favicon (public/favicon.svg): ink compass rose on paper, red-ink ✕.
