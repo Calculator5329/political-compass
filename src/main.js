@@ -113,7 +113,8 @@ function renderFigures() {
     </div>
   `));
   const marks = placed.map((f) => ({
-    x: f.pt.x, y: f.pt.y, label: f.name.split(' ').at(-1),
+    x: f.pt.x, y: f.pt.y,
+    label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
   }));
   const mine = Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
   drawOn('canvas.compass', mine, marks);

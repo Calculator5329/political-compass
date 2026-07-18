@@ -801,5 +801,388 @@ export const FIGURES = [
         "url": "https://time.com/7331036/mamdani-nyc-mayor-election-campaign-promises/"
       }
     ]
+  },
+  {
+    "name": "Hasan Piker",
+    "slug": "piker",
+    "answers": {
+      "e01": -1,
+      "e02": 2,
+      "e03": 2,
+      "e04": -2,
+      "e05": 1,
+      "e06": -2,
+      "e07": 2,
+      "e08": -2,
+      "e09": 2,
+      "e10": -2,
+      "e11": 2,
+      "e12": -2,
+      "s01": 2,
+      "s02": -2,
+      "s03": -1,
+      "s04": 2,
+      "s05": -2,
+      "s06": 2,
+      "s07": 2,
+      "s08": -2,
+      "s09": -2,
+      "s10": 2,
+      "s11": -2,
+      "s12": 2,
+      "y01": -1,
+      "y02": 1,
+      "y03": -2,
+      "y04": -2,
+      "y05": 2,
+      "y06": -1,
+      "y07": -2,
+      "y08": 2,
+      "y09": 1,
+      "y10": -2,
+      "y11": 2,
+      "y12": -2
+    },
+    "note": "Self-described socialist with a decade of daily on-stream advocacy: Medicare for All, unions, wealth taxes, police abolition, paired with deep hostility to the FBI, the Supreme Court, and the donor-run duopoly; mocks Trump tariffs and crypto while accepting election results as legitimate.",
+    "sources": [
+      {
+        "title": "Hasan Piker — Wikipedia (politics and views)",
+        "url": "https://en.wikipedia.org/wiki/Hasan_Piker"
+      },
+      {
+        "title": "Piker on guns vs gun control",
+        "url": "https://www.youtube.com/watch?v=a2qDxicorlI"
+      }
+    ]
+  },
+  {
+    "name": "Cornel West",
+    "slug": "west",
+    "answers": {
+      "e01": 0,
+      "e02": 2,
+      "e03": 2,
+      "e04": -2,
+      "e05": 2,
+      "e06": -2,
+      "e07": 2,
+      "e08": -1,
+      "e09": 2,
+      "e10": -2,
+      "e11": 2,
+      "e12": -2,
+      "s01": 2,
+      "s02": -2,
+      "s03": -1,
+      "s04": 2,
+      "s05": -2,
+      "s06": 2,
+      "s07": 2,
+      "s08": 1,
+      "s09": -2,
+      "s10": 2,
+      "s11": -2,
+      "s12": 2,
+      "y01": -2,
+      "y02": 0,
+      "y03": -2,
+      "y04": -2,
+      "y05": 2,
+      "y06": 1,
+      "y07": -1,
+      "y08": 2,
+      "y09": 0,
+      "y10": -1,
+      "y11": 2,
+      "y12": -1
+    },
+    "note": "Democratic-socialist 2024 platform (Medicare for All, wealth taxes, breaking up monopolies, reparations) plus a lifelong prophetic-Christian critique of the 'corporate duopoly,' corporate media, and the carceral state; embraces civil disobedience and charges the duopoly with rigging ballot access.",
+    "sources": [
+      {
+        "title": "Cornel West — Ballotpedia (2024 positions)",
+        "url": "https://ballotpedia.org/Cornel_West"
+      },
+      {
+        "title": "West on organizing under Trump — Truthout",
+        "url": "https://truthout.org/articles/cornel-west-we-must-keep-our-souls-intact-as-we-organize-under-trump-again/"
+      }
+    ]
+  },
+  {
+    "name": "Elon Musk",
+    "slug": "musk",
+    "answers": {
+      "e01": -2,
+      "e02": -1,
+      "e03": -2,
+      "e04": 1,
+      "e05": -1,
+      "e06": 1,
+      "e07": -1,
+      "e08": 2,
+      "e09": -2,
+      "e10": 1,
+      "e11": -1,
+      "e12": 1,
+      "s01": 1,
+      "s02": 2,
+      "s03": 2,
+      "s04": -2,
+      "s05": 1,
+      "s06": 2,
+      "s07": -2,
+      "s08": 0,
+      "s09": 2,
+      "s10": 1,
+      "s11": 2,
+      "s12": -1,
+      "y01": -2,
+      "y02": -2,
+      "y03": -2,
+      "y04": 2,
+      "y05": -2,
+      "y06": 2,
+      "y07": 0,
+      "y08": 2,
+      "y09": -2,
+      "y10": 2,
+      "y11": 0,
+      "y12": 1
+    },
+    "note": "Scored on his post-split July-2026 posture: America Party founder running as an anti-tariff, free-trade deficit-hawk 'uniparty' critic who ran DOGE's mass firings, amplified deep-state claims, fights unions and DEI, champions crypto and expanded legal immigration, and condemns legacy media and experts.",
+    "sources": [
+      {
+        "title": "Political activities of Elon Musk — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Political_activities_of_Elon_Musk"
+      },
+      {
+        "title": "Musk forms new party — NPR",
+        "url": "https://www.npr.org/2025/07/06/g-s1-76292/musk-political-party-america"
+      },
+      {
+        "title": "DOGE — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Department_of_Government_Efficiency"
+      }
+    ]
+  },
+  {
+    "name": "Joe Rogan",
+    "slug": "rogan",
+    "answers": {
+      "e01": -1,
+      "e02": 1,
+      "e03": 0,
+      "e04": 0,
+      "e05": 1,
+      "e06": 0,
+      "e07": 0,
+      "e08": 1,
+      "e09": 1,
+      "e10": 0,
+      "e11": -1,
+      "e12": 0,
+      "s01": 1,
+      "s02": 1,
+      "s03": 1,
+      "s04": -1,
+      "s05": -2,
+      "s06": 1,
+      "s07": -2,
+      "s08": 1,
+      "s09": 1,
+      "s10": 2,
+      "s11": 2,
+      "s12": 1,
+      "y01": -2,
+      "y02": -1,
+      "y03": -2,
+      "y04": 0,
+      "y05": -1,
+      "y06": 2,
+      "y07": 0,
+      "y08": 2,
+      "y09": -2,
+      "y10": 1,
+      "y11": 0,
+      "y12": 1
+    },
+    "note": "Pro-choice, pro-weed, pro-2A, Bernie-then-Trump populist defined by distrust of legacy media, experts, and federal law enforcement plus fierce anti-censorship politics; broke loudly with Trump on ICE tactics ('Gestapo'-like) in 2025-26. Economic zeros reflect a genuinely thin on-record footprint.",
+    "sources": [
+      {
+        "title": "Rogan criticizes ICE tactics — NBC News",
+        "url": "https://www.nbcnews.com/pop-culture/pop-culture-news/joe-rogan-criticizes-ice-tactics-podcast-rcna253931"
+      },
+      {
+        "title": "Rogan on deportations — Axios",
+        "url": "https://www.axios.com/2025/04/02/joe-rogan-trump-deportations-ice-el-salvador"
+      }
+    ]
+  },
+  {
+    "name": "Liz Cheney",
+    "slug": "cheney",
+    "answers": {
+      "e01": -2,
+      "e02": -2,
+      "e03": -2,
+      "e04": 1,
+      "e05": -1,
+      "e06": 0,
+      "e07": -1,
+      "e08": 0,
+      "e09": -1,
+      "e10": 2,
+      "e11": -2,
+      "e12": 2,
+      "s01": -1,
+      "s02": 1,
+      "s03": 2,
+      "s04": -2,
+      "s05": -1,
+      "s06": 1,
+      "s07": -2,
+      "s08": 0,
+      "s09": 1,
+      "s10": -1,
+      "s11": 1,
+      "s12": -1,
+      "y01": 1,
+      "y02": 2,
+      "y03": 1,
+      "y04": -2,
+      "y05": -2,
+      "y06": 0,
+      "y07": 2,
+      "y08": -1,
+      "y09": 1,
+      "y10": -2,
+      "y11": -2,
+      "y12": 2
+    },
+    "note": "Orthodox free-trade, low-tax conservative on economics (called broad tariffs 'fundamentally anti-conservative') paired with a defining post-2020 institutionalist turn: election legitimacy, rule of law, opposition to executive purges and deep-state conspiracism.",
+    "sources": [
+      {
+        "title": "Liz Cheney — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Liz_Cheney"
+      },
+      {
+        "title": "Cheney on post-Roe state bans — Axios",
+        "url": "https://www.axios.com/2024/10/22/liz-cheney-abortion-harris-town-hall-michigan"
+      },
+      {
+        "title": "Cheney key votes — Vote Smart",
+        "url": "https://justfacts.votesmart.org/candidate/key-votes/171319/liz-cheney"
+      }
+    ]
+  },
+  {
+    "name": "Robert F. Kennedy Jr.",
+    "slug": "rfk",
+    "answers": {
+      "e01": 1,
+      "e02": 0,
+      "e03": 0,
+      "e04": -2,
+      "e05": 1,
+      "e06": -1,
+      "e07": 1,
+      "e08": 2,
+      "e09": 1,
+      "e10": -1,
+      "e11": -1,
+      "e12": -1,
+      "s01": 1,
+      "s02": 1,
+      "s03": 0,
+      "s04": 0,
+      "s05": 0,
+      "s06": 0,
+      "s07": 0,
+      "s08": 1,
+      "s09": 2,
+      "s10": 1,
+      "s11": 1,
+      "s12": 1,
+      "y01": -2,
+      "y02": -1,
+      "y03": -1,
+      "y04": 2,
+      "y05": 1,
+      "y06": 2,
+      "y07": 0,
+      "y08": 2,
+      "y09": -2,
+      "y10": 2,
+      "y11": 0,
+      "y12": 1
+    },
+    "note": "Economically heterodox populist (living-wage planks, Bitcoin evangelist, anti-corporate-capture) whose HHS record hardened the anti-institution axis: mass HHS firings, censorship crusade, rejection of expert consensus, and a proposed CMS ban on pediatric gender medicine.",
+    "sources": [
+      {
+        "title": "RFK Jr. confirmation hearing — Inside Climate News",
+        "url": "https://insideclimatenews.org/news/29012025/rfk-jr-confirmation-hearing-overlooks-climate-and-environment/"
+      },
+      {
+        "title": "19 states sue HHS over youth gender care — NPR",
+        "url": "https://www.npr.org/2025/12/24/g-s1-103603/19-states-sue-hhs-over-youth-gender-affirming-care"
+      },
+      {
+        "title": "RFK Jr. on abortion — Time",
+        "url": "https://time.com/7210724/rfk-jr-abortion-position-senate-confirmation-hearing/"
+      }
+    ]
+  },
+  {
+    "name": "Rand Paul",
+    "slug": "paul",
+    "answers": {
+      "e01": -2,
+      "e02": -2,
+      "e03": -2,
+      "e04": 2,
+      "e05": -2,
+      "e06": 1,
+      "e07": -1,
+      "e08": 2,
+      "e09": -2,
+      "e10": 2,
+      "e11": -2,
+      "e12": 2,
+      "s01": -2,
+      "s02": 1,
+      "s03": 2,
+      "s04": 0,
+      "s05": -1,
+      "s06": 0,
+      "s07": -2,
+      "s08": 1,
+      "s09": 2,
+      "s10": 1,
+      "s11": 2,
+      "s12": 0,
+      "y01": -2,
+      "y02": -1,
+      "y03": -2,
+      "y04": 1,
+      "y05": -2,
+      "y06": 2,
+      "y07": 0,
+      "y08": 1,
+      "y09": -2,
+      "y10": 1,
+      "y11": -1,
+      "y12": 0
+    },
+    "note": "Consistent libertarian: co-led three 2025 Senate resolutions to revoke Trump's Canada tariffs, champions crypto non-regulation and market wages, sponsors the Life at Conception Act and the anti-jawboning Free Speech Protection Act; breaks with Trump on tariffs and due process while sharing the anti-FBI, anti-expert distrust axis.",
+    "sources": [
+      {
+        "title": "Senate passes Paul's bill to block Canada tariffs — Reason",
+        "url": "https://reason.com/2025/04/02/the-senate-just-passed-rand-pauls-bill-to-block-trumps-tariffs-on-canada/"
+      },
+      {
+        "title": "Paul on due process before deportation — Newsweek",
+        "url": "https://www.newsweek.com/mass-deportations-rand-paul-concerns-donald-trump-1989042"
+      }
+    ]
   }
 ];
