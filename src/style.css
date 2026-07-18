@@ -439,3 +439,16 @@ select#claim {
   border-bottom: 1px solid rgba(122, 31, 31, 0.4);
 }
 .claim-hint { font-size: 0.82rem; }
+
+/* card tooltips reuse .fig-tip inside the (relative) grid */
+.figure-cards { position: relative; }
+.fig-tip-note {
+  display: block;
+  margin-top: 0.3rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+select#claim:invalid, select#claim option[value=""] { color: var(--ink-soft); }

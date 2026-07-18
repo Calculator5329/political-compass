@@ -164,25 +164,27 @@ function renderFigures() {
                ? `<br /><span class="muted claim-hint">This ledger entry predates the second plane; retake the survey to appear there.</span>`
                : ''}`
         : `<span class="muted">Already signed the ledger? Claim your mark:</span>
-           <select id="claim"><option value="">the ledger</option></select>`}
+           <select id="claim"><option value="" disabled selected hidden>choose your name</option></select>`}
     </p>
     <p class="muted center">On the right, the same record split by dimension: the horizontal
     is purely economic, the vertical purely social, with the system axis set aside.</p>
     <p class="muted center">Each mark is the instrument scored from documented votes,
     policies, and on-record statements, answering the same 36 questions you do.</p>
     <div class="figure-cards">
-      ${placed.map((f) => `
-        <div class="fig-card">
+      ${placed.map((f, i) => `
+        <div class="fig-card" data-fig="${i}">
           <span class="fig-seal">${seal(f.name)}</span>
           <div class="fig-card-body">
-            <span class="fig-name" title="${esc(f.note)}">${f.name}</span>
+            <span class="fig-name">${f.name}</span>
             <span class="fig-card-place muted">${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}</span>
             <span class="fig-card-links">${f.sources.slice(0, 5).map((s, i) =>
               `<a href="${s.url}" target="_blank" rel="noopener" title="${esc(s.title)}">${i + 1}</a>`).join('')}</span>
           </div>
         </div>`).join('')}
+      <div class="fig-tip" hidden></div>
     </div>
   `));
+  attachCardTips(placed);
   const marks = figureMarks(placed);
   drawOn('#wrap-main canvas', showMe ? mine : null, marks);
   attachFigureTip(app.querySelector('#wrap-main'), marks);
@@ -230,6 +232,32 @@ function renderFigures() {
       })
       .catch(() => claim.remove());
   }
+}
+
+// Same marginalia tooltip for the figure cards: name, blurb, and the full
+// placement note, pinned above the hovered card.
+function attachCardTips(placed) {
+  const grid = app.querySelector('.figure-cards');
+  const tip = grid.querySelector('.fig-tip');
+  grid.querySelectorAll('.fig-card').forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      const f = placed[card.dataset.fig];
+      tip.innerHTML = `
+        <span class="fig-tip-name">${f.name}</span>
+        <span class="fig-tip-desc">${BLURBS[f.slug] ?? ''}</span>
+        <span class="fig-tip-note">${esc(f.note)}</span>`;
+      tip.hidden = false;
+      const g = grid.getBoundingClientRect();
+      const r = card.getBoundingClientRect();
+      const tw = tip.offsetWidth;
+      let left = r.left - g.left + (r.width - tw) / 2;
+      left = Math.max(4, Math.min(left, g.width - tw - 4));
+      tip.style.left = `${left}px`;
+      const above = r.top - g.top - tip.offsetHeight - 8;
+      tip.style.top = `${above >= 0 ? above : r.bottom - g.top + 8}px`;
+    });
+    card.addEventListener('mouseleave', () => { tip.hidden = true; });
+  });
 }
 
 // Hover (or tap) a dot — or a faction territory — for a marginalia-style

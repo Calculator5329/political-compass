@@ -71,3 +71,9 @@
   extended with optional validated fields, deployed).
 - Claimed marks with sub-scores draw the ✕ on the Economic × Social plane too;
   older entries show a retake hint instead of a wrong mark.
+
+## 2026-07-18 — card tooltips + claim placeholder
+- Figure-card hover now uses the themed marginalia tooltip (name, blurb, full
+  placement note) instead of the native title attribute.
+- Claim dropdown placeholder is disabled/hidden "choose your name" rather than
+  a selectable "the ledger" entry.
