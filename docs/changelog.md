@@ -37,3 +37,14 @@
   The Heterodox, Socialist Left, Liberal Establishment, Disaffected Centre,
   Old Guard Right) on the compass + legend; src/factions.js is display-only.
 - compass.js: axis labels + region ellipses now parametrized (opts).
+
+## 2026-07-18 — factions polish
+- Faction territories are hoverable: same marginalia tooltip (name, blurb,
+  member count); dots take precedence, overlaps resolve to nearest centre.
+- Renames (Ethan): Liberal Establishment → Democratic Establishment,
+  Disaffected Centre → Centrist Liberals, The Heterodox → Populist
+  Independents, Old Guard Right → Reaganite Conservatives.
+- Claim-your-mark: with no local answers, the Figures page offers the ledger's
+  entries to claim as your ✕ (answers don't cross origins/devices). Claimed
+  marks skip the econ×social ✕ (no per-question data).
+- Scrollbar rail hidden (scrolling unaffected).

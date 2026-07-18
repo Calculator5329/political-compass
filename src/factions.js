@@ -14,7 +14,7 @@ export const FACTIONS = [
     members: ['trump', 'vance', 'miller', 'bannon', 'jones', 'desantis', 'mtg', 'kirk', 'carlson', 'pool', 'owens', 'ramaswamy'],
   },
   {
-    name: 'The Heterodox',
+    name: 'Populist Independents',
     x: 2.0, y: 3.7, rx: 3.4, ry: 2.4,
     fill: 'rgba(64, 84, 55, 0.12)',
     blurb:
@@ -32,16 +32,16 @@ export const FACTIONS = [
     members: ['sanders', 'aoc', 'mamdani', 'piker', 'west', 'stewart'],
   },
   {
-    name: 'Liberal Establishment',
+    name: 'Democratic Establishment',
     x: -7.4, y: -4.9, rx: 2.6, ry: 3.1,
     fill: 'rgba(58, 63, 94, 0.11)',
     blurb:
-      'The Democratic mainline: progressive ends pursued through courts, ' +
-      'elections, expertise, and party discipline.',
+      'The DNC mainline: progressive ends pursued through courts, elections, ' +
+      'expertise, and party discipline.',
     members: ['biden', 'obama', 'harris', 'newsom', 'buttigieg', 'warren', 'pakman', 'btc'],
   },
   {
-    name: 'Disaffected Centre',
+    name: 'Centrist Liberals',
     x: -2.9, y: -4.1, rx: 2.3, ry: 2.7,
     fill: 'rgba(120, 94, 38, 0.11)',
     blurb:
@@ -50,7 +50,7 @@ export const FACTIONS = [
     members: ['maher', 'fetterman', 'destiny', 'hutch'],
   },
   {
-    name: 'Old Guard Right',
+    name: 'Reaganite Conservatives',
     x: 4.9, y: -3.9, rx: 3.5, ry: 3.6,
     fill: 'rgba(43, 38, 32, 0.08)',
     blurb:

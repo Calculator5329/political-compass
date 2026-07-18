@@ -256,6 +256,24 @@ export function hitMark(canvas, marks, ev, reach = 11) {
   return best;
 }
 
+// Hit-test a pointer event against region ellipses (axis units). Overlaps
+// resolve to the ellipse whose centre is nearest in normalized distance.
+export function hitRegion(canvas, regions, ev) {
+  const rect = canvas.getBoundingClientRect();
+  const s = canvas.clientWidth;
+  const pad = s * 0.115;
+  const c = s / 2;
+  const half = c - pad;
+  const x = ((ev.clientX - rect.left - c) / half) * 10;
+  const y = (-(ev.clientY - rect.top - c) / half) * 10;
+  let best = null;
+  for (const rg of regions) {
+    const d = Math.hypot((x - rg.x) / rg.rx, (y - rg.y) / rg.ry);
+    if (d <= 1 && (!best || d < best.d)) best = { region: rg, d };
+  }
+  return best?.region ?? null;
+}
+
 export function fitCanvas(canvas) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth;

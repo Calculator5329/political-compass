@@ -1,6 +1,6 @@
 import { QUESTIONS } from './questions.js';
 import { LIKERT, score, subScores, quadrant, describe } from './scoring.js';
-import { drawCompass, fitCanvas, hitMark } from './compass.js';
+import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
@@ -108,6 +108,12 @@ function myPoint() {
   return Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
 }
 
+// Answers live in this browser's storage; a ledger signature made elsewhere
+// (another device, the deployed site vs dev) can be claimed as your ✕ instead.
+function effectivePoint() {
+  return myPoint() ?? (state.claimed ? { x: state.claimed.x, y: state.claimed.y } : null);
+}
+
 function figureMarks(placed) {
   return placed.map((f) => ({
     x: f.pt.x, y: f.pt.y,
@@ -120,7 +126,7 @@ function figureMarks(placed) {
 
 function renderFigures() {
   const placed = placedFigures();
-  const mine = myPoint();
+  const mine = effectivePoint();
   const showMe = state.showMe ?? true;
   app.append(el(`
     <p class="kicker center">Charted from the public record</p>
@@ -132,8 +138,10 @@ function renderFigures() {
     <p class="center chart-note">
       ${mine
         ? `<label class="me-toggle"><input type="checkbox" id="showme" ${showMe ? 'checked' : ''} />
-           Mark my position <span class="me-x">✕</span> among them</label>`
-        : `<span class="muted"><a href="#" id="gotest">Take the survey</a> to set your own ✕ among them.</span>`}
+           Mark my position <span class="me-x">✕</span>${state.claimed && !myPoint() ? ` (as ${esc(state.claimed.name)})` : ''} among them</label>`
+        : `<span class="muted"><a href="#" id="gotest">Take the survey</a> to set your own ✕ —
+           or, if you already signed the ledger, claim your mark:</span>
+           <select id="claim"><option value="">— the ledger —</option></select>`}
     </p>
     <h2 class="center smallcaps mt">The Economic × Social Plane</h2>
     <div class="chart-wrap" id="wrap-sub">
@@ -166,7 +174,8 @@ function renderFigures() {
     blurb: BLURBS[f.slug] ?? '',
     place: `econ ${fmt(f.subs.econ.x)} · social ${fmt(f.subs.social.x)}`,
   }));
-  const mySubs = mine ? subScores(state.answers, QUESTIONS) : null;
+  // a claimed ledger mark has no per-question answers, so no sub-plane ✕
+  const mySubs = myPoint() ? subScores(state.answers, QUESTIONS) : null;
   const subLabels = { top: 'Traditional', bottom: 'Progressive', left: 'Econ Left', right: 'Econ Right' };
   drawOn('#wrap-sub canvas',
     showMe && mySubs ? { x: mySubs.econ.x, y: mySubs.social.x } : null,
@@ -178,10 +187,31 @@ function renderFigures() {
     e.preventDefault();
     set({ screen: state.idx > 0 ? 'quiz' : 'intro' });
   });
+
+  const claim = app.querySelector('#claim');
+  if (claim) {
+    import('./firebase.js')
+      .then(({ fetchScores }) => fetchScores(100))
+      .then((rows) => {
+        for (const [i, r] of rows.entries()) {
+          const o = document.createElement('option');
+          o.value = i;
+          o.textContent = `${r.name} — ${r.q}`;
+          claim.append(o);
+        }
+        claim.addEventListener('change', () => {
+          const r = rows[claim.value];
+          if (r) set({ claimed: { name: r.name, x: r.x, y: r.y }, showMe: true });
+        });
+      })
+      .catch(() => claim.remove());
+  }
 }
 
-// Hover (or tap) a dot → a marginalia-style tooltip beside it.
-function attachFigureTip(wrap, marks) {
+// Hover (or tap) a dot — or a faction territory — for a marginalia-style
+// tooltip. Dots win over territories; overlapping territories resolve to the
+// nearest centre.
+function attachFigureTip(wrap, marks, regions = []) {
   const canvas = wrap.querySelector('canvas');
   const tip = wrap.querySelector('.fig-tip');
   let shown = null;
@@ -192,32 +222,49 @@ function attachFigureTip(wrap, marks) {
     canvas.style.cursor = '';
   };
 
-  const show = (hit) => {
-    if (shown === hit.mark) return;
-    shown = hit.mark;
-    tip.innerHTML = `
-      <span class="fig-tip-name">${hit.mark.name}</span>
-      <span class="fig-tip-desc">${hit.mark.blurb}</span>
-      <span class="fig-tip-place">${hit.mark.place}</span>`;
-    tip.hidden = false;
-    // place beside the dot, flipping to stay on the paper
+  const place = (px, py) => {
     const w = wrap.clientWidth;
     const tw = tip.offsetWidth;
     const th = tip.offsetHeight;
-    let left = hit.px + 14;
-    if (left + tw > w - 4) left = hit.px - tw - 14;
-    let top = hit.py - th / 2;
+    let left = px + 14;
+    if (left + tw > w - 4) left = px - tw - 14;
+    let top = py - th / 2;
     top = Math.max(4, Math.min(top, wrap.clientHeight - th - 4));
     tip.style.left = `${left}px`;
     tip.style.top = `${top}px`;
+  };
+
+  const show = (key, html, px, py) => {
+    if (shown !== key) {
+      shown = key;
+      tip.innerHTML = html;
+      tip.hidden = false;
+    }
+    place(px, py);
   };
 
   const onMove = (ev) => {
     const hit = hitMark(canvas, marks, ev);
     if (hit) {
       canvas.style.cursor = 'pointer';
-      show(hit);
-    } else hide();
+      show(hit.mark, `
+        <span class="fig-tip-name">${hit.mark.name}</span>
+        <span class="fig-tip-desc">${hit.mark.blurb}</span>
+        <span class="fig-tip-place">${hit.mark.place}</span>`, hit.px, hit.py);
+      return;
+    }
+    const rg = regions.length ? hitRegion(canvas, regions, ev) : null;
+    if (rg) {
+      canvas.style.cursor = '';
+      const rect = canvas.getBoundingClientRect();
+      show(rg, `
+        <span class="fig-tip-name">${rg.name}</span>
+        <span class="fig-tip-desc">${rg.blurb}</span>
+        <span class="fig-tip-place">${rg.members.length} figures charted</span>`,
+        ev.clientX - rect.left, ev.clientY - rect.top);
+      return;
+    }
+    hide();
   };
   canvas.addEventListener('mousemove', onMove);
   canvas.addEventListener('click', onMove); // touch taps
@@ -226,7 +273,7 @@ function attachFigureTip(wrap, marks) {
 
 function renderFactions() {
   const placed = placedFigures();
-  const mine = myPoint();
+  const mine = effectivePoint();
   app.append(el(`
     <p class="kicker center">The territories of the moment</p>
     <h1 class="center">The Factions</h1>
@@ -254,7 +301,7 @@ function renderFactions() {
   drawOn('#wrap-factions canvas', mine, marks.map((m) => ({ ...m, label: '' })), {
     regions: FACTIONS.map((fa) => ({ ...fa, label: fa.name })),
   });
-  attachFigureTip(app.querySelector('#wrap-factions'), marks);
+  attachFigureTip(app.querySelector('#wrap-factions'), marks, FACTIONS);
 }
 
 async function renderBoard() {

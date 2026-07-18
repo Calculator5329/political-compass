@@ -318,3 +318,19 @@ h2.smallcaps { font-family: var(--font-caps); font-weight: normal; font-size: 1.
 .faction-name { font-family: var(--font-display); font-size: 1.12rem; }
 .faction-blurb { margin: 0.15rem 0 0.1rem; font-size: 0.95rem; }
 .faction-members { font-size: 0.84rem; font-family: var(--font-caps); }
+
+/* hide the scrollbar rail — the page still scrolls by wheel/touch/keys */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
+
+/* claim-your-mark select */
+select#claim {
+  display: block;
+  margin: 0.5rem auto 0;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 0.25rem 0.5rem;
+}
