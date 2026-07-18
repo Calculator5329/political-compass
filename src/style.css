@@ -11,6 +11,12 @@
   --font-caps: 'IM Fell English SC', serif;
   --fleuron: '❧';
   --grain-opacity: 0.5;
+  --chart-wobble: 1.6;
+  --chart-font: 'IM Fell English SC', serif;
+  --wash-tl: rgba(122, 31, 31, 0.045);
+  --wash-tr: rgba(58, 63, 94, 0.05);
+  --wash-bl: rgba(64, 84, 55, 0.05);
+  --wash-br: rgba(120, 94, 38, 0.05);
 }
 
 * { box-sizing: border-box; margin: 0; }

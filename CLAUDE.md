@@ -8,6 +8,7 @@ cited statements via the same instrument.
 - Axes: vertical Insurgent(+y)/Institutionalist(−y), horizontal Left(−x)/Right(+x)
 - Hard rules: questions carry dim tags + weight vectors — never hardcode axis
   math outside src/scoring.js. Statement-bank edits are Ethan-reviewed.
-- Aesthetic is load-bearing. Five committed themes (manuscript / broadsheet /
-  terminal / federal / arcade) via body[data-theme] tokens in src/themes.css;
-  the canvas chart reads the same tokens. No frameworks — vanilla Vite.
+- Aesthetic is load-bearing: manuscript ink-on-paper (IM Fell English /
+  EB Garamond), tokens in style.css :root; the canvas chart reads the same
+  tokens. No frameworks — vanilla Vite. (Multi-theme system removed by Ethan's
+  call 2026-07-18 — see git history if it's ever wanted back.)

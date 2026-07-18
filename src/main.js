@@ -5,42 +5,6 @@ import { FIGURES } from './figures.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
-const THEME_KEY = 'political-compass-theme';
-
-const THEMES = [
-  { id: 'manuscript', label: 'Manuscript' },
-  { id: 'broadsheet', label: 'Broadsheet' },
-  { id: 'terminal', label: 'Terminal' },
-  { id: 'federal', label: 'Federal' },
-  { id: 'arcade', label: 'Arcade' },
-];
-
-function applyTheme(id) {
-  document.body.dataset.theme = id;
-  localStorage.setItem(THEME_KEY, id);
-  document.querySelectorAll('.theme-dock button').forEach((b) =>
-    b.classList.toggle('on', b.dataset.theme === id)
-  );
-}
-
-function mountThemeDock() {
-  const dock = document.createElement('nav');
-  dock.className = 'theme-dock';
-  dock.setAttribute('aria-label', 'Theme');
-  for (const t of THEMES) {
-    const b = document.createElement('button');
-    b.textContent = t.label;
-    b.dataset.theme = t.id;
-    b.addEventListener('click', () => {
-      applyTheme(t.id);
-      render(); // results screen redraws its canvas with the new palette
-    });
-    dock.append(b);
-  }
-  document.body.prepend(dock);
-  applyTheme(localStorage.getItem(THEME_KEY) ?? 'manuscript');
-}
-
 // Question order is shuffled once per attempt so dimension blocks don't clump,
 // then persisted so refresh mid-quiz keeps the same order.
 let state = load() ?? fresh();
@@ -310,5 +274,4 @@ function fmt(n) {
   return (n > 0 ? '+' : '') + n.toFixed(1);
 }
 
-mountThemeDock();
 render();
