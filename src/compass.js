@@ -117,22 +117,44 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   ctx.fillText('Right', 0, 0);
   ctx.restore();
 
-  // labeled marks (figures / leaderboard dots)
+  // labeled marks (figures / leaderboard dots) with label de-overlap:
+  // labels default beside their dot, then get nudged downward until no two
+  // label boxes intersect; a faint leader line ties displaced labels home.
   if (marks.length) {
-    ctx.font = `${Math.max(11, Math.round(s * 0.026))}px ${th.font}`;
-    for (const m of marks) {
-      const mx = c + (m.x / 10) * half;
-      const my = c - (m.y / 10) * half;
-      ctx.fillStyle = alpha(th.accent, m.label ? 0.85 : 0.5);
+    const fs = Math.max(11, Math.round(s * 0.026));
+    ctx.font = `${fs}px ${th.font}`;
+    const items = marks.map((m) => ({
+      m,
+      mx: c + (m.x / 10) * half,
+      my: c - (m.y / 10) * half,
+    }));
+    for (const it of items) {
+      ctx.fillStyle = alpha(th.accent, it.m.label ? 0.85 : 0.5);
       ctx.beginPath();
-      ctx.arc(mx, my, m.label ? 4.5 : 3, 0, Math.PI * 2);
+      ctx.arc(it.mx, it.my, it.m.label ? 4.5 : 3, 0, Math.PI * 2);
       ctx.fill();
-      if (m.label) {
-        ctx.fillStyle = INK;
-        const flip = mx > s - pad - s * 0.14;
-        ctx.textAlign = flip ? 'right' : 'left';
-        ctx.fillText(m.label, mx + (flip ? -8 : 8), my + 4);
+    }
+    const placed = [];
+    const hits = (r) => placed.some((p) => r.x1 < p.x2 && r.x2 > p.x1 && r.y1 < p.y2 && r.y2 > p.y1);
+    ctx.textAlign = 'left';
+    for (const it of items.filter((i) => i.m.label).sort((a, b) => a.my - b.my || a.mx - b.mx)) {
+      const w = ctx.measureText(it.m.label).width;
+      const flip = it.mx + 10 + w > s - pad * 0.4;
+      const lx = flip ? it.mx - 9 - w : it.mx + 9;
+      let ly = it.my + fs * 0.35;
+      let guard = 0;
+      while (guard++ < 60 && hits({ x1: lx - 2, x2: lx + w + 2, y1: ly - fs, y2: ly + 3 })) ly += 3;
+      placed.push({ x1: lx - 2, x2: lx + w + 2, y1: ly - fs, y2: ly + 3 });
+      if (ly - it.my > fs) {
+        ctx.strokeStyle = alpha(INK, 0.3);
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(it.mx, it.my + 5);
+        ctx.lineTo(flip ? lx + w : lx, ly - fs * 0.35);
+        ctx.stroke();
       }
+      ctx.fillStyle = INK;
+      ctx.fillText(it.m.label, lx, ly);
     }
     ctx.textAlign = 'center';
   }
