@@ -1,3 +1,6 @@
 {"kind":"session","event":"start","holder":"session:fable-figures-research","at":"2026-07-18T21:02:29.938Z","purpose":"Deep research pass: verify all figure placements, add new figures, per-figure evidence dossiers, question-differentiation analysis"}
 {"kind":"session","event":"heartbeat","holder":"session:fable-figures-research","at":"2026-07-18T21:02:30.054Z"}
 {"kind":"session","event":"heartbeat","holder":"session:fable-figures-research","at":"2026-07-18T21:14:11.847Z"}
+{"kind":"session","event":"end","holder":"session:fable-figures-research","at":"2026-07-18T21:22:30.377Z"}
+{"kind":"session","event":"start","holder":"session:fable-figures-research","at":"2026-07-18T21:23:25.457Z","purpose":"Figures-chart hover tooltips"}
+{"kind":"session","event":"heartbeat","holder":"session:fable-figures-research","at":"2026-07-18T21:23:25.573Z"}

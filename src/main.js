@@ -1,7 +1,8 @@
 import { QUESTIONS } from './questions.js';
 import { LIKERT, score, subScores, quadrant, describe } from './scoring.js';
-import { drawCompass, fitCanvas } from './compass.js';
+import { drawCompass, fitCanvas, hitMark } from './compass.js';
 import { FIGURES } from './figures.js';
+import { BLURBS } from './blurbs.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -99,7 +100,10 @@ function renderFigures() {
   app.append(el(`
     <p class="kicker center">Charted from the public record</p>
     <h1 class="center">The Figures</h1>
-    <canvas class="compass"></canvas>
+    <div class="chart-wrap">
+      <canvas class="compass"></canvas>
+      <div class="fig-tip" hidden></div>
+    </div>
     <p class="muted center">Each mark is the instrument scored from documented votes,
     policies, and on-record statements — the same 36 questions you answer. Sources below.</p>
     <div class="figure-list">
@@ -115,9 +119,58 @@ function renderFigures() {
   const marks = placed.map((f) => ({
     x: f.pt.x, y: f.pt.y,
     label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
+    name: f.name,
+    blurb: BLURBS[f.slug] ?? '',
+    place: quadrant(f.pt),
   }));
   const mine = Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
   drawOn('canvas.compass', mine, marks);
+  attachFigureTip(marks);
+}
+
+// Hover (or tap) a dot → a marginalia-style tooltip beside it.
+function attachFigureTip(marks) {
+  const wrap = app.querySelector('.chart-wrap');
+  const canvas = wrap.querySelector('canvas');
+  const tip = wrap.querySelector('.fig-tip');
+  let shown = null;
+
+  const hide = () => {
+    shown = null;
+    tip.hidden = true;
+    canvas.style.cursor = '';
+  };
+
+  const show = (hit) => {
+    if (shown === hit.mark) return;
+    shown = hit.mark;
+    tip.innerHTML = `
+      <span class="fig-tip-name">${hit.mark.name}</span>
+      <span class="fig-tip-desc">${hit.mark.blurb}</span>
+      <span class="fig-tip-place">${hit.mark.place} · x ${fmt(hit.mark.x)} · y ${fmt(hit.mark.y)}</span>`;
+    tip.hidden = false;
+    // place beside the dot, flipping to stay on the paper
+    const w = wrap.clientWidth;
+    const tw = tip.offsetWidth;
+    const th = tip.offsetHeight;
+    let left = hit.px + 14;
+    if (left + tw > w - 4) left = hit.px - tw - 14;
+    let top = hit.py - th / 2;
+    top = Math.max(4, Math.min(top, wrap.clientHeight - th - 4));
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
+  };
+
+  const onMove = (ev) => {
+    const hit = hitMark(canvas, marks, ev);
+    if (hit) {
+      canvas.style.cursor = 'pointer';
+      show(hit);
+    } else hide();
+  };
+  canvas.addEventListener('mousemove', onMove);
+  canvas.addEventListener('click', onMove); // touch taps
+  canvas.addEventListener('mouseleave', hide);
 }
 
 async function renderBoard() {

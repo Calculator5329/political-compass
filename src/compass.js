@@ -178,6 +178,26 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   ctx.restore();
 }
 
+// Hit-test a pointer event against mark dots, mirroring drawCompass geometry.
+// Returns { mark, px, py } for the nearest mark within reach, else null.
+export function hitMark(canvas, marks, ev, reach = 11) {
+  const rect = canvas.getBoundingClientRect();
+  const s = canvas.clientWidth;
+  const pad = s * 0.115;
+  const c = s / 2;
+  const half = c - pad;
+  const x = ev.clientX - rect.left;
+  const y = ev.clientY - rect.top;
+  let best = null;
+  for (const m of marks) {
+    const px = c + (m.x / 10) * half;
+    const py = c - (m.y / 10) * half;
+    const d = Math.hypot(px - x, py - y);
+    if (d <= reach && (!best || d < best.d)) best = { mark: m, px, py, d };
+  }
+  return best;
+}
+
 export function fitCanvas(canvas) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth;

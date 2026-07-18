@@ -1,6 +1,14 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "compass", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--", "--port", "5620", "--strictPort"], "port": 5620 }
+    {
+      "name": "compass-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "autoPort": true
+    }
   ]
 }

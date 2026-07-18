@@ -211,3 +211,56 @@ canvas.compass {
 .figure-list p { margin: 0.6rem 0 0.4rem; }
 .figure-list ul { margin: 0.2rem 0 0.4rem 1.4rem; font-size: 0.92rem; }
 .figure-list a { color: var(--accent); }
+
+/* figure-chart hover tooltip — a marginalia note pinned by the dot */
+.chart-wrap {
+  position: relative;
+  width: min(560px, 92vw);
+  margin: 0 auto;
+}
+.chart-wrap canvas.compass { width: 100%; margin-left: 0; margin-right: 0; }
+.fig-tip {
+  position: absolute;
+  z-index: 3;
+  max-width: 15.5rem;
+  padding: 0.55rem 0.75rem 0.6rem;
+  background:
+    linear-gradient(color-mix(in srgb, var(--paper) 92%, white), var(--paper));
+  border: 1px solid var(--ink);
+  box-shadow: 2px 2px 0 rgba(43, 38, 32, 0.22);
+  transform: rotate(-0.4deg);
+  pointer-events: none;
+  font-family: var(--font-body);
+  line-height: 1.32;
+}
+.fig-tip::before {
+  content: var(--fleuron);
+  position: absolute;
+  top: -0.72rem;
+  left: 0.55rem;
+  color: var(--accent);
+  background: var(--paper);
+  padding: 0 0.25rem;
+  font-size: 0.85rem;
+}
+.fig-tip-name {
+  display: block;
+  font-family: var(--font-caps);
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.3rem;
+}
+.fig-tip-desc {
+  display: block;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+.fig-tip-place {
+  display: block;
+  margin-top: 0.32rem;
+  font-family: var(--font-caps);
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+}
