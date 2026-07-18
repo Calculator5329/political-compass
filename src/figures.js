@@ -1184,5 +1184,388 @@ export const FIGURES = [
         "url": "https://www.newsweek.com/mass-deportations-rand-paul-concerns-donald-trump-1989042"
       }
     ]
+  },
+  {
+    "name": "David Pakman",
+    "slug": "pakman",
+    "answers": {
+      "e01": -2,
+      "e02": 2,
+      "e03": 1,
+      "e04": -2,
+      "e05": 1,
+      "e06": -2,
+      "e07": 2,
+      "e08": -2,
+      "e09": 2,
+      "e10": -2,
+      "e11": 2,
+      "e12": -2,
+      "s01": 2,
+      "s02": -2,
+      "s03": -1,
+      "s04": 1,
+      "s05": -2,
+      "s06": 2,
+      "s07": 1,
+      "s08": -2,
+      "s09": -2,
+      "s10": 2,
+      "s11": -1,
+      "s12": 1,
+      "y01": 1,
+      "y02": 2,
+      "y03": -1,
+      "y04": -2,
+      "y05": 1,
+      "y06": -1,
+      "y07": -1,
+      "y08": -1,
+      "y09": 2,
+      "y10": -2,
+      "y11": 0,
+      "y12": 1
+    },
+    "note": "Progressive social democrat who favors Nordic-style regulated capitalism; agrees with most Sanders policy while defending democratic institutions, elections, and expert consensus against MAGA conspiracies — though by 2026 he treats Trump's DOJ as weaponized and the Roberts Court as politicized.",
+    "sources": [
+      {
+        "title": "David Pakman — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/David_Pakman"
+      },
+      {
+        "title": "The David Pakman Show",
+        "url": "https://davidpakman.com/"
+      }
+    ]
+  },
+  {
+    "name": "Brian Tyler Cohen",
+    "slug": "btc",
+    "answers": {
+      "e01": -2,
+      "e02": 1,
+      "e03": 1,
+      "e04": -2,
+      "e05": 1,
+      "e06": -2,
+      "e07": 2,
+      "e08": -1,
+      "e09": 2,
+      "e10": -2,
+      "e11": 1,
+      "e12": -2,
+      "s01": 2,
+      "s02": -2,
+      "s03": -2,
+      "s04": 1,
+      "s05": -2,
+      "s06": 2,
+      "s07": 1,
+      "s08": -2,
+      "s09": -2,
+      "s10": 1,
+      "s11": -1,
+      "s12": 1,
+      "y01": 0,
+      "y02": 2,
+      "y03": -1,
+      "y04": -2,
+      "y05": 1,
+      "y06": -1,
+      "y07": -1,
+      "y08": -2,
+      "y09": 2,
+      "y10": -2,
+      "y11": -1,
+      "y12": 1
+    },
+    "note": "Mainstream Democratic partisan messenger: pro-labor, pro-choice, pro-immigration, fierce anti-Trump institutional defender on elections and the 'deep state' — while building his brand on criticizing mainstream media framing ('sanewashing') and the captured Supreme Court.",
+    "sources": [
+      {
+        "title": "Brian Tyler Cohen — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Brian_Tyler_Cohen"
+      },
+      {
+        "title": "Media Bias/Fact Check — BTC",
+        "url": "https://mediabiasfactcheck.com/brian-tyler-cohen-btc-bias-and-credibility/"
+      }
+    ]
+  },
+  {
+    "name": "Destiny",
+    "slug": "destiny",
+    "answers": {
+      "e01": -2,
+      "e02": 1,
+      "e03": -1,
+      "e04": -1,
+      "e05": -1,
+      "e06": -1,
+      "e07": 1,
+      "e08": -2,
+      "e09": 1,
+      "e10": 0,
+      "e11": 1,
+      "e12": -1,
+      "s01": 2,
+      "s02": -1,
+      "s03": 1,
+      "s04": -1,
+      "s05": -2,
+      "s06": 2,
+      "s07": 0,
+      "s08": -2,
+      "s09": -1,
+      "s10": 2,
+      "s11": 0,
+      "s12": 0,
+      "y01": 2,
+      "y02": 2,
+      "y03": 2,
+      "y04": -2,
+      "y05": -2,
+      "y06": -1,
+      "y07": 1,
+      "y08": -2,
+      "y09": 2,
+      "y10": -2,
+      "y11": -2,
+      "y12": 2
+    },
+    "note": "Self-described 'omniliberal': pro-capitalism free-trade social democrat, aggressively institutionalist (defends media accuracy, elections, FBI/DOJ, and expert consensus against populists left and right), pro-2A gun-owning liberal, famously hostile to disruptive protest and crypto.",
+    "sources": [
+      {
+        "title": "Destiny (streamer) — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Destiny_(streamer)"
+      },
+      {
+        "title": "Destiny: a liberal in the age of radicals — Razib Khan",
+        "url": "https://www.razibkhan.com/p/destiny-steven-bonnell-ii-a-liberal"
+      }
+    ]
+  },
+  {
+    "name": "Hutch",
+    "slug": "hutch",
+    "answers": {
+      "e01": -1,
+      "e02": 2,
+      "e03": 2,
+      "e04": -2,
+      "e05": 1,
+      "e06": -2,
+      "e07": 2,
+      "e08": -1,
+      "e09": 2,
+      "e10": -2,
+      "e11": 2,
+      "e12": -2,
+      "s01": 2,
+      "s02": -2,
+      "s03": -1,
+      "s04": 1,
+      "s05": -2,
+      "s06": 2,
+      "s07": 1,
+      "s08": -1,
+      "s09": -2,
+      "s10": 1,
+      "s11": -1,
+      "s12": 1,
+      "y01": 1,
+      "y02": 2,
+      "y03": 0,
+      "y04": -2,
+      "y05": 0,
+      "y06": -1,
+      "y07": 1,
+      "y08": -2,
+      "y09": 1,
+      "y10": -2,
+      "y11": -1,
+      "y12": 1
+    },
+    "note": "Ex-Call of Duty YouTuber turned political streamer: Bernie-supporting progressive who is pragmatically incrementalist — defends the judiciary and electoralism against 'dissolve the courts' leftism and rejects both-parties-same framing. Sparse issue record: several scores rest on documented progressive-pragmatist alignment or sit at 0.",
+    "sources": [
+      {
+        "title": "Hutch — Destiny Wiki",
+        "url": "https://wiki.destiny.gg/view/Hutch"
+      },
+      {
+        "title": "Hutch on X — judiciary defense",
+        "url": "https://x.com/hutchinson/status/1800266015928173028"
+      }
+    ]
+  },
+  {
+    "name": "Tim Pool",
+    "slug": "pool",
+    "answers": {
+      "e01": 2,
+      "e02": 1,
+      "e03": -1,
+      "e04": 1,
+      "e05": 2,
+      "e06": 0,
+      "e07": 0,
+      "e08": 1,
+      "e09": -1,
+      "e10": 2,
+      "e11": -2,
+      "e12": 1,
+      "s01": -1,
+      "s02": 2,
+      "s03": 2,
+      "s04": -2,
+      "s05": 2,
+      "s06": -2,
+      "s07": -2,
+      "s08": 1,
+      "s09": 2,
+      "s10": 1,
+      "s11": 2,
+      "s12": 0,
+      "y01": -2,
+      "y02": -2,
+      "y03": -2,
+      "y04": 2,
+      "y05": 0,
+      "y06": 2,
+      "y07": 1,
+      "y08": 2,
+      "y09": -2,
+      "y10": 2,
+      "y11": -1,
+      "y12": -1
+    },
+    "note": "Post-2020 Pool is a MAGA-aligned populist: pro-tariff, restrictionist on legal immigration, anti-Big-Tech, anti-CRT/DEI, pro-2A, election- and media-distrusting — with residual left holdovers (public healthcare, marijuana legalization). By 2025-26 seated in the White House press pool as an administration-friendly voice.",
+    "sources": [
+      {
+        "title": "Tim Pool — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Tim_Pool"
+      },
+      {
+        "title": "Tim Pool — AllSides bias review",
+        "url": "https://www.allsides.com/news-source/tim-pool-media-bias"
+      },
+      {
+        "title": "2024 Tenet Media investigation — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/2024_Tenet_Media_investigation"
+      }
+    ]
+  },
+  {
+    "name": "Vladimir Putin",
+    "slug": "putin",
+    "answers": {
+      "e01": 2,
+      "e02": 1,
+      "e03": -1,
+      "e04": -1,
+      "e05": 2,
+      "e06": -2,
+      "e07": 2,
+      "e08": -1,
+      "e09": -2,
+      "e10": 0,
+      "e11": -2,
+      "e12": -1,
+      "s01": 0,
+      "s02": 2,
+      "s03": -2,
+      "s04": -2,
+      "s05": 2,
+      "s06": -1,
+      "s07": -2,
+      "s08": 2,
+      "s09": 2,
+      "s10": -2,
+      "s11": 1,
+      "s12": 1,
+      "y01": -2,
+      "y02": -2,
+      "y03": -2,
+      "y04": 2,
+      "y05": -2,
+      "y06": -2,
+      "y07": -2,
+      "y08": 2,
+      "y09": -1,
+      "y10": 2,
+      "y11": 2,
+      "y12": -2
+    },
+    "note": "Scored by governing conduct, not self-description: statist-protectionist economics (import substitution, state capture of tech firms, suppressed independent unions, large pronatalist subsidies) with enforced 'traditional values' social policy, and the authoritarian pole on every system item — jailed journalists, rigged elections, subordinated courts, crushed protest, term limits reset by amendment.",
+    "sources": [
+      {
+        "title": "Russia bans 'LGBT movement' as extremist — HRW",
+        "url": "https://www.hrw.org/news/2023/11/30/russia-supreme-court-bans-lgbt-movement-extremist"
+      },
+      {
+        "title": "Taxation in Russia — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Taxation_in_Russia"
+      },
+      {
+        "title": "2023 gender-change ban — Amnesty",
+        "url": "https://www.amnesty.org/en/latest/news/2023/07/russia-adoption-of-transphobic-legislation-a-horrendous-blow-to-human-rights/"
+      }
+    ]
+  },
+  {
+    "name": "Xi Jinping",
+    "slug": "xi",
+    "answers": {
+      "e01": 2,
+      "e02": 1,
+      "e03": 1,
+      "e04": -2,
+      "e05": 2,
+      "e06": -1,
+      "e07": 2,
+      "e08": -2,
+      "e09": -2,
+      "e10": 0,
+      "e11": 1,
+      "e12": -1,
+      "s01": 1,
+      "s02": 1,
+      "s03": -2,
+      "s04": -2,
+      "s05": 1,
+      "s06": -1,
+      "s07": -2,
+      "s08": -2,
+      "s09": 2,
+      "s10": -2,
+      "s11": 0,
+      "s12": -2,
+      "y01": -2,
+      "y02": -2,
+      "y03": -2,
+      "y04": 2,
+      "y05": -2,
+      "y06": -2,
+      "y07": -2,
+      "y08": 2,
+      "y09": -1,
+      "y10": 2,
+      "y11": 2,
+      "y12": -2
+    },
+    "note": "Scored by governing conduct and stated ideology: party-led state capitalism (industrial policy, tech crackdowns, 'common prosperity' pressure on billionaires, state medical insurance, total crypto ban, party-only unions) plus socially restrictive practice (world-leading executions, religious sinicization), and the authoritarian pole on system items — no competitive elections, party-subordinated courts, crushed protest, term limits abolished 2018.",
+    "sources": [
+      {
+        "title": "Common prosperity — Brookings",
+        "url": "https://www.brookings.edu/articles/assessing-chinas-common-prosperity-campaign/"
+      },
+      {
+        "title": "Xi's private-enterprise symposium — Loeb",
+        "url": "https://www.loeb.com/en/insights/publications/2025/02/xis-messages-from-private-enterprise-symposium-is-the-tech-crackdown-over"
+      },
+      {
+        "title": "China's party-driven private sector — Foreign Policy",
+        "url": "https://foreignpolicy.com/2025/07/30/china-private-sector-entrepreneurs-xi-jinping-tech/"
+      }
+    ]
   }
 ];
