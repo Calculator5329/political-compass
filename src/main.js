@@ -1,6 +1,7 @@
 import { QUESTIONS } from './questions.js';
 import { LIKERT, score, subScores, quadrant, describe } from './scoring.js';
 import { drawCompass, fitCanvas } from './compass.js';
+import { FIGURES } from './figures.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -88,9 +89,102 @@ function el(html) {
 
 function render() {
   app.replaceChildren();
+  renderNav();
   if (state.screen === 'intro') renderIntro();
   else if (state.screen === 'quiz') renderQuiz();
+  else if (state.screen === 'figures') renderFigures();
+  else if (state.screen === 'board') renderBoard();
   else renderResults();
+}
+
+const NAV = [
+  ['intro', 'The Test'],
+  ['figures', 'Figures'],
+  ['board', 'Leaderboard'],
+];
+
+function renderNav() {
+  const cur = state.screen === 'quiz' || state.screen === 'results' ? 'intro' : state.screen;
+  const nav = el(`<nav class="tabs">${NAV.map(
+    ([id, label]) => `<button data-nav="${id}" class="${cur === id ? 'on' : ''}">${label}</button>`
+  ).join('')}</nav>`);
+  nav.querySelectorAll('button').forEach((b) =>
+    b.addEventListener('click', () => {
+      const target = b.dataset.nav;
+      // Returning to the test resumes wherever the taker left off.
+      if (target === 'intro' && Object.keys(state.answers).length && state.screen !== 'quiz') {
+        set({ screen: state.order ? 'results' : 'intro' });
+      } else set({ screen: target === 'intro' ? (state.idx > 0 ? 'quiz' : 'intro') : target });
+    })
+  );
+  app.append(nav);
+}
+
+function drawOn(selector, point, marks) {
+  const canvas = app.querySelector(selector);
+  fitCanvas(canvas);
+  drawCompass(canvas, point, marks);
+  window.addEventListener('resize', () => { fitCanvas(canvas); drawCompass(canvas, point, marks); }, { once: true });
+}
+
+function renderFigures() {
+  const placed = FIGURES.map((f) => {
+    const pt = score(f.answers, QUESTIONS);
+    return { ...f, pt };
+  });
+  app.append(el(`
+    <p class="kicker center">Charted from the public record</p>
+    <h1 class="center">The Figures</h1>
+    <canvas class="compass"></canvas>
+    <p class="muted center">Each mark is the instrument scored from documented votes,
+    policies, and on-record statements — the same 36 questions you answer. Sources below.</p>
+    <div class="figure-list">
+      ${placed.map((f) => `
+        <details>
+          <summary><span class="fig-name">${f.name}</span>
+          <span class="muted">${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}</span></summary>
+          <p>${f.note}</p>
+          <ul>${f.sources.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener">${s.title}</a></li>`).join('')}</ul>
+        </details>`).join('')}
+    </div>
+  `));
+  const marks = placed.map((f) => ({
+    x: f.pt.x, y: f.pt.y, label: f.name.split(' ').at(-1),
+  }));
+  const mine = Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
+  drawOn('canvas.compass', mine, marks);
+}
+
+async function renderBoard() {
+  app.append(el(`
+    <p class="kicker center">The public record, so to speak</p>
+    <h1 class="center">Leaderboard</h1>
+    <canvas class="compass"></canvas>
+    <div class="board center muted">Loading…</div>
+  `));
+  const boardEl = app.querySelector('.board');
+  try {
+    const { fetchScores } = await import('./firebase.js');
+    const rows = await fetchScores(100);
+    const mine = Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
+    drawOn('canvas.compass', mine, rows.map((r) => ({ x: r.x, y: r.y })));
+    if (!rows.length) {
+      boardEl.textContent = 'No entries yet — take the test and put your name on the map.';
+      return;
+    }
+    boardEl.classList.remove('center', 'muted');
+    boardEl.innerHTML = `<table><thead><tr>
+      <th>Name</th><th>Position</th><th>x</th><th>y</th></tr></thead><tbody>
+      ${rows.map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.q)}</td>
+        <td>${fmt(r.x)}</td><td>${fmt(r.y)}</td></tr>`).join('')}
+    </tbody></table>`;
+  } catch (e) {
+    boardEl.textContent = 'Could not reach the leaderboard.';
+  }
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, (ch) => `&#${ch.charCodeAt(0)};`);
 }
 
 function renderIntro() {
@@ -170,16 +264,35 @@ function renderResults() {
       <p class="muted mt">Sub-dimensions — econ ${fmt(subs.econ.x)}, social ${fmt(subs.social.x)},
       system ${fmt(subs.system.y)}</p>
     </div>
+    <div class="actions save-row">
+      ${state.savedId
+        ? `<span class="muted">Saved to the leaderboard ✓</span>`
+        : `<input id="savename" maxlength="24" placeholder="Your name" />
+           <button id="save" class="primary">Sign the ledger</button>`}
+    </div>
     <div class="actions">
       <button id="copy">Copy result</button>
       <button id="retake">Retake</button>
     </div>
   `));
 
-  const canvas = app.querySelector('canvas');
-  fitCanvas(canvas);
-  drawCompass(canvas, pt);
-  window.addEventListener('resize', () => { fitCanvas(canvas); drawCompass(canvas, pt); }, { once: true });
+  const saveBtn = app.querySelector('#save');
+  if (saveBtn) saveBtn.addEventListener('click', async () => {
+    const name = app.querySelector('#savename').value.trim();
+    if (!name) { app.querySelector('#savename').focus(); return; }
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Inscribing…';
+    try {
+      const { saveScore } = await import('./firebase.js');
+      const id = await saveScore(name, pt, quadrant(pt));
+      set({ savedId: id });
+    } catch (e) {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Failed — retry';
+    }
+  });
+
+  drawOn('canvas.compass', pt);
 
   app.querySelector('#retake').addEventListener('click', () => {
     state = fresh();

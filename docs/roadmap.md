@@ -5,10 +5,10 @@
 - [ ] Share-card image export (canvas → PNG of the marked map)
 
 ## Next
-- [ ] Public-figure mode: same instrument answered from cited votes/clips,
-      each answer carrying an evidence link; figures render as labeled marks
+- [x] Public-figure mode: 14 figures, cited (2026-07-18; per-question evidence
+      links still an upgrade path)
 - [ ] Split 4-axis view from the dim tags (econ/social/system)
 
 ## Later
 - [ ] Compare view: your ✕ against chosen figures
-- [ ] Stage a public build (deploy is Ethan-only)
+- [x] DEPLOYED (Ethan-directed 2026-07-18): https://political-test-2026.web.app

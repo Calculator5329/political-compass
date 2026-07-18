@@ -37,7 +37,7 @@ function waveringLine(ctx, x1, y1, x2, y2, segments = 24) {
   ctx.stroke();
 }
 
-export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */) {
+export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks = []) {
   const th = theme();
   AMP = th.wobbleAmp;
   const INK = th.ink;
@@ -116,6 +116,26 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */) {
   ctx.rotate(Math.PI / 2);
   ctx.fillText('Right', 0, 0);
   ctx.restore();
+
+  // labeled marks (figures / leaderboard dots)
+  if (marks.length) {
+    ctx.font = `${Math.max(11, Math.round(s * 0.026))}px ${th.font}`;
+    for (const m of marks) {
+      const mx = c + (m.x / 10) * half;
+      const my = c - (m.y / 10) * half;
+      ctx.fillStyle = alpha(th.accent, m.label ? 0.85 : 0.5);
+      ctx.beginPath();
+      ctx.arc(mx, my, m.label ? 4.5 : 3, 0, Math.PI * 2);
+      ctx.fill();
+      if (m.label) {
+        ctx.fillStyle = INK;
+        const flip = mx > s - pad - s * 0.14;
+        ctx.textAlign = flip ? 'right' : 'left';
+        ctx.fillText(m.label, mx + (flip ? -8 : 8), my + 4);
+      }
+    }
+    ctx.textAlign = 'center';
+  }
 
   // result mark: red-ink ✕ with a blot
   if (point) {

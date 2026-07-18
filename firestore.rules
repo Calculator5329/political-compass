@@ -1,0 +1,24 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /scores/{id} {
+      allow read: if true;
+      // Create-only, exact schema: short name, in-range coords, server timestamp.
+      allow create: if request.resource.data.keys().hasOnly(['name', 'x', 'y', 'q', 'ts'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1
+        && request.resource.data.name.size() <= 24
+        && request.resource.data.x is number
+        && request.resource.data.x >= -10 && request.resource.data.x <= 10
+        && request.resource.data.y is number
+        && request.resource.data.y >= -10 && request.resource.data.y <= 10
+        && request.resource.data.q is string
+        && request.resource.data.q.size() <= 30
+        && request.resource.data.ts == request.time;
+      allow update, delete: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

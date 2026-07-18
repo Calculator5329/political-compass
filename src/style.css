@@ -166,3 +166,42 @@ canvas.compass {
   h1 { font-size: 2.1rem; }
   .statement { font-size: 1.45rem; }
 }
+
+/* tabs, save row, board, figures */
+.tabs { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
+.tabs button { font-family: var(--font-caps); letter-spacing: 0.06em; opacity: 0.65; }
+.tabs button.on { opacity: 1; border-color: var(--ink); }
+
+.save-row input {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--ink-soft);
+  border-radius: 2px;
+  padding: 0.55rem 0.9rem;
+  width: 14rem;
+  max-width: 60vw;
+}
+.save-row input::placeholder { color: var(--ink-soft); opacity: 0.7; }
+
+.board table { margin: 1.4rem auto 0; border-collapse: collapse; min-width: min(34rem, 90vw); }
+.board th {
+  font-family: var(--font-caps);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.3rem 0.9rem 0.3rem 0;
+}
+.board td { padding: 0.35rem 0.9rem 0.35rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); }
+.board td:nth-child(3), .board td:nth-child(4) { font-variant-numeric: tabular-nums; }
+
+.figure-list { margin-top: 1.8rem; }
+.figure-list details { border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); padding: 0.55rem 0; }
+.figure-list summary { cursor: pointer; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.figure-list summary::marker { color: var(--ink-soft); }
+.fig-name { font-family: var(--font-display); font-size: 1.15rem; }
+.figure-list p { margin: 0.6rem 0 0.4rem; }
+.figure-list ul { margin: 0.2rem 0 0.4rem 1.4rem; font-size: 0.92rem; }
+.figure-list a { color: var(--accent); }
