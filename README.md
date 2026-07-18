@@ -1,15 +1,40 @@
-# Political Compass — MMXXVI
+# The Political Compass — MMXXVI
 
-A political compass test built for the actual 2026 US landscape. Two axes:
+**Live: [political-test-2026.web.app](https://political-test-2026.web.app)**
+
+A political compass test built for the actual 2026 US landscape, rendered as an
+ink-on-paper manuscript. Two axes:
 
 - **Vertical: Insurgent ↔ Institutionalist** — your relation to the system
-  itself (institutional trust, proceduralism, free expression), not left/right.
+  itself (institutional trust, proceduralism, expertise), not left/right.
 - **Horizontal: Left ↔ Right** — blended economic + social.
 
-Every question carries a `dim` tag (econ / social / system) and a weight
-vector `{x, y}`, so a split 4-axis view or re-weighting needs no question
-changes. Planned: plot public figures from cited votes/statements using the
-same instrument.
+## Features
 
-Ink-on-paper aesthetic: IM Fell English + EB Garamond, canvas compass rose,
-red-ink ✕. `npm run dev` to run; `npm test` for the scoring suite.
+- **36-question instrument** with per-question dimension tags and weight
+  vectors, so re-weighting or alternate views need no question changes.
+- **42 public figures** charted from the documented record — every one of the
+  36 answers per figure is backed by a cited evidence dossier
+  ([docs/figures/](docs/figures/), rubric in
+  [METHOD.md](docs/figures/METHOD.md)), researched and verified by parallel
+  AI research agents with per-question quotes and sources.
+- **Factions** — hand-drawn coalition territories (MAGA & the New Right,
+  Populist Independents, Socialist Left, Democratic Establishment, Centrist
+  Liberals, Reaganite Conservatives) shaded on the map.
+- **Economic × Social plane** — the same record split by sub-dimension.
+- **Leaderboard** — sign the ledger (Firestore, create-only validated schema)
+  and claim your mark from any device.
+- Hover tooltips, hand-wobbled canvas rendering, IM Fell English + EB Garamond,
+  and a red-ink ✕ for you.
+
+## Development
+
+```sh
+npm install
+npm run dev    # vite dev server
+npm test       # vitest: scoring + instrument invariants
+npm run build  # production bundle
+```
+
+Vanilla JS + Vite, no frameworks. Axis math lives only in
+[src/scoring.js](src/scoring.js); figures store answers, never coordinates.
