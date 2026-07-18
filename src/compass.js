@@ -161,8 +161,9 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   // with no placed label and no dot; failing all, it slides downward on a
   // faint leader line.
   if (marks.length) {
-    const dense = marks.length > 30;
-    const fs = Math.max(dense ? 10 : 11, Math.round(s * (dense ? 0.022 : 0.026)));
+    const labeled = marks.filter((m) => m.label).length;
+    const dense = labeled > 30;
+    const fs = Math.max(dense ? 10 : 12, Math.round(s * (dense ? 0.022 : 0.031)));
     ctx.font = `${fs}px ${th.font}`;
     const items = marks.map((m) => ({
       m,
@@ -170,9 +171,9 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
       my: c - (m.y / 10) * half,
     }));
     for (const it of items) {
-      ctx.fillStyle = alpha(th.accent, it.m.label ? 0.85 : 0.5);
+      ctx.fillStyle = alpha(th.accent, it.m.label ? 0.85 : 0.65);
       ctx.beginPath();
-      ctx.arc(it.mx, it.my, it.m.label ? 4.5 : 3, 0, Math.PI * 2);
+      ctx.arc(it.mx, it.my, it.m.label ? 4.5 : 3.4, 0, Math.PI * 2);
       ctx.fill();
     }
     const placed = items.map((it) => ({ x1: it.mx - 6, x2: it.mx + 6, y1: it.my - 6, y2: it.my + 6 }));

@@ -114,10 +114,19 @@ function effectivePoint() {
   return myPoint() ?? (state.claimed ? { x: state.claimed.x, y: state.claimed.y } : null);
 }
 
+// Only the most recognizable figures get printed labels; everyone else is
+// hover-only, which keeps the label type large and the leader lines short.
+const FEATURED = new Set([
+  'trump', 'vance', 'obama', 'sanders', 'aoc', 'musk',
+  'desantis', 'newsom', 'harris', 'rogan',
+]);
+
 function figureMarks(placed) {
   return placed.map((f) => ({
     x: f.pt.x, y: f.pt.y,
-    label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
+    label: FEATURED.has(f.slug)
+      ? f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1)
+      : '',
     name: f.name,
     blurb: BLURBS[f.slug] ?? '',
     place: `${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}`,
@@ -178,7 +187,9 @@ function renderFigures() {
   // econ (x) × social (y): social-right scores plot upward as Traditional
   const subMarks = placed.map((f) => ({
     x: f.subs.econ.x, y: f.subs.social.x,
-    label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
+    label: FEATURED.has(f.slug)
+      ? f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1)
+      : '',
     name: f.name,
     blurb: BLURBS[f.slug] ?? '',
     place: `econ ${fmt(f.subs.econ.x)} · social ${fmt(f.subs.social.x)}`,

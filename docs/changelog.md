@@ -57,3 +57,11 @@
 - Figure list converted to a compact 3-column card grid: initial seal, name
   (note on hover), quadrant + coords, numbered source links.
 - Deployed to https://political-test-2026.web.app (Ethan-directed).
+
+## 2026-07-18 — chart legibility + layout
+- Only 10 featured figures get printed labels (Trump, Vance, Obama, Sanders,
+  AOC, Musk, DeSantis, Newsom, Harris, Rogan); the rest are hover-only. Label
+  type is larger; unlabeled dots slightly bigger/darker.
+- Charts and card grid break out to min(1020px, 94vw); nav spacing halved.
+- Tabs restyled as a manuscript running head: chromeless small caps with
+  fleuron separators and a tilted red-ink underline on the active page.

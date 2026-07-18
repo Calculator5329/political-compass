@@ -46,7 +46,7 @@ body::before {
 .page {
   max-width: 780px;
   margin: 0 auto;
-  padding: 3.2rem 1.4rem 4rem;
+  padding: 1.3rem 1.4rem 4rem;
   position: relative;
 }
 
@@ -174,9 +174,46 @@ canvas.compass {
 }
 
 /* tabs, save row, board, figures */
-.tabs { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
-.tabs button { font-family: var(--font-caps); letter-spacing: 0.06em; opacity: 0.65; }
-.tabs button.on { opacity: 1; border-color: var(--ink); }
+.tabs {
+  display: flex;
+  gap: 0;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 1.5rem;
+}
+.tabs button {
+  position: relative;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0.15rem 1.05rem;
+  font-family: var(--font-caps);
+  font-size: 1.04rem;
+  letter-spacing: 0.09em;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.tabs button:hover { color: var(--ink); background: none; box-shadow: none; }
+.tabs button:active { transform: none; }
+.tabs button + button::before {
+  content: var(--fleuron);
+  position: absolute;
+  left: -0.5rem;
+  color: rgba(122, 31, 31, 0.45);
+  font-size: 0.8rem;
+}
+.tabs button.on { color: var(--ink); }
+.tabs button.on::after {
+  content: '';
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: -0.1rem;
+  height: 2px;
+  background: var(--accent);
+  transform: rotate(-0.6deg);
+  border-radius: 2px;
+}
 
 .save-row input {
   font-family: var(--font-body);
@@ -338,9 +375,10 @@ select#claim {
 /* side-by-side charts on the figures page */
 .charts-row {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;
   align-items: flex-start;
-  margin: 1.2rem 0 0.4rem;
+  width: min(1020px, 94vw);
+  margin: 1.2rem 0 0.4rem calc(50% - min(510px, 47vw));
 }
 .chart-col { flex: 1; min-width: 0; }
 .chart-cap { font-size: 1.02rem; margin-bottom: 0.2rem; }
@@ -356,7 +394,8 @@ select#claim {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.55rem;
-  margin-top: 1.2rem;
+  width: min(1020px, 94vw);
+  margin: 1.2rem 0 0 calc(50% - min(510px, 47vw));
 }
 @media (max-width: 700px) { .figure-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 460px) { .figure-cards { grid-template-columns: 1fr; } }
