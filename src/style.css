@@ -18,7 +18,7 @@
 body {
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 19px;
+  font-size: 21px;
   line-height: 1.55;
   background:
     radial-gradient(ellipse at 20% 12%, rgba(255, 252, 240, 0.55), transparent 55%),
@@ -58,7 +58,7 @@ h2 { font-size: 1.7rem; }
   letter-spacing: 0.08em;
 }
 
-.kicker { color: var(--ink-soft); font-size: 0.95rem; }
+.kicker { color: var(--ink-soft); font-size: 1.02rem; }
 
 .rule {
   border: none;
@@ -80,13 +80,13 @@ h2 { font-size: 1.7rem; }
   font-size: 1rem;
 }
 
-.lede { font-size: 1.12rem; }
+.lede { font-size: 1.18rem; }
 .muted { color: var(--ink-soft); }
 em { font-style: italic; }
 
 button {
   font-family: var(--font-body);
-  font-size: 1.02rem;
+  font-size: 1.1rem;
   color: var(--ink);
   background: transparent;
   border: 1px solid var(--ink-soft);
@@ -111,7 +111,7 @@ button:active { transform: translate(1px, 1px); box-shadow: none; }
 /* question card */
 .statement {
   font-family: var(--font-display);
-  font-size: 1.55rem;
+  font-size: 1.75rem;
   font-style: italic;
   line-height: 1.35;
   margin: 1.6rem 0 2rem;
@@ -162,7 +162,7 @@ canvas.compass {
 .mt { margin-top: 1.6rem; }
 
 @media (max-width: 560px) {
-  body { font-size: 17px; }
+  body { font-size: 18px; }
   h1 { font-size: 2.1rem; }
-  .statement { font-size: 1.3rem; }
+  .statement { font-size: 1.45rem; }
 }
