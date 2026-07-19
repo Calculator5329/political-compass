@@ -24,7 +24,7 @@ npm run build
 firebase deploy --only hosting
 ```
 
-The status should be clean and on `master`. Tests should report 10 passing.
+The status should be clean and on `master`. Tests should pass.
 Firebase should end with the hosting URL:
 `https://political-test-2026.web.app`.
 
@@ -38,8 +38,14 @@ Firebase should end with the hosting URL:
 5. On Leaderboard, confirm the legend explains saved dots versus the red ✕ and
    that a saved current result is not drawn twice.
 6. Confirm Leaderboard shows both Political and Economic × Social charts and
-   explains any older entries that lack second-plane scores.
-7. Search visible pages for em dashes; none should remain.
+   explains any older entries that lack second-plane scores. A browser that
+   still has the original 36-item saved answers should recover that row exactly.
+7. Confirm the Leaderboard table has no horizontal scrollbar.
+8. Search visible pages for em dashes; none should remain.
+
+The current public Firestore rows do not contain original answers, so an entry
+whose browser state has already been replaced cannot be reconstructed exactly.
+That row remains marked unavailable until its owner retakes the survey.
 
 ## Undo
 

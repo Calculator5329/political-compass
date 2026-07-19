@@ -17,6 +17,11 @@
   Social charts, hover/tap tooltips on both, and Econ/Social table columns.
   Older entries without stored sub-scores remain visible on the Political Plane
   and are counted in a short coverage note.
+- The 36-item browser state now migrates before reset and recovers exact legacy
+  Economic and Social scores for its own saved row. Entries whose original
+  answers are gone stay explicitly unavailable rather than receiving invented
+  coordinates. The Leaderboard table now fits its page without a horizontal
+  scrollbar.
 - Factions chart enlarged from 560px to 680px. Duplicate page headings and
   clipped in-chart faction labels were removed; the legend remains authoritative.
 - Site copy and metadata contain no em dashes; a regression test enforces it.

@@ -4,7 +4,14 @@ import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
-import { isTestScreen, rowsWithSubscores, splitLeaderboardRows, testLanding } from './state.js';
+import {
+  backfillStoredSubscores,
+  isTestScreen,
+  migrateLegacyState,
+  rowsWithSubscores,
+  splitLeaderboardRows,
+  testLanding,
+} from './state.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -33,7 +40,13 @@ function fresh() {
 function load() {
   try {
     const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return s && Array.isArray(s.order) && s.order.length === QUESTIONS.length ? s : null;
+    if (s && Array.isArray(s.order) && s.order.length === QUESTIONS.length) return s;
+    const migrated = migrateLegacyState(s, fresh());
+    if (migrated) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      return migrated;
+    }
+    return null;
   } catch {
     return null;
   }
@@ -145,6 +158,8 @@ function ownMark(point, place) {
     name: 'Your score',
     blurb: state.claimed && !myPoint()
       ? `Claimed from the ledger as ${esc(state.claimed.name)}.`
+      : state.legacySavedSubscores
+        ? 'Recovered from the original survey answers preserved in this browser.'
       : 'Calculated from the answers saved in this browser.',
     place,
   };
@@ -429,10 +444,18 @@ async function renderBoard() {
   const coverageEl = app.querySelector('#board-coverage');
   try {
     const { fetchScores } = await import('./firebase.js');
-    const rows = await fetchScores(100);
-    const mine = effectivePoint();
-    const subMine = effectiveSubPoint();
+    const fetchedRows = await fetchScores(100);
+    const rows = backfillStoredSubscores(fetchedRows, state);
     const currentId = state.savedId ?? state.claimed?.id ?? null;
+    const currentRow = currentId ? rows.find((row) => row.id === currentId) : null;
+    const mine = effectivePoint() ?? (currentRow
+      ? { x: currentRow.x, y: currentRow.y }
+      : null);
+    const subMine = effectiveSubPoint() ?? (
+      currentRow && Number.isFinite(currentRow.es) && Number.isFinite(currentRow.ss)
+        ? { x: currentRow.es, y: currentRow.ss }
+        : null
+    );
     const { ownRow, dotRows } = splitLeaderboardRows(rows, currentId);
     const mainMarks = dotRows.map((r) => ({
       x: r.x, y: r.y, label: '',
@@ -480,8 +503,12 @@ async function renderBoard() {
         ? 'Your saved entry (shown as ✕ instead of a dot)'
         : 'Your current browser result (not a saved entry)'}</span>` : ''}`;
     keyEl.hidden = false;
-    if (subRows.length !== rows.length) {
-      coverageEl.textContent = `${subRows.length} of ${rows.length} saved entries include Economic × Social scores; older entries remain on the Political Plane only.`;
+    const recoveredCount = rows.filter((row) => row.recoveredSubscores).length;
+    if (subRows.length !== rows.length || recoveredCount) {
+      const recoveredNote = recoveredCount
+        ? ` ${recoveredCount} was recovered exactly from this browser's preserved original answers.`
+        : '';
+      coverageEl.textContent = `${subRows.length} of ${rows.length} saved entries include Economic × Social scores.${recoveredNote}${subRows.length !== rows.length ? ' Entries without preserved answers require a retake.' : ''}`;
       coverageEl.hidden = false;
     }
     if (!rows.length) {

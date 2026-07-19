@@ -10,6 +10,9 @@
       a duplicate dot when the current result is already saved (2026-07-18)
 - [x] Show both Political and Economic × Social planes on Leaderboard, with
       explicit coverage for older entries that lack second-plane scores (2026-07-18)
+- [x] Recover exact legacy sub-scores when the original browser answers remain,
+      label unrecoverable entries honestly, and remove the table scrollbar
+      (2026-07-18)
 - [x] Recency-audit all 42 figures and cover the adopted 42-item bank (2026-07-18)
 - [ ] Share-card image export (canvas → PNG of the marked map)
 

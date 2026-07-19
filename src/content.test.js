@@ -4,7 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { FIGURES } from './figures.js';
 import { QUESTIONS } from './questions.js';
-import { rowsWithSubscores, splitLeaderboardRows, testLanding } from './state.js';
+import {
+  backfillStoredSubscores,
+  legacySubscores,
+  migrateLegacyState,
+  rowsWithSubscores,
+  splitLeaderboardRows,
+  testLanding,
+} from './state.js';
 
 const srcDir = dirname(fileURLToPath(import.meta.url));
 const siteFiles = [
@@ -53,5 +60,30 @@ describe('site copy', () => {
   it('limits the second leaderboard plane to entries with both sub-scores', () => {
     const complete = { id: 'complete', es: 0, ss: -2 };
     expect(rowsWithSubscores([complete, { id: 'old' }, { id: 'partial', es: 1 }])).toEqual([complete]);
+  });
+
+  it('recovers exact legacy sub-scores from preserved browser answers', () => {
+    expect(legacySubscores({ e01: 2, s01: 2 })).toEqual({ es: 0.71, ss: -1.01 });
+    const migrated = migrateLegacyState(
+      { order: Array(36).fill('old'), answers: { e01: 2, s01: 2 }, savedId: 'mine' },
+      { order: Array(42).fill('new'), answers: {} },
+    );
+    expect(migrated.legacySavedSubscores).toEqual({ es: 0.71, ss: -1.01 });
+    expect(migrated.savedId).toBe('mine');
+  });
+
+  it('backfills only the matching legacy row and preserves recorded scores', () => {
+    const rows = [
+      { id: 'mine', name: 'Me' },
+      { id: 'recorded', es: 3, ss: 4 },
+      { id: 'unknown' },
+    ];
+    const result = backfillStoredSubscores(rows, {
+      savedId: 'mine',
+      legacySavedSubscores: { es: -1.2, ss: 2.4 },
+    });
+    expect(result[0]).toMatchObject({ es: -1.2, ss: 2.4, recoveredSubscores: true });
+    expect(result[1]).toBe(rows[1]);
+    expect(result[2]).toBe(rows[2]);
   });
 });
