@@ -1,6 +1,8 @@
 # Changelog
 
 ## 2026-07-18 - owner-feedback polish + recency update
+- Verified and pushed to `master`; live Firebase Hosting deploy remains the
+  owner action in `docs/DEPLOY-OWNER-ACTION.md`.
 - Question statements now use upright, medium-weight EB Garamond at a larger
   size for easier reading.
 - A reload always returns to the Test tab while preserving the correct intro,

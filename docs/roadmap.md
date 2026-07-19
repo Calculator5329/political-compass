@@ -1,6 +1,8 @@
 # Roadmap
 
 ## Now
+- [ ] [ETHAN] Deploy the verified owner-feedback update using
+      `docs/DEPLOY-OWNER-ACTION.md`
 - [x] Ethan reviewed the statement bank; 9 ambiguous items rewritten (2026-07-18)
 - [x] Owner-feedback polish: readable question type, Test-first reloads, own-score
       tooltips, larger title-free Factions chart, and no site em dashes (2026-07-18)
