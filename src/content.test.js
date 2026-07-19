@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { FIGURES } from './figures.js';
 import { QUESTIONS } from './questions.js';
-import { testLanding } from './state.js';
+import { splitLeaderboardRows, testLanding } from './state.js';
 
 const srcDir = dirname(fileURLToPath(import.meta.url));
 const siteFiles = [
@@ -36,5 +36,17 @@ describe('site copy', () => {
     expect(testLanding({ screen: 'factions', idx: 0, answers: {} }, count)).toBe('intro');
     expect(testLanding({ screen: 'figures', idx: 8, answers: { e01: 2 } }, count)).toBe('quiz');
     expect(testLanding({ screen: 'board', testScreen: 'results', idx: count - 1, answers: {} }, count)).toBe('results');
+  });
+
+  it('does not draw a saved current result twice on the leaderboard', () => {
+    const rows = [{ id: 'mine' }, { id: 'other' }];
+    expect(splitLeaderboardRows(rows, 'mine')).toEqual({
+      ownRow: rows[0],
+      dotRows: [rows[1]],
+    });
+    expect(splitLeaderboardRows(rows, null)).toEqual({
+      ownRow: null,
+      dotRows: rows,
+    });
   });
 });

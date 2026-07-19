@@ -11,3 +11,11 @@ export function testLanding(state, questionCount) {
   if (state.idx > 0 || answered > 0) return 'quiz';
   return 'intro';
 }
+
+export function splitLeaderboardRows(rows, currentId) {
+  const ownRow = currentId ? rows.find((row) => row.id === currentId) ?? null : null;
+  return {
+    ownRow,
+    dotRows: ownRow ? rows.filter((row) => row.id !== ownRow.id) : rows,
+  };
+}

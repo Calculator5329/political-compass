@@ -35,7 +35,9 @@ Firebase should end with the hosting URL:
 3. On Factions, confirm the chart is larger and has no headings or clipped
    faction names inside the plot.
 4. Hover or tap the red score mark and confirm the Your score tooltip appears.
-5. Search visible pages for em dashes; none should remain.
+5. On Leaderboard, confirm the legend explains saved dots versus the red ✕ and
+   that a saved current result is not drawn twice.
+6. Search visible pages for em dashes; none should remain.
 
 ## Undo
 

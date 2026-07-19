@@ -10,6 +10,9 @@
   longer make Figures, Factions, or Leaderboard the landing page.
 - The user's red score mark has the same hover/tap tooltip on Results, Figures,
   Factions, and Leaderboard as figure dots.
+- Leaderboard now labels saved-entry dots separately from the red current-result
+  ✕. If that result is already saved, its dot is replaced by the ✕ instead of
+  being drawn twice.
 - Factions chart enlarged from 560px to 680px. Duplicate page headings and
   clipped in-chart faction labels were removed; the legend remains authoritative.
 - Site copy and metadata contain no em dashes; a regression test enforces it.

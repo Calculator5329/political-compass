@@ -4,7 +4,7 @@ import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
-import { isTestScreen, testLanding } from './state.js';
+import { isTestScreen, splitLeaderboardRows, testLanding } from './state.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -262,7 +262,7 @@ function renderFigures() {
         }
         claim.addEventListener('change', () => {
           const r = rows[claim.value];
-          if (r) set({ claimed: { name: r.name, x: r.x, y: r.y, es: r.es ?? null, ss: r.ss ?? null }, showMe: true });
+          if (r) set({ claimed: { id: r.id, name: r.name, x: r.x, y: r.y, es: r.es ?? null, ss: r.ss ?? null }, showMe: true });
         });
       })
       .catch(() => claim.remove());
@@ -403,26 +403,40 @@ async function renderBoard() {
       <canvas class="compass"></canvas>
       <div class="fig-tip" hidden></div>
     </div>
+    <div class="chart-key center" id="board-key" hidden></div>
     <div class="board center muted">Loading…</div>
   `));
   const boardEl = app.querySelector('.board');
+  const keyEl = app.querySelector('#board-key');
   try {
     const { fetchScores } = await import('./firebase.js');
     const rows = await fetchScores(100);
     const mine = effectivePoint();
-    const marks = rows.map((r) => ({
+    const currentId = state.savedId ?? state.claimed?.id ?? null;
+    const { ownRow, dotRows } = splitLeaderboardRows(rows, currentId);
+    const marks = dotRows.map((r) => ({
       x: r.x, y: r.y, label: '',
       name: esc(r.name),
       blurb: '',
       place: `${esc(r.q)} · x ${fmt(r.x)} · y ${fmt(r.y)}`,
     }));
+    const own = ownMark(mine, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : '');
+    if (own && ownRow) {
+      own.blurb = `Your saved entry as ${esc(ownRow.name)}. Its dot is replaced by this red ✕.`;
+    }
     drawOn('#wrap-board canvas', mine, marks);
     attachFigureTip(
       app.querySelector('#wrap-board'),
       marks,
       [],
-      ownMark(mine, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : ''),
+      own,
     );
+    keyEl.innerHTML = `
+      <span><i class="key-dot"></i>${rows.length} saved ${rows.length === 1 ? 'entry' : 'entries'}</span>
+      ${mine ? `<span><i class="key-x">✕</i>${ownRow
+        ? 'Your saved entry (shown as ✕ instead of a dot)'
+        : 'Your current browser result (not a saved entry)'}</span>` : ''}`;
+    keyEl.hidden = false;
     if (!rows.length) {
       boardEl.textContent = 'No entries yet - take the test and put your name on the map.';
       return;

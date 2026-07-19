@@ -6,6 +6,8 @@
 - [x] Ethan reviewed the statement bank; 9 ambiguous items rewritten (2026-07-18)
 - [x] Owner-feedback polish: readable question type, Test-first reloads, own-score
       tooltips, larger title-free Factions chart, and no site em dashes (2026-07-18)
+- [x] Clarify Leaderboard dots versus the red current-result mark, and suppress
+      a duplicate dot when the current result is already saved (2026-07-18)
 - [x] Recency-audit all 42 figures and cover the adopted 42-item bank (2026-07-18)
 - [ ] Share-card image export (canvas → PNG of the marked map)
 

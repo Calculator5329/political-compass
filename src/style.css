@@ -240,6 +240,32 @@ canvas.compass {
 }
 .board td { padding: 0.35rem 0.9rem 0.35rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); }
 .board td:nth-child(3), .board td:nth-child(4) { font-variant-numeric: tabular-nums; }
+.chart-key {
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem 1.25rem;
+  flex-wrap: wrap;
+  margin: -0.85rem auto 0.6rem;
+  color: var(--ink-soft);
+  font-family: var(--font-caps);
+  font-size: 0.84rem;
+}
+.chart-key[hidden] { display: none; }
+.chart-key span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.key-dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 65%, transparent);
+}
+.key-x {
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+}
 
 .figure-list { margin-top: 1.8rem; }
 .figure-list details { border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); padding: 0.55rem 0; }
