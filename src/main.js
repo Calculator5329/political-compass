@@ -116,9 +116,23 @@ function renderNav() {
 
 function drawOn(selector, point, marks, opts) {
   const canvas = app.querySelector(selector);
-  fitCanvas(canvas);
-  drawCompass(canvas, point, marks, opts);
-  window.addEventListener('resize', () => { fitCanvas(canvas); drawCompass(canvas, point, marks, opts); }, { once: true });
+  const paint = () => {
+    if (!fitCanvas(canvas)) return;
+    drawCompass(canvas, point, marks, opts);
+  };
+  paint();
+  // The side-by-side flex layout can briefly report a sub-pixel canvas. Never
+  // replace the backing store with that provisional size; repaint when the
+  // real box arrives.
+  const settledLayout = new ResizeObserver(() => {
+    const target = Math.round(canvas.clientWidth * (window.devicePixelRatio || 1));
+    if (target > 4 && canvas.width !== target) paint();
+  });
+  settledLayout.observe(canvas);
+  // Delayed passes cover engines that coalesce the initial observation.
+  window.setTimeout(paint, 50);
+  window.setTimeout(paint, 250);
+  window.addEventListener('resize', paint, { once: true });
 }
 
 // Every figure scored on the main plane and the sub-dimensions, once.
@@ -214,8 +228,9 @@ function renderFigures() {
              state.claimed && !myPoint() && state.claimed.es == null
                ? `<br /><span class="muted claim-hint">This ledger entry predates the second plane; retake the survey to appear there.</span>`
                : ''}`
-        : `<span class="muted">Already signed the ledger? Claim your mark:</span>
-           <select id="claim"><option value="" disabled selected hidden>choose your name</option></select>`}
+        : `<span id="claim-wrap"><span class="muted">Already signed the ledger? Claim your mark:</span>
+           <select id="claim"><option value="" disabled selected hidden>choose your name</option></select><br /></span>
+           <button class="ghost survey-link" id="take-survey" type="button">Take the survey to set your own ✕ among them</button>`}
     </p>
     <p class="muted center">On the right, the same record split by dimension: the horizontal
     is purely economic, the vertical purely social, with system and foreign items set aside.</p>
@@ -268,12 +283,18 @@ function renderFigures() {
   );
 
   app.querySelector('#showme')?.addEventListener('change', (e) => set({ showMe: e.target.checked }));
+  app.querySelector('#take-survey')?.addEventListener('click', () => set({ screen: state.idx > 0 ? 'quiz' : 'intro' }));
 
   const claim = app.querySelector('#claim');
   if (claim) {
+    const claimWrap = app.querySelector('#claim-wrap');
     import('./firebase.js')
       .then(({ fetchScores }) => fetchScores(100))
       .then((rows) => {
+        if (!rows.length) {
+          claimWrap?.remove();
+          return;
+        }
         for (const [i, r] of rows.entries()) {
           const o = document.createElement('option');
           o.value = i;
@@ -285,7 +306,7 @@ function renderFigures() {
           if (r) set({ claimed: { id: r.id, name: r.name, x: r.x, y: r.y, es: r.es ?? null, ss: r.ss ?? null }, showMe: true });
         });
       })
-      .catch(() => claim.remove());
+      .catch(() => claimWrap?.remove());
   }
 }
 

@@ -159,7 +159,8 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   // each label tries eight anchor positions around its dot (right/left ×
   // mid/up/down, then above/below-centred) and takes the first that collides
   // with no placed label and no dot; failing all, it slides downward on a
-  // faint leader line.
+  // faint leader line. Keep the fallback inside the plotted page so dense
+  // edge clusters move inward instead of disappearing under an axis caption.
   if (marks.length) {
     const labeled = marks.filter((m) => m.label).length;
     const dense = labeled > 30;
@@ -190,17 +191,33 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
         [right, it.my - fs * 0.55], [left, it.my - fs * 0.55],
         [right, it.my + fs * 1.15], [left, it.my + fs * 1.15],
         [it.mx - w / 2, it.my - 8], [it.mx - w / 2, it.my + 8 + fs * 0.7],
-      ].filter(([lx]) => lx >= pad * 0.25 && lx + w <= s - pad * 0.25);
-      let spot = candidates.find(([lx, ly]) => !hits(box(lx, ly, w)));
+      ];
+      const minX = pad * 0.25;
+      const maxX = s - pad * 0.25;
+      const minY = pad * 0.58 + fs;
+      const maxY = s - pad * 0.7;
+      const withinPlot = (lx, ly) => lx >= minX && lx + w <= maxX && ly >= minY && ly <= maxY;
+      const bounded = candidates.filter(([lx, ly]) => withinPlot(lx, ly));
+      let spot = bounded.find(([lx, ly]) => !hits(box(lx, ly, w)));
       let leader = false;
       if (!spot) {
-        const flip = it.mx + 10 + w > s - pad * 0.4;
-        const lx = flip ? left : right;
-        let ly = mid;
-        let guard = 0;
-        while (guard++ < 60 && hits(box(lx, ly, w))) ly += 3;
-        spot = [lx, ly];
-        leader = ly - it.my > fs;
+        const sides = it.mx + 10 + w > maxX ? [left, right] : [right, left];
+        for (let offset = 0; !spot && offset <= Math.ceil(half); offset += 3) {
+          for (const direction of offset === 0 ? [0] : [1, -1]) {
+            const ly = mid + offset * direction;
+            spot = sides
+              .map((lx) => [lx, ly])
+              .find(([lx, candidateY]) => withinPlot(lx, candidateY) && !hits(box(lx, candidateY, w)));
+            if (spot) break;
+          }
+        }
+        if (!spot) {
+          const preferred = it.mx + 10 + w > maxX ? left : right;
+          const lx = Math.max(minX, Math.min(preferred, maxX - w));
+          const ly = Math.max(minY, Math.min(mid, maxY));
+          spot = [lx, ly];
+        }
+        leader = Math.abs(spot[1] - it.my) > fs || Math.abs(spot[0] - it.mx) > w + 12;
       }
       const [lx, ly] = spot;
       placed.push(box(lx, ly, w));
@@ -278,8 +295,10 @@ export function hitRegion(canvas, regions, ev) {
 export function fitCanvas(canvas) {
   const dpr = window.devicePixelRatio || 1;
   const w = canvas.clientWidth;
+  if (w <= 4) return false;
   canvas.width = w * dpr;
   canvas.height = w * dpr;
+  return true;
 }
 
 // Accepts #rgb/#rrggbb or rgb()/rgba() strings; returns rgba with the given alpha.

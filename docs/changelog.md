@@ -116,3 +116,13 @@
   placement note) instead of the native title attribute.
 - Claim dropdown placeholder is disabled/hidden "choose your name" rather than
   a selectable "the ledger" entry.
+
+## 2026-07-18 — final Figures feedback pass
+- Unanswered visitors always retain "Take the survey to set your own ✕ among
+  them"; leaderboard failure or an empty ledger now removes only the claim
+  control instead of the survey path.
+- Dense edge labels search upward and downward within canvas bounds before
+  using a leader line, keeping the Harris/AOC/Obama cluster readable.
+- Fresh side-by-side charts reject provisional sub-pixel canvas sizes and
+  repaint after flex layout settles. Chromium at 1280×800 verified two
+  499×499 backing stores, exact 1280px page containment, and no console errors.

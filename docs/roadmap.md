@@ -19,6 +19,9 @@
 - [x] Replace the opaque results label "Farthest remove" with "Farthest
       company" while preserving the same top-three distance calculation
       (2026-07-18)
+- [x] Keep the take-the-survey fallback visible beside leaderboard claiming,
+      contain dense edge labels, and prevent fresh side-by-side canvases from
+      inheriting a provisional one-pixel backing store (2026-07-18)
 - [ ] Share-card image export (canvas → PNG of the marked map)
 
 ## Next
