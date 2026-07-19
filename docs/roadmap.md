@@ -8,6 +8,8 @@
       tooltips, larger title-free Factions chart, and no site em dashes (2026-07-18)
 - [x] Clarify Leaderboard dots versus the red current-result mark, and suppress
       a duplicate dot when the current result is already saved (2026-07-18)
+- [x] Show both Political and Economic × Social planes on Leaderboard, with
+      explicit coverage for older entries that lack second-plane scores (2026-07-18)
 - [x] Recency-audit all 42 figures and cover the adopted 42-item bank (2026-07-18)
 - [ ] Share-card image export (canvas → PNG of the marked map)
 

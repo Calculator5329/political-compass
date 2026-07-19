@@ -19,3 +19,7 @@ export function splitLeaderboardRows(rows, currentId) {
     dotRows: ownRow ? rows.filter((row) => row.id !== ownRow.id) : rows,
   };
 }
+
+export function rowsWithSubscores(rows) {
+  return rows.filter((row) => Number.isFinite(row.es) && Number.isFinite(row.ss));
+}

@@ -37,7 +37,9 @@ Firebase should end with the hosting URL:
 4. Hover or tap the red score mark and confirm the Your score tooltip appears.
 5. On Leaderboard, confirm the legend explains saved dots versus the red ✕ and
    that a saved current result is not drawn twice.
-6. Search visible pages for em dashes; none should remain.
+6. Confirm Leaderboard shows both Political and Economic × Social charts and
+   explains any older entries that lack second-plane scores.
+7. Search visible pages for em dashes; none should remain.
 
 ## Undo
 

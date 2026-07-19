@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { FIGURES } from './figures.js';
 import { QUESTIONS } from './questions.js';
-import { splitLeaderboardRows, testLanding } from './state.js';
+import { rowsWithSubscores, splitLeaderboardRows, testLanding } from './state.js';
 
 const srcDir = dirname(fileURLToPath(import.meta.url));
 const siteFiles = [
@@ -48,5 +48,10 @@ describe('site copy', () => {
       ownRow: null,
       dotRows: rows,
     });
+  });
+
+  it('limits the second leaderboard plane to entries with both sub-scores', () => {
+    const complete = { id: 'complete', es: 0, ss: -2 };
+    expect(rowsWithSubscores([complete, { id: 'old' }, { id: 'partial', es: 1 }])).toEqual([complete]);
   });
 });

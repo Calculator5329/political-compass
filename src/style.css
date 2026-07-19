@@ -229,7 +229,8 @@ canvas.compass {
 }
 .save-row input::placeholder { color: var(--ink-soft); opacity: 0.7; }
 
-.board table { margin: 1.4rem auto 0; border-collapse: collapse; min-width: min(34rem, 90vw); }
+.board { overflow-x: auto; }
+.board table { margin: 1.4rem auto 0; border-collapse: collapse; min-width: min(46rem, 94vw); }
 .board th {
   font-family: var(--font-caps);
   font-weight: 400;
@@ -239,7 +240,9 @@ canvas.compass {
   padding: 0.3rem 0.9rem 0.3rem 0;
 }
 .board td { padding: 0.35rem 0.9rem 0.35rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); }
-.board td:nth-child(3), .board td:nth-child(4) { font-variant-numeric: tabular-nums; }
+.board td:nth-child(n+3) { font-variant-numeric: tabular-nums; }
+.board-coverage { margin: -0.2rem auto 0.8rem; font-size: 0.88rem; }
+.board-charts { margin-top: 0.9rem; }
 .chart-key {
   display: flex;
   justify-content: center;

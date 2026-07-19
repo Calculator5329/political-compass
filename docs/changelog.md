@@ -13,6 +13,10 @@
 - Leaderboard now labels saved-entry dots separately from the red current-result
   ✕. If that result is already saved, its dot is replaced by the ✕ instead of
   being drawn twice.
+- Leaderboard now mirrors Figures with side-by-side Political and Economic ×
+  Social charts, hover/tap tooltips on both, and Econ/Social table columns.
+  Older entries without stored sub-scores remain visible on the Political Plane
+  and are counted in a short coverage note.
 - Factions chart enlarged from 560px to 680px. Duplicate page headings and
   clipped in-chart faction labels were removed; the legend remains authoritative.
 - Site copy and metadata contain no em dashes; a regression test enforces it.

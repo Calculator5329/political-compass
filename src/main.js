@@ -4,7 +4,7 @@ import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
-import { isTestScreen, splitLeaderboardRows, testLanding } from './state.js';
+import { isTestScreen, rowsWithSubscores, splitLeaderboardRows, testLanding } from './state.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -127,6 +127,17 @@ function effectivePoint() {
   return myPoint() ?? (state.claimed ? { x: state.claimed.x, y: state.claimed.y } : null);
 }
 
+function effectiveSubPoint() {
+  if (myPoint()) {
+    const mine = subScores(state.answers, QUESTIONS);
+    return { x: mine.econ.x, y: mine.social.x };
+  }
+  if (state.claimed && state.claimed.es != null && state.claimed.ss != null) {
+    return { x: state.claimed.es, y: state.claimed.ss };
+  }
+  return null;
+}
+
 function ownMark(point, place) {
   if (!point) return null;
   return {
@@ -231,13 +242,7 @@ function renderFigures() {
   }));
   // sub-plane ✕: from answers when we have them, else from the claimed
   // ledger entry's stored econ/social sub-scores (older entries lack them)
-  let subPt = null;
-  if (myPoint()) {
-    const mySubs = subScores(state.answers, QUESTIONS);
-    subPt = { x: mySubs.econ.x, y: mySubs.social.x };
-  } else if (state.claimed && state.claimed.es != null && state.claimed.ss != null) {
-    subPt = { x: state.claimed.es, y: state.claimed.ss };
-  }
+  const subPt = effectiveSubPoint();
   const subLabels = { top: 'Traditional', bottom: 'Progressive', left: 'Econ Left', right: 'Econ Right' };
   drawOn('#wrap-sub canvas', showMe ? subPt : null, subMarks, { labels: subLabels });
   attachFigureTip(
@@ -399,53 +404,97 @@ async function renderBoard() {
   app.append(el(`
     <p class="kicker center">The public record, so to speak</p>
     <h1 class="center">Leaderboard</h1>
-    <div class="chart-wrap" id="wrap-board">
-      <canvas class="compass"></canvas>
-      <div class="fig-tip" hidden></div>
+    <div class="charts-row board-charts">
+      <div class="chart-col">
+        <h2 class="center smallcaps chart-cap">The Political Plane</h2>
+        <div class="chart-wrap" id="wrap-board-main">
+          <canvas class="compass"></canvas>
+          <div class="fig-tip" hidden></div>
+        </div>
+      </div>
+      <div class="chart-col">
+        <h2 class="center smallcaps chart-cap">The Economic × Social Plane</h2>
+        <div class="chart-wrap" id="wrap-board-sub">
+          <canvas class="compass sub"></canvas>
+          <div class="fig-tip" hidden></div>
+        </div>
+      </div>
     </div>
     <div class="chart-key center" id="board-key" hidden></div>
+    <p class="center muted board-coverage" id="board-coverage" hidden></p>
     <div class="board center muted">Loading…</div>
   `));
   const boardEl = app.querySelector('.board');
   const keyEl = app.querySelector('#board-key');
+  const coverageEl = app.querySelector('#board-coverage');
   try {
     const { fetchScores } = await import('./firebase.js');
     const rows = await fetchScores(100);
     const mine = effectivePoint();
+    const subMine = effectiveSubPoint();
     const currentId = state.savedId ?? state.claimed?.id ?? null;
     const { ownRow, dotRows } = splitLeaderboardRows(rows, currentId);
-    const marks = dotRows.map((r) => ({
+    const mainMarks = dotRows.map((r) => ({
       x: r.x, y: r.y, label: '',
       name: esc(r.name),
       blurb: '',
       place: `${esc(r.q)} · x ${fmt(r.x)} · y ${fmt(r.y)}`,
     }));
-    const own = ownMark(mine, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : '');
-    if (own && ownRow) {
-      own.blurb = `Your saved entry as ${esc(ownRow.name)}. Its dot is replaced by this red ✕.`;
+    const ownMain = ownMark(mine, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : '');
+    if (ownMain && ownRow) {
+      ownMain.blurb = `Your saved entry as ${esc(ownRow.name)}. Its dot is replaced by this red ✕.`;
     }
-    drawOn('#wrap-board canvas', mine, marks);
+    drawOn('#wrap-board-main canvas', mine, mainMarks);
     attachFigureTip(
-      app.querySelector('#wrap-board'),
-      marks,
+      app.querySelector('#wrap-board-main'),
+      mainMarks,
       [],
-      own,
+      ownMain,
     );
+
+    const subRows = rowsWithSubscores(rows);
+    const { ownRow: ownSubRow, dotRows: subDotRows } = splitLeaderboardRows(
+      subRows,
+      subMine ? currentId : null,
+    );
+    const subMarks = subDotRows.map((r) => ({
+      x: r.es, y: r.ss, label: '',
+      name: esc(r.name),
+      blurb: '',
+      place: `econ ${fmt(r.es)} · social ${fmt(r.ss)}`,
+    }));
+    const ownSub = ownMark(
+      subMine,
+      subMine ? `econ ${fmt(subMine.x)} · social ${fmt(subMine.y)}` : '',
+    );
+    if (ownSub && ownSubRow) {
+      ownSub.blurb = `Your saved entry as ${esc(ownSubRow.name)}. Its dot is replaced by this red ✕.`;
+    }
+    const subLabels = { top: 'Traditional', bottom: 'Progressive', left: 'Econ Left', right: 'Econ Right' };
+    drawOn('#wrap-board-sub canvas', subMine, subMarks, { labels: subLabels });
+    attachFigureTip(app.querySelector('#wrap-board-sub'), subMarks, [], ownSub);
+
     keyEl.innerHTML = `
       <span><i class="key-dot"></i>${rows.length} saved ${rows.length === 1 ? 'entry' : 'entries'}</span>
       ${mine ? `<span><i class="key-x">✕</i>${ownRow
         ? 'Your saved entry (shown as ✕ instead of a dot)'
         : 'Your current browser result (not a saved entry)'}</span>` : ''}`;
     keyEl.hidden = false;
+    if (subRows.length !== rows.length) {
+      coverageEl.textContent = `${subRows.length} of ${rows.length} saved entries include Economic × Social scores; older entries remain on the Political Plane only.`;
+      coverageEl.hidden = false;
+    }
     if (!rows.length) {
       boardEl.textContent = 'No entries yet - take the test and put your name on the map.';
       return;
     }
     boardEl.classList.remove('center', 'muted');
     boardEl.innerHTML = `<table><thead><tr>
-      <th>Name</th><th>Position</th><th>x</th><th>y</th></tr></thead><tbody>
+      <th>Name</th><th>Position</th><th>x</th><th>y</th><th>Econ</th><th>Social</th></tr></thead><tbody>
       ${rows.map((r) => `<tr><td>${esc(r.name)}</td><td>${esc(r.q)}</td>
-        <td>${fmt(r.x)}</td><td>${fmt(r.y)}</td></tr>`).join('')}
+        <td>${fmt(r.x)}</td><td>${fmt(r.y)}</td>
+        <td>${Number.isFinite(r.es) ? fmt(r.es) : 'n/a'}</td>
+        <td>${Number.isFinite(r.ss) ? fmt(r.ss) : 'n/a'}</td></tr>`).join('')}
     </tbody></table>`;
   } catch (e) {
     boardEl.textContent = 'Could not reach the leaderboard.';
