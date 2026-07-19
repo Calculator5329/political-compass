@@ -625,7 +625,7 @@ function renderResults() {
         <ul>${neighbours.map(company).join('')}</ul>
       </div>
       <div class="company-col">
-        <h3 class="smallcaps">Farthest remove</h3>
+        <h3 class="smallcaps">Farthest company</h3>
         <ul>${antipodes.map(company).join('')}</ul>
       </div>
     </div>

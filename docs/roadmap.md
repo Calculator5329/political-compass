@@ -16,6 +16,9 @@
 - [x] Recency-audit all 42 figures and cover the adopted 42-item bank (2026-07-18)
 - [x] Re-verify all 42 figures against the full current bank with three research
       lanes; apply 18 evidence-backed corrections across 11 figures (2026-07-18)
+- [x] Replace the opaque results label "Farthest remove" with "Farthest
+      company" while preserving the same top-three distance calculation
+      (2026-07-18)
 - [ ] Share-card image export (canvas → PNG of the marked map)
 
 ## Next

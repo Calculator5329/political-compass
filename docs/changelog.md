@@ -1,6 +1,8 @@
 # Changelog
 
 ## 2026-07-18 - owner-feedback polish + recency update
+- Results now labels the second company column "Farthest company" instead of
+  the opaque "Farthest remove"; ranking and distance behavior are unchanged.
 - Verified and pushed to `master`; live Firebase Hosting deploy remains the
   owner action in `docs/DEPLOY-OWNER-ACTION.md`.
 - Question statements now use upright, medium-weight EB Garamond at a larger
