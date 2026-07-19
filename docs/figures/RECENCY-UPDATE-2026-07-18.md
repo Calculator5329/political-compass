@@ -60,3 +60,48 @@ January 12, 2026 defense of Fed Chair Jerome Powell against a politically
 pressured DOJ investigation; 2026 Alex Jones broadcasts opposing the Iran
 war; and current statements on the Epstein disclosure, third-term proposals,
 January 6 pardons, Israel, and Ukraine across the roster.
+
+## Second full-instrument verification
+
+A second three-lane pass rechecked all 42 figures against all 42 current items,
+with targeted searches for post-dossier 2025-2026 actions, direct statements,
+and the nine adopted or rewritten questions. It produced 18 answer changes
+across 11 figures. The other 31 figures were explicitly reviewed and retained.
+
+### Applied score changes
+
+| Figure | Item | Old | New | Evidence-bound reason |
+|---|---:|---:|---:|---|
+| Gavin Newsom | `e03` | -1 | +1 | Proposed a national minimum tax on fortunes above $100 million while opposing California's one-time version. [Video](https://www.realclearpolitics.com/video/2026/06/26/gov_gavin_newsom_its_time_for_a_national_billionaires_tax.html), [AP](https://apnews.com/article/ebb72ccf542ae5dc2f444d16000f307c) |
+| Gavin Newsom | `e12` | -1 | -2 | Called trickle-down economics a failed experiment and said corporate gains flowed to buybacks and executives, not workers. [Video](https://www.realclearpolitics.com/video/2026/06/26/gov_gavin_newsom_its_time_for_a_national_billionaires_tax.html) |
+| Gavin Newsom | `y15` | 0 | +2 | Directly accused Trump of lying and participating in an Epstein cover-up. [Direct clip](https://bsky.app/profile/briantylercohen.bsky.social/post/3luxq6lod722h), [contemporaneous report](https://globalnews.ca/news/11307456/gavin-newsom-donald-trump-liar-accusation-epstein-files/) |
+| Gavin Newsom | `f01` | -2 | -1 | Still supports alliances, but his official opposition to Trump's Iran war makes strong interventionism inaccurate. [Official statement](https://www.gov.ca.gov/2026/03/10/governor-newsom-blasts-trump-for-raising-gasoline-prices-on-americans-with-no-plan-and-no-accountability/) |
+| Gavin Newsom | `f02` | +1 | -1 | Questioned continued military backing for Israel, then hedged and reaffirmed support for Israel. [Video](https://www.realclearpolitics.com/video/2026/03/04/newsom_regime_change_in_iran_apartheid_state_israel_cant_even_beat_hamas_in_their_own_country.html), [clarification](https://www.jta.org/2026/03/25/politics/gavin-newsom-says-he-regrets-using-the-word-apartheid-to-describe-israel) |
+| Kamala Harris | `f01` | -2 | -1 | Her alliance and Ukraine support remains, but she opposed and urged Congress not to fund Trump's Iran war. [Direct post](https://x.com/KamalaHarris/status/2041581262800900422) |
+| Joe Rogan | `e13` | -1 | 0 | No direct record supports or opposes government operation of groceries, banking, or utilities; METHOD requires zero for silence. |
+| Joe Rogan | `y03` | +1 | -2 | Condemned the politically driven Comey prosecution as meritless and dangerous. [May 2026 episode report](https://www.forbes.com/sites/saradorn/2026/05/02/podcaster-joe-rogan-slams-comeys-indictment-that-is-nuts/) |
+| Robert F. Kennedy Jr. | `e13` | -1 | 0 | Anti-corporate-capture rhetoric is not evidence for direct government operation of essential retail or finance. |
+| Hutch | `e13` | +1 | 0 | His economic profile is thin and contains no direct position on government-run groceries, banking, or utilities. |
+| Ron DeSantis | `y14` | +1 | -1 | Promised an aggressive but case-by-case review of January 6 cases for pardons. [Interview report](https://www.washingtonpost.com/politics/2023/05/25/desantis-jan-6-attack-trump/) |
+| Elizabeth Warren | `y15` | +1 | +2 | Explicitly charged that the government blocked release of Epstein-related files. [Official statement](https://www.warren.senate.gov/newsroom/press-releases/warren-statement-on-pam-bondi-firing/) |
+| Marjorie Taylor Greene | `y13` | 0 | -2 | Explicitly rejected a Trump third term as unconstitutional. [Statement report](https://www.thewrap.com/media-platforms/politics/marjorie-taylor-greene-tucker-carlson-for-president/) |
+| Ben Shapiro | `y15` | +1 | -1 | Accepted the DOJ/FBI review's central conclusion while criticizing disclosure handling. [Direct-authored article](https://www.dailywire.com/news/the-epstein-case-why-i-believe-we-are-getting-the-truth), [transcript](https://fight.fudgie.org/search/show/bs/episode/20250709_Wed_6qj7ZvZujlM) |
+| Charlie Kirk | `y14` | -1 | -2 | Defended the blanket January 6 pardons after they included violent convictions. [Direct show](https://www.iheart.com/podcast/1119-real-americas-voice-232242864/episode/the-charlie-kirk-show-january-21st-259994906/), [site article](https://www.charliekirk.com/news/schiff-pelosi-whine-after-trump-keeps) |
+| Charlie Kirk | `f01` | +1 | +2 | Repeatedly opposed direct US entry and regime-change escalation in the Iran conflict. [Direct transcript](https://podscripts.co/podcasts/the-charlie-kirk-show/iran-and-israel-the-questions-we-need-answered) |
+| Vivek Ramaswamy | `f01` | +1 | +2 | Repeatedly opposed US military commitments in Iran and Ukraine. [Full interview](https://www.israelhayom.com/2023/09/01/read-our-full-interview-with-vivek-ramaswamy/), [ABC transcript](https://abcnews.com/Politics/week-transcript-6-4-23-vivek-ramaswamy-rep/story?id=99814403) |
+| Vivek Ramaswamy | `f02` | -1 | -2 | Opposed additional Israel aid and proposed ending preferential aid after the current agreement. [Axios interview](https://www.axios.com/2023/10/24/vivek-ramaswamy-israel-aid-hamas) |
+
+### Full roster disposition
+
+Changed: Newsom, Harris, Rogan, RFK Jr., Hutch, DeSantis, Warren, MTG,
+Shapiro, Kirk, and Ramaswamy.
+
+Reviewed with no evidence-backed score change: Trump, Vance, Miller, Bannon,
+Jones, Pence, Romney, Biden, Obama, Sanders, AOC, Mamdani, Piker, West, Musk,
+Cheney, Rand Paul, Pakman, Brian Tyler Cohen, Destiny, Tim Pool, Putin, Xi,
+Buttigieg, Fetterman, Carlson, Gabbard, Owens, Maher, Haley, and Stewart.
+
+The no-change result is meaningful: agents checked the current direct record
+and preserved scores where new material reinforced rather than contradicted
+the existing answer. Zero remains the required value when the record is silent,
+which is why the three overly inferred `e13` answers were corrected.

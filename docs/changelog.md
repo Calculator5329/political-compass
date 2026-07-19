@@ -30,6 +30,12 @@
   legacy corrections: Trump `y06` 0 to -1; Rogan `y02` -1 to -2. The Hutch vs
   Destiny deep dive preserves Destiny as more institutionalist overall while
   documenting Hutch's greater procedural caution in recent debates.
+- A second three-lane full-instrument verification applied 18 evidence-backed
+  corrections across 11 figures. The largest movement is Newsom's June 2026
+  economic and foreign-policy pivot; Rogan moves sharply institutional on
+  politically directed DOJ investigations; Warren, MTG, Shapiro, DeSantis,
+  Kirk, Ramaswamy, Harris, RFK Jr., and Hutch receive narrower corrections.
+  The remaining 31 figures were explicitly reviewed and retained.
 
 - 2026-07-18 — v0.3 LIVE at https://political-test-2026.web.app: Firestore
   leaderboard (save name+score, create-only schema-validated rules), Figures

@@ -38,6 +38,26 @@ describe('site copy', () => {
     }
   });
 
+  it('keeps the second full-instrument research corrections wired in', () => {
+    const expected = {
+      newsom: { e03: 1, e12: -2, y15: 2, f01: -1, f02: -1 },
+      harris: { f01: -1 },
+      rogan: { e13: 0, y03: -2 },
+      rfk: { e13: 0 },
+      hutch: { e13: 0 },
+      desantis: { y14: -1 },
+      warren: { y15: 2 },
+      mtg: { y13: -2 },
+      shapiro: { y15: -1 },
+      kirk: { y14: -2, f01: 2 },
+      ramaswamy: { f01: 2, f02: -2 },
+    };
+    for (const [slug, answers] of Object.entries(expected)) {
+      expect(FIGURES.find((figure) => figure.slug === slug)?.answers, slug)
+        .toMatchObject(answers);
+    }
+  });
+
   it('returns saved reference pages to the correct Test screen', () => {
     const count = QUESTIONS.length;
     expect(testLanding({ screen: 'factions', idx: 0, answers: {} }, count)).toBe('intro');

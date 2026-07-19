@@ -496,7 +496,7 @@ const BASE_FIGURES = [
     "answers": {
       "e01": -2,
       "e02": 1,
-      "e03": -1,
+      "e03": 1,
       "e04": -2,
       "e05": -1,
       "e06": -1,
@@ -505,7 +505,7 @@ const BASE_FIGURES = [
       "e09": 1,
       "e10": -1,
       "e11": 2,
-      "e12": -1,
+      "e12": -2,
       "s01": 2,
       "s02": -2,
       "s03": -2,
@@ -531,8 +531,20 @@ const BASE_FIGURES = [
       "y11": -1,
       "y12": 1
     },
-    "note": "Institutionalist center-left Democrat who has visibly moderated since 2025: sued to kill Trump's tariffs, backed off single-payer, called trans athletes in girls' sports 'deeply unfair' while opposing care bans, kept his death-penalty moratorium and $20 minimum-wage record - and fought Trump via Prop 50 and the courts, not the streets.",
+    "note": "Institutionalist center-left Democrat making a national 2026 pivot: proposed a federal billionaire minimum tax, rejected trickle-down economics, opposed Trump's Iran war and unconditional Israeli military aid, and alleged an Epstein cover-up while continuing to fight Trump through laws and courts.",
     "sources": [
+      {
+        "title": "Newsom proposes a national billionaires tax - June 2026",
+        "url": "https://www.realclearpolitics.com/video/2026/06/26/gov_gavin_newsom_its_time_for_a_national_billionaires_tax.html"
+      },
+      {
+        "title": "Newsom opposes Trump's Iran war - gov.ca.gov",
+        "url": "https://www.gov.ca.gov/2026/03/10/governor-newsom-blasts-trump-for-raising-gasoline-prices-on-americans-with-no-plan-and-no-accountability/"
+      },
+      {
+        "title": "Newsom questions unconditional support for Israel",
+        "url": "https://www.realclearpolitics.com/video/2026/03/04/newsom_regime_change_in_iran_apartheid_state_israel_cant_even_beat_hamas_in_their_own_country.html"
+      },
       {
         "title": "Newsom tariff lawsuit - gov.ca.gov",
         "url": "https://www.gov.ca.gov/2025/04/16/governor-newsom-files-lawsuit-to-end-president-trumps-tariffs/"
@@ -600,8 +612,12 @@ const BASE_FIGURES = [
       "y11": -1,
       "y12": 2
     },
-    "note": "Scored on her 2024 platform and 2025-26 positioning: anti-tariff ('Trump sales tax'), federal paid leave, marijuana legalization, abortion-rights codification, moderated on fracking, Medicare for All, and crypto; institutionalist who certified her own defeat but now calls Trump's DOJ an 'abuse of power.'",
+    "note": "Scored on her 2024 platform and 2025-26 positioning: anti-tariff, pro-paid-leave and abortion-rights, but more moderate on fracking, Medicare for All, crypto, and intervention after opposing Trump's 2026 Iran war while retaining support for Ukraine and US alliances.",
     "sources": [
+      {
+        "title": "Harris urges Congress to oppose Iran-war funding - April 2026",
+        "url": "https://x.com/KamalaHarris/status/2041581262800900422"
+      },
       {
         "title": "The evolution of Harris' stances - CBS News",
         "url": "https://www.cbsnews.com/news/kamala-harris-policy-positions-president-2024/"
@@ -1217,8 +1233,16 @@ const BASE_FIGURES = [
       "y11": 0,
       "y12": 1
     },
-    "note": "Pro-choice, pro-weed, pro-2A Trump endorser whose loyalty is anti-institutional, not partisan: broke loudly with Trump on tariffs ('stupid'), Canada annexation talk, and Gestapo-like ICE raids in 2025-26, while keeping universal-healthcare sympathy alongside fierce anti-DEI, anti-expert, anti-legacy-media politics. Economic zeros reflect a genuinely thin on-record footprint.",
+    "note": "Pro-choice, pro-weed, pro-2A Trump endorser whose loyalty is anti-institutional, not partisan: broke with Trump on tariffs, Canada, ICE raids, and a politically driven Comey prosecution, while keeping universal-healthcare sympathy alongside anti-DEI, anti-expert, anti-legacy-media politics. Economic zeros reflect a thin on-record footprint.",
     "sources": [
+      {
+        "title": "Rogan condemns the politically driven Comey prosecution - May 2026",
+        "url": "https://www.forbes.com/sites/saradorn/2026/05/02/podcaster-joe-rogan-slams-comeys-indictment-that-is-nuts/"
+      },
+      {
+        "title": "JRE 2526 with JD Vance - July 2026 transcript",
+        "url": "https://podscripts.co/podcasts/the-joe-rogan-experience/2526-jd-vance"
+      },
       {
         "title": "Rogan criticizes ICE tactics - NBC News",
         "url": "https://www.nbcnews.com/pop-culture/pop-culture-news/joe-rogan-criticizes-ice-tactics-podcast-rcna253931"
@@ -1964,8 +1988,12 @@ const BASE_FIGURES = [
       "y11": 1,
       "y12": -1
     },
-    "note": "Scored on his Florida executive record: mass-deportation partnership with ICE, six-week abortion ban, permitless carry, Stop WOKE/anti-DEI laws, trans-care ban, and 2026 property-tax abolition drive - hard-right on both policy axes, with insurgent 'deep state'/'slitting throats' rhetoric tempered by a governor's procedural institutionalism on elections and courts.",
+    "note": "Scored on his Florida executive record: mass-deportation partnership with ICE, a six-week abortion ban, permitless carry, anti-DEI laws, a trans-care ban, and a 2026 property-tax abolition drive. His promise to review January 6 cases for targeted pardons adds a bounded loyalist exception to his procedural record.",
     "sources": [
+      {
+        "title": "DeSantis promises review of January 6 cases for pardons",
+        "url": "https://www.washingtonpost.com/politics/2023/05/25/desantis-jan-6-attack-trump/"
+      },
       {
         "title": "Laws DeSantis has passed as Florida governor - PBS NewsHour",
         "url": "https://www.pbs.org/newshour/politics/here-is-a-look-at-the-laws-desantis-has-passed-as-florida-governor-from-abortion-to-guns"
@@ -2029,8 +2057,12 @@ const BASE_FIGURES = [
       "y11": 1,
       "y12": 1
     },
-    "note": "Scored on her Banking-ranking-member record: no on the GENIUS Act, the 2026 Ultra-Millionaire wealth tax, 'dumbest trade war in history' attacks on Trump tariffs, and defense of the press, elections, civil service and expert policymaking - far-left economically, structural-reformist (Court expansion, anti-donor politics) but institution-defending on the y-axis.",
+    "note": "Scored on her Banking-ranking-member record: the Ultra-Millionaire tax, opposition to Trump tariffs, defense of the press, elections and civil service, and a direct 2026 charge that the administration blocked Epstein-file disclosure. She is structural-reformist but institution-defending overall.",
     "sources": [
+      {
+        "title": "Warren says Bondi blocked Epstein-file disclosure - April 2026",
+        "url": "https://www.warren.senate.gov/newsroom/press-releases/warren-statement-on-pam-bondi-firing/"
+      },
       {
         "title": "Warren floor speech against the GENIUS Act - Senate Banking",
         "url": "https://www.banking.senate.gov/newsroom/minority/on-senate-floor-warren-urges-colleagues-to-vote-no-on-the-genius-act"
@@ -2224,8 +2256,12 @@ const BASE_FIGURES = [
       "y11": 2,
       "y12": 0
     },
-    "note": "Scored on her 2025 populist defection: still hard-right on trans care (her felony ban passed the House Dec 2025), guns, Christian nationalism and deportations, but maximally insurgent - broke with Trump over Epstein files, ACA subsidies, tariffs, H-1B visas and 'foreign wars', blamed both parties and their donors, and resigned from Congress Jan 2026.",
+    "note": "Scored on her 2025 populist defection: still hard-right on trans care, guns, Christian nationalism and deportations, but maximally insurgent after breaking with Trump over Epstein, tariffs, visas and foreign wars. Her 2026 rejection of a Trump third term draws one firm constitutional boundary.",
     "sources": [
+      {
+        "title": "Greene rejects a Trump third term as unconstitutional - March 2026",
+        "url": "https://www.thewrap.com/media-platforms/politics/marjorie-taylor-greene-tucker-carlson-for-president/"
+      },
       {
         "title": "NPR: MTG's political transformation, explained (Jan 2026)",
         "url": "https://www.npr.org/2026/01/06/nx-s1-5668142/marjorie-taylor-greenes-puzzling-political-transformation-explained"
@@ -2293,8 +2329,12 @@ const BASE_FIGURES = [
       "y11": -2,
       "y12": 1
     },
-    "note": "Free-market institutional conservative: called Trump's 2025 tariffs 'one of the biggest tax increases' in US history and probably unconstitutional, wants a higher retirement age, defends legal/H-1B immigration and courts, and rejected stolen-2020 claims - while staying hard-right on abortion, DEI, youth transition and the expert class.",
+    "note": "Free-market institutional conservative who called Trump's tariffs a massive and likely unconstitutional tax increase, defends legal immigration and courts, and rejected stolen-2020 claims. He accepted the DOJ/FBI's core Epstein conclusion while criticizing disclosure handling, reinforcing mild institutional trust.",
     "sources": [
+      {
+        "title": "Shapiro: Why I Believe We Are Getting the Truth - July 2025",
+        "url": "https://www.dailywire.com/news/the-epstein-case-why-i-believe-we-are-getting-the-truth"
+      },
       {
         "title": "Media Matters: Shapiro - tariffs 'a massive tax increase on American consumers'",
         "url": "https://www.mediamatters.org/ben-shapiro/ben-shapiro-trumps-tariffs-are-massive-tax-increase-american-consumers-and-it-designed"
@@ -2362,8 +2402,16 @@ const BASE_FIGURES = [
       "y11": -1,
       "y12": -2
     },
-    "note": "Scored on his record through his Sept 2025 assassination: MAGA-populist Christian nationalist - gun deaths 'worth it' for the 2nd Amendment, no separation of church and state, Civil Rights Act an 'anti-white weapon', anti-H-1B, televised executions - free-market on wages/taxes/college debt, and insurgent on elections, the FBI, media and experts.",
+    "note": "Scored on his record through September 2025: a MAGA-populist Christian nationalist, free-market on wages, taxes and college debt, and insurgent on elections, the FBI, media and experts. His final-period record strongly opposed US entry into the Iran war while defending Trump's blanket January 6 pardons.",
     "sources": [
+      {
+        "title": "Kirk on Iran and Israel - direct show transcript",
+        "url": "https://podscripts.co/podcasts/the-charlie-kirk-show/iran-and-israel-the-questions-we-need-answered"
+      },
+      {
+        "title": "Kirk celebrates Trump's January 6 pardons",
+        "url": "https://www.charliekirk.com/news/schiff-pelosi-whine-after-trump-keeps"
+      },
       {
         "title": "FactCheck.org: Viral claims about Charlie Kirk's words",
         "url": "https://www.factcheck.org/2025/09/viral-claims-about-charlie-kirks-words/"
@@ -2845,8 +2893,16 @@ const BASE_FIGURES = [
       "y11": 1,
       "y12": -1
     },
-    "note": "Scored on his 2024 run plus the 2025-26 Ohio gubernatorial campaign (abolish state income tax, property-tax rollback, merit-pay schools): hard-right on abortion, trans care, deportation and DEI, crypto-libertarian and pro-marijuana on the margins, and maximally insurgent on the system - abolish the FBI and Education Department, fire 75% of the federal workforce, 'big tech stole the 2020 election,' 'climate change agenda is a hoax.'",
+    "note": "Scored on his 2024 run and 2025-26 Ohio campaign: hard-right on abortion, trans care, deportation and DEI, crypto-libertarian on the margins, and maximally insurgent on the administrative state. His repeated antiwar position and opposition to preferential Israel aid make his foreign policy firmly noninterventionist.",
     "sources": [
+      {
+        "title": "Ramaswamy opposes additional Israel aid - Axios",
+        "url": "https://www.axios.com/2023/10/24/vivek-ramaswamy-israel-aid-hamas"
+      },
+      {
+        "title": "Ramaswamy on ending US involvement in Ukraine - ABC",
+        "url": "https://abcnews.com/Politics/week-transcript-6-4-23-vivek-ramaswamy-rep/story?id=99814403"
+      },
       {
         "title": "Ramaswamy vows to gut FBI, IRS, CDC - 'shut down the administrative state' - Fox News",
         "url": "https://www.foxnews.com/media/vivek-ramaswamy-vows-gut-several-agencies-including-fbi-irs-cdc"
