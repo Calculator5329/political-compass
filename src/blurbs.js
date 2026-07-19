@@ -1,4 +1,4 @@
-// One-line descriptors for the figure tooltips — display copy only; scoring
+// One-line descriptors for the figure tooltips - display copy only; scoring
 // evidence lives in docs/figures/<slug>.md. Keyed by figures.js slug.
 
 export const BLURBS = {

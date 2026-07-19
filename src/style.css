@@ -116,10 +116,11 @@ button:active { transform: translate(1px, 1px); box-shadow: none; }
 
 /* question card */
 .statement {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-style: italic;
-  line-height: 1.35;
+  font-family: var(--font-body);
+  font-size: 1.85rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.3;
   margin: 1.6rem 0 2rem;
   min-height: 5.4rem;
 }
@@ -249,13 +250,14 @@ canvas.compass {
 .figure-list ul { margin: 0.2rem 0 0.4rem 1.4rem; font-size: 0.92rem; }
 .figure-list a { color: var(--accent); }
 
-/* figure-chart hover tooltip — a marginalia note pinned by the dot */
+/* figure-chart hover tooltip - a marginalia note pinned by the dot */
 .chart-wrap {
   position: relative;
   width: min(560px, 92vw);
   margin: 0 auto;
 }
 .chart-wrap canvas.compass { width: 100%; margin-left: 0; margin-right: 0; }
+#wrap-factions { width: min(680px, 96vw); }
 .fig-tip {
   position: absolute;
   z-index: 3;
@@ -356,7 +358,7 @@ h2.smallcaps { font-family: var(--font-caps); font-weight: normal; font-size: 1.
 .faction-blurb { margin: 0.15rem 0 0.1rem; font-size: 0.95rem; }
 .faction-members { font-size: 0.84rem; font-family: var(--font-caps); }
 
-/* hide the scrollbar rail — the page still scrolls by wheel/touch/keys */
+/* hide the scrollbar rail - the page still scrolls by wheel/touch/keys */
 html { scrollbar-width: none; }
 html::-webkit-scrollbar { display: none; }
 
@@ -452,3 +454,4 @@ select#claim {
   color: var(--ink-soft);
 }
 select#claim:invalid, select#claim option[value=""] { color: var(--ink-soft); }
+.fig-tip-desc:empty { display: none; }

@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-07-18 - owner-feedback polish + recency update
+- Question statements now use upright, medium-weight EB Garamond at a larger
+  size for easier reading.
+- A reload always returns to the Test tab while preserving the correct intro,
+  in-progress quiz, or results state. Reference-page cookies/local storage no
+  longer make Figures, Factions, or Leaderboard the landing page.
+- The user's red score mark has the same hover/tap tooltip on Results, Figures,
+  Factions, and Leaderboard as figure dots.
+- Factions chart enlarged from 560px to 680px. Duplicate page headings and
+  clipped in-chart faction labels were removed; the legend remains authoritative.
+- Site copy and metadata contain no em dashes; a regression test enforces it.
+- Three research lanes audited all 42 figures against recent 2025-2026 primary
+  material and completed coverage for the adopted 42-item bank. High-confidence
+  legacy corrections: Trump `y06` 0 to -1; Rogan `y02` -1 to -2. The Hutch vs
+  Destiny deep dive preserves Destiny as more institutionalist overall while
+  documenting Hutch's greater procedural caution in recent debates.
+
 - 2026-07-18 — v0.3 LIVE at https://political-test-2026.web.app: Firestore
   leaderboard (save name+score, create-only schema-validated rules), Figures
   view — 14 public figures scored against the instrument by four parallel

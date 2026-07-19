@@ -54,7 +54,7 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
 
   ctx.clearRect(0, 0, s, s);
 
-  // quadrant washes — barely-there pigment
+  // quadrant washes - barely-there pigment
   const washes = [
     [th.washes[0], pad, pad],
     [th.washes[1], c, pad],
@@ -66,7 +66,7 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
     ctx.fillRect(x, y, half, half);
   }
 
-  // faction territories — translucent pigment ellipses, clipped to the plot
+  // faction territories - translucent pigment ellipses, clipped to the plot
   if (opts.regions?.length) {
     ctx.save();
     ctx.beginPath();

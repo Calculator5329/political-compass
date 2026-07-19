@@ -1,6 +1,6 @@
 # Figure-scoring method (research agents: read fully before scoring)
 
-Every public figure is scored by answering the same 36-item instrument in
+Every public figure is scored by answering the same 42-item instrument in
 `src/questions.js` as that figure would, based on **documented positions only**
 — votes, executive actions, platform documents, direct quotes from interviews,
 speeches, podcasts, and social posts. Scores then flow through `src/scoring.js`
@@ -44,7 +44,7 @@ drives their placement on both axes.>
 <1–2 sentence justification tying quote/action to the score.>
 
 ### e02 · score −1
-...every one of the 36 ids (e01–e12, s01–s12, y01–y12), in order...
+...every current item id, in order...
 
 ## Key sources
 - <title> — <url>   (4–8 primary/most-load-bearing)
@@ -69,7 +69,7 @@ Return ONLY a JSON array, one object per figure:
 ```json
 [{
   "name": "…", "slug": "…",
-  "answers": { "e01": 2, … all 36 ids … },
+  "answers": { "e01": 2, … all current ids … },
   "note": "<1–2 sentence placement rationale, like existing figures.js notes>",
   "sources": [{ "title": "…", "url": "…" }, … 4–6 best …],
   "changes": [{ "id": "e05", "old": 1, "new": -1, "why": "…" }]

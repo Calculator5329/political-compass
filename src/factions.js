@@ -1,7 +1,7 @@
-// The factions of the 2026 map — hand-drawn territories, not computed
+// The factions of the 2026 map - hand-drawn territories, not computed
 // clusters. Ellipses are in axis units on the main (left/right ×
 // insurgent/institutionalist) plane; members list the figures.js slugs the
-// territory is drawn around. Display copy only — scoring stays in figures.js.
+// territory is drawn around. Display copy only - scoring stays in figures.js.
 
 export const FACTIONS = [
   {
@@ -18,7 +18,7 @@ export const FACTIONS = [
     x: 2.0, y: 3.7, rx: 3.4, ry: 2.4,
     fill: 'rgba(64, 84, 55, 0.12)',
     blurb:
-      'Podcasters, contrarians, and defectors of no fixed party — anti-expert, ' +
+      'Podcasters, contrarians, and defectors of no fixed party - anti-expert, ' +
       'anti-establishment, allergic to both machines.',
     members: ['rogan', 'rfk', 'gabbard', 'musk', 'paul'],
   },
@@ -45,7 +45,7 @@ export const FACTIONS = [
     x: -2.9, y: -4.1, rx: 2.3, ry: 2.7,
     fill: 'rgba(120, 94, 38, 0.11)',
     blurb:
-      'Liberals at odds with their own side — anti-woke, pro-institution, ' +
+      'Liberals at odds with their own side - anti-woke, pro-institution, ' +
       'louder about the left’s excesses than the right’s.',
     members: ['maher', 'fetterman', 'destiny', 'hutch'],
   },

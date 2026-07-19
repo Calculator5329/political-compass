@@ -11,10 +11,11 @@ ink-on-paper manuscript. Two axes:
 
 ## Features
 
-- **36-question instrument** with per-question dimension tags and weight
+- **42-question instrument** with per-question dimension tags and weight
   vectors, so re-weighting or alternate views need no question changes.
 - **42 public figures** charted from the documented record — every one of the
-  36 answers per figure is backed by a cited evidence dossier
+  42 answers per figure are backed by a cited evidence dossier plus the 2026
+  recency-update appendix
   ([docs/figures/](docs/figures/), rubric in
   [METHOD.md](docs/figures/METHOD.md)), researched and verified by parallel
   AI research agents with per-question quotes and sources.

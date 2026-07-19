@@ -4,6 +4,7 @@ import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
+import { isTestScreen, testLanding } from './state.js';
 
 const app = document.getElementById('app');
 const STORAGE_KEY = 'political-compass-v1';
@@ -11,9 +12,18 @@ const STORAGE_KEY = 'political-compass-v1';
 // then persisted so refresh mid-quiz keeps the same order.
 let state = load() ?? fresh();
 
+// Navigation is intentionally not part of the persisted landing route. Saved
+// answers still resume, but every fresh page load opens the Test tab instead
+// of whichever reference page happened to be open last.
+if (!isTestScreen(state.screen)) {
+  state.screen = testLanding(state, QUESTIONS.length);
+  save();
+}
+
 function fresh() {
   return {
     screen: 'intro',
+    testScreen: 'intro',
     order: shuffle(QUESTIONS.map((q) => q.id)),
     idx: 0,
     answers: {},
@@ -42,6 +52,9 @@ function shuffle(a) {
 }
 
 function set(patch) {
+  if (isTestScreen(patch.screen)) {
+    patch.testScreen = patch.screen;
+  }
   Object.assign(state, patch);
   save();
   render();
@@ -114,6 +127,18 @@ function effectivePoint() {
   return myPoint() ?? (state.claimed ? { x: state.claimed.x, y: state.claimed.y } : null);
 }
 
+function ownMark(point, place) {
+  if (!point) return null;
+  return {
+    ...point,
+    name: 'Your score',
+    blurb: state.claimed && !myPoint()
+      ? `Claimed from the ledger as ${esc(state.claimed.name)}.`
+      : 'Calculated from the answers saved in this browser.',
+    place,
+  };
+}
+
 // Only the most recognizable figures get printed labels; everyone else is
 // hover-only, which keeps the label type large and the leader lines short.
 const FEATURED = new Set([
@@ -167,9 +192,9 @@ function renderFigures() {
            <select id="claim"><option value="" disabled selected hidden>choose your name</option></select>`}
     </p>
     <p class="muted center">On the right, the same record split by dimension: the horizontal
-    is purely economic, the vertical purely social, with the system axis set aside.</p>
+    is purely economic, the vertical purely social, with system and foreign items set aside.</p>
     <p class="muted center">Each mark is the instrument scored from documented votes,
-    policies, and on-record statements, answering the same 36 questions you do.</p>
+    policies, and on-record statements, answering the same ${QUESTIONS.length} questions you do.</p>
     <div class="figure-cards">
       ${placed.map((f, i) => `
         <div class="fig-card" data-fig="${i}">
@@ -187,7 +212,12 @@ function renderFigures() {
   attachCardTips(placed);
   const marks = figureMarks(placed);
   drawOn('#wrap-main canvas', showMe ? mine : null, marks);
-  attachFigureTip(app.querySelector('#wrap-main'), marks);
+  attachFigureTip(
+    app.querySelector('#wrap-main'),
+    marks,
+    [],
+    ownMark(showMe ? mine : null, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : ''),
+  );
 
   // econ (x) × social (y): social-right scores plot upward as Traditional
   const subMarks = placed.map((f) => ({
@@ -210,7 +240,12 @@ function renderFigures() {
   }
   const subLabels = { top: 'Traditional', bottom: 'Progressive', left: 'Econ Left', right: 'Econ Right' };
   drawOn('#wrap-sub canvas', showMe ? subPt : null, subMarks, { labels: subLabels });
-  attachFigureTip(app.querySelector('#wrap-sub'), subMarks);
+  attachFigureTip(
+    app.querySelector('#wrap-sub'),
+    subMarks,
+    [],
+    ownMark(showMe ? subPt : null, subPt ? `econ ${fmt(subPt.x)} · social ${fmt(subPt.y)}` : ''),
+  );
 
   app.querySelector('#showme')?.addEventListener('change', (e) => set({ showMe: e.target.checked }));
 
@@ -222,7 +257,7 @@ function renderFigures() {
         for (const [i, r] of rows.entries()) {
           const o = document.createElement('option');
           o.value = i;
-          o.textContent = `${r.name} — ${r.q}`;
+          o.textContent = `${r.name} - ${r.q}`;
           claim.append(o);
         }
         claim.addEventListener('change', () => {
@@ -260,12 +295,13 @@ function attachCardTips(placed) {
   });
 }
 
-// Hover (or tap) a dot — or a faction territory — for a marginalia-style
+// Hover (or tap) a dot - or a faction territory - for a marginalia-style
 // tooltip. Dots win over territories; overlapping territories resolve to the
 // nearest centre.
-function attachFigureTip(wrap, marks, regions = []) {
+function attachFigureTip(wrap, marks, regions = [], own = null) {
   const canvas = wrap.querySelector('canvas');
   const tip = wrap.querySelector('.fig-tip');
+  const hoverMarks = own ? [own, ...marks] : marks;
   let shown = null;
 
   const hide = () => {
@@ -296,7 +332,7 @@ function attachFigureTip(wrap, marks, regions = []) {
   };
 
   const onMove = (ev) => {
-    const hit = hitMark(canvas, marks, ev);
+    const hit = hitMark(canvas, hoverMarks, ev);
     if (hit) {
       canvas.style.cursor = 'pointer';
       show(hit.mark, `
@@ -327,14 +363,12 @@ function renderFactions() {
   const placed = placedFigures();
   const mine = effectivePoint();
   app.append(el(`
-    <p class="kicker center">The territories of the moment</p>
-    <h1 class="center">The Factions</h1>
     <div class="chart-wrap" id="wrap-factions">
       <canvas class="compass"></canvas>
       <div class="fig-tip" hidden></div>
     </div>
     <p class="muted center">Territories are drawn by hand around the charted record, not
-    computed — coalitions overlap, and some figures stand in two camps at once.</p>
+    computed - coalitions overlap, and some figures stand in two camps at once.</p>
     <div class="faction-list">
       ${FACTIONS.map((fa) => `
         <div class="faction">
@@ -351,26 +385,46 @@ function renderFactions() {
   `));
   const marks = figureMarks(placed);
   drawOn('#wrap-factions canvas', mine, marks.map((m) => ({ ...m, label: '' })), {
-    regions: FACTIONS.map((fa) => ({ ...fa, label: fa.name })),
+    regions: FACTIONS.map((fa) => ({ ...fa, label: '' })),
   });
-  attachFigureTip(app.querySelector('#wrap-factions'), marks, FACTIONS);
+  attachFigureTip(
+    app.querySelector('#wrap-factions'),
+    marks,
+    FACTIONS,
+    ownMark(mine, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : ''),
+  );
 }
 
 async function renderBoard() {
   app.append(el(`
     <p class="kicker center">The public record, so to speak</p>
     <h1 class="center">Leaderboard</h1>
-    <canvas class="compass"></canvas>
+    <div class="chart-wrap" id="wrap-board">
+      <canvas class="compass"></canvas>
+      <div class="fig-tip" hidden></div>
+    </div>
     <div class="board center muted">Loading…</div>
   `));
   const boardEl = app.querySelector('.board');
   try {
     const { fetchScores } = await import('./firebase.js');
     const rows = await fetchScores(100);
-    const mine = Object.keys(state.answers).length === 0 ? null : score(state.answers, QUESTIONS);
-    drawOn('canvas.compass', mine, rows.map((r) => ({ x: r.x, y: r.y })));
+    const mine = effectivePoint();
+    const marks = rows.map((r) => ({
+      x: r.x, y: r.y, label: '',
+      name: esc(r.name),
+      blurb: '',
+      place: `${esc(r.q)} · x ${fmt(r.x)} · y ${fmt(r.y)}`,
+    }));
+    drawOn('#wrap-board canvas', mine, marks);
+    attachFigureTip(
+      app.querySelector('#wrap-board'),
+      marks,
+      [],
+      ownMark(mine, mine ? `${quadrant(mine)} · x ${fmt(mine.x)} · y ${fmt(mine.y)}` : ''),
+    );
     if (!rows.length) {
-      boardEl.textContent = 'No entries yet — take the test and put your name on the map.';
+      boardEl.textContent = 'No entries yet - take the test and put your name on the map.';
       return;
     }
     boardEl.classList.remove('center', 'muted');
@@ -393,10 +447,10 @@ function renderIntro() {
     <p class="kicker">A Survey of the Present Landscape · MMXXVI</p>
     <h1>The Political Compass</h1>
     <hr class="rule" />
-    <p class="lede">Thirty-six propositions on the questions that actually divide the
+    <p class="lede">${QUESTIONS.length} propositions on the questions that actually divide the
     United States today. Mark your agreement with each; the instrument will fix your
     position on the map.</p>
-    <p class="mt muted">The vertical axis is not left and right — it measures your relation
+    <p class="mt muted">The vertical axis is not left and right - it measures your relation
     to the system itself: <em>Institutionalist</em> (the institutions, for all their faults,
     deserve defense) against <em>Insurgent</em> (the institutions themselves are the problem).
     The horizontal is the familiar left–right, blended from economic and social questions.</p>
@@ -464,12 +518,15 @@ function renderResults() {
   app.append(el(`
     <p class="kicker center">The instrument renders its verdict</p>
     <h1 class="center">Your Position</h1>
-    <canvas class="compass"></canvas>
+    <div class="chart-wrap" id="wrap-results">
+      <canvas class="compass"></canvas>
+      <div class="fig-tip" hidden></div>
+    </div>
     <div class="verdict">
       <div class="place">${quadrant(pt)}</div>
       <div class="coords">x ${fmt(pt.x)} · y ${fmt(pt.y)}</div>
       <p class="desc">${describe(pt)}</p>
-      <p class="muted mt">Sub-dimensions — econ ${fmt(subs.econ.x)}, social ${fmt(subs.social.x)},
+      <p class="muted mt">Sub-dimensions - econ ${fmt(subs.econ.x)}, social ${fmt(subs.social.x)},
       system ${fmt(subs.system.y)}</p>
     </div>
     <div class="company">
@@ -507,11 +564,17 @@ function renderResults() {
       set({ savedId: id });
     } catch (e) {
       saveBtn.disabled = false;
-      saveBtn.textContent = 'Failed — retry';
+      saveBtn.textContent = 'Failed - retry';
     }
   });
 
-  drawOn('canvas.compass', pt);
+  drawOn('#wrap-results canvas', pt);
+  attachFigureTip(
+    app.querySelector('#wrap-results'),
+    [],
+    [],
+    ownMark(pt, `${quadrant(pt)} · x ${fmt(pt.x)} · y ${fmt(pt.y)}`),
+  );
 
   app.querySelector('#seefigs').addEventListener('click', () => set({ screen: 'figures', showMe: true }));
   app.querySelector('#retake').addEventListener('click', () => {
@@ -520,7 +583,7 @@ function renderResults() {
     render();
   });
   app.querySelector('#copy').addEventListener('click', async (e) => {
-    const text = `Political Compass (2026): ${quadrant(pt)} — x ${fmt(pt.x)}, y ${fmt(pt.y)}`;
+    const text = `Political Compass (2026): ${quadrant(pt)} - x ${fmt(pt.x)}, y ${fmt(pt.y)}`;
     await navigator.clipboard.writeText(text);
     e.target.textContent = 'Copied ✓';
   });

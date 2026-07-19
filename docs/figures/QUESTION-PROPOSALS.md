@@ -1,6 +1,9 @@
 # Question-bank differentiation analysis + proposed additions
 2026-07-18 · from the 42-figure deep-research pass (`node docs/figures/analyze.mjs` reproduces the numbers)
-**Status: PROPOSAL — statement-bank edits are Ethan-reviewed. Nothing here is wired in.**
+**Status: ADOPTED 2026-07-18 after Ethan review.** The eight additions, `y03`
+rewrite, and retirements of `e06` and `y07` are wired into the 42-item bank.
+All figures were re-covered in `RECENCY-UPDATE-2026-07-18.md` and
+`src/figure-updates.js`.
 
 ## What the data says
 

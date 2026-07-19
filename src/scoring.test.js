@@ -3,12 +3,12 @@ import { QUESTIONS } from './questions.js';
 import { score, subScores, quadrant } from './scoring.js';
 
 suite('instrument', () => {
-  it('has 36 questions, 12 per dimension, unique ids', () => {
-    expect(QUESTIONS).toHaveLength(36);
+  it('has 42 questions across four dimensions, unique ids', () => {
+    expect(QUESTIONS).toHaveLength(42);
     const byDim = {};
     for (const q of QUESTIONS) byDim[q.dim] = (byDim[q.dim] ?? 0) + 1;
-    expect(byDim).toEqual({ econ: 12, social: 12, system: 12 });
-    expect(new Set(QUESTIONS.map((q) => q.id)).size).toBe(36);
+    expect(byDim).toEqual({ econ: 12, social: 13, system: 14, foreign: 3 });
+    expect(new Set(QUESTIONS.map((q) => q.id)).size).toBe(42);
   });
 
   it('is roughly balanced against agree-bias on both axes', () => {
@@ -36,7 +36,7 @@ suite('score', () => {
   });
 
   it('skipped questions cannot inflate the score', () => {
-    // Answer only one strongly-right question; ceiling still counts all 36.
+    // Answer only one strongly-right question; ceiling still counts them all.
     const one = { e04: 2 };
     const pt = score(one, QUESTIONS);
     expect(pt.x).toBeGreaterThan(0);
@@ -48,9 +48,9 @@ suite('score', () => {
     expect(quadrant({ x: 3, y: -4 })).toBe('Institutionalist Right');
   });
 
-  it('subScores split by dimension and cover all three', () => {
+  it('subScores split by dimension and cover all four', () => {
     const subs = subScores({ y05: 2 }, QUESTIONS);
-    expect(Object.keys(subs).sort()).toEqual(['econ', 'social', 'system']);
+    expect(Object.keys(subs).sort()).toEqual(['econ', 'foreign', 'social', 'system']);
     expect(subs.system.y).toBeGreaterThan(0);
     expect(subs.econ.y).toBe(0);
   });
