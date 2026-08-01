@@ -1,8 +1,11 @@
 # Roadmap
 
 ## Now
-- [ ] [ETHAN] Deploy the verified owner-feedback update using
+- [x] [ETHAN] Deploy the verified owner-feedback update using
       `docs/DEPLOY-OWNER-ACTION.md`
+      *(Ethan ran the deploy 2026-08-01 via the brief3 run-type packet;
+      site verified live, HTTP 200 at https://political-test-2026.web.app;
+      card-01KYZDHMYX0YXY32W5D3EHQFQB resolved with the URL as receipt)*
 - [x] Ethan reviewed the statement bank; 9 ambiguous items rewritten (2026-07-18)
 - [x] Owner-feedback polish: readable question type, Test-first reloads, own-score
       tooltips, larger title-free Factions chart, and no site em dashes (2026-07-18)
