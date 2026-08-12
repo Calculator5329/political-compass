@@ -35,11 +35,11 @@
 - [x] <!-- workspace:id=work:50c1dff0-2f11-5545-bc65-b4e20579e271 --> Split econ×social chart from the dim tags (2026-07-18; system axis is the main y)
 
 ## Now
-- [x] Figure modes: rosters over the same scored figures, switchable on the
+- [x] <!-- workspace:id=work:3745cd74-1a97-5365-87be-c62b5237e6f7 --> Figure modes: rosters over the same scored figures, switchable on the
       Figures tab. National (subtraction), Local Leaders (Minnesota 10),
       The 2028 Bench, Commentators (2026-08-11)
-- [ ] Remaining mode groups Ethan asked for: world leaders, tech and money
-- [ ] Verification pass over the 27 figures added 2026-08-11: their dossiers are
+- [ ] <!-- workspace:id=work:15cdcf8f-9665-5de0-9760-c097f45877ca --> Remaining mode groups Ethan asked for: world leaders, tech and money
+- [ ] <!-- workspace:id=work:b9513d65-7ff0-50aa-b16e-55dbe8101058 --> Verification pass over the 27 figures added 2026-08-11: their dossiers are
       first-pass and below the per-item citation density of the 2026-07-18 batch
 
 ## Later
@@ -47,11 +47,11 @@
 - [x] <!-- workspace:id=work:5528d69b-342d-591e-98df-f9b0634bc49e --> Compare view v2: pick figures, overlay per-dimension deltas
       (2026-08-11: shipped as the Head to Head tab - two-figure pick, shared
       chart, divergence table sorted by Likert gap)
-- [ ] Research pass: score all figure dossiers against the 12 pending wave-2
+- [ ] <!-- workspace:id=work:102b2a9a-02d8-532f-9bbd-6d7a85a922a5 --> Research pass: score all figure dossiers against the 12 pending wave-2
       items (f04-f08, l01-l03, t01-t03, y16), then drop their `pending` flags
       (candidates and rationale: docs/question-expansion-2026-08.md)
-- [ ] Trajectory research: era-stamped answer sets (`eras`) for a first cohort
+- [ ] <!-- workspace:id=work:ec678907-ddbc-510b-a41a-047b7428aca9 --> Trajectory research: era-stamped answer sets (`eras`) for a first cohort
       (Trump/Vance/Newsom 2016/2020) - rendering machinery already ships
-- [ ] Ballot rosters beyond Minnesota (machinery ships; each state is a
+- [ ] <!-- workspace:id=work:7b217a42-7288-534f-8b7f-4e8e72bb83c7 --> Ballot rosters beyond Minnesota (machinery ships; each state is a
       modes.js roster plus dossier research)
 - [x] <!-- workspace:id=work:b4d0b698-46aa-5d43-ae79-f62836c40b3b --> DEPLOYED (Ethan-directed 2026-07-18): https://political-test-2026.web.app
