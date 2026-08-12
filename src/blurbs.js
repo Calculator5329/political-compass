@@ -56,4 +56,15 @@ export const BLURBS = {
   jakejohnson: 'Rochester math teacher; small-dollar DFL challenger in the First.',
   tafoya: 'Sideline reporter turned Republican Senate nominee.',
   lindell: 'MyPillow founder; Trump-endorsed candidate and election denier.',
+
+  // The 2028 bench
+  rubio: 'Secretary of State and national security adviser at once.',
+  hawley: 'Missouri senator; populist right on wages, hard right elsewhere.',
+  youngkin: 'Former Virginia governor; private-equity money, parents-rights politics.',
+  kemp: 'Georgia governor who refused to overturn 2020 and expanded nothing.',
+  jshapiro: 'Pennsylvania governor; deal-making institutionalist in a Trump state.',
+  whitmer: 'Michigan governor who negotiates with Trump over tariffs.',
+  moore: 'Maryland governor and veteran; service year, mass pardons, not running.',
+  beshear: 'Kentucky governor twice-elected in Trump country; DGA chair.',
+  pritzker: 'Illinois governor; the confrontation wing, billionaire division.',
 };

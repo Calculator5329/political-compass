@@ -1,5 +1,6 @@
 import { FIGURE_2026_UPDATES } from './figure-updates.js';
 import { MN_FIGURES } from './figures-mn.js';
+import { BENCH_FIGURES } from './figures-bench.js';
 
 // Public figures scored against the instrument from documented positions.
 // Deep-research pass 2026-07-18: 14 research agents verified all prior scores
@@ -2934,7 +2935,7 @@ const BASE_FIGURES = [
 
 // The Minnesota roster was scored against the current bank directly, so it
 // carries no 2026-update patch; the merge below is a no-op for those slugs.
-export const FIGURES = [...BASE_FIGURES, ...MN_FIGURES].map((figure) => ({
+export const FIGURES = [...BASE_FIGURES, ...MN_FIGURES, ...BENCH_FIGURES].map((figure) => ({
   ...figure,
   answers: { ...figure.answers, ...FIGURE_2026_UPDATES[figure.slug] },
 }));
