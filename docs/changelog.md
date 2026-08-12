@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-08-11 - figure modes, and 27 new figures
+- Figures tab now switches between rosters: National, Local Leaders,
+  The 2028 Bench, and Commentators. Membership is display-only, drawn by hand
+  in `src/modes.js` the way factions are; scoring is untouched. National is
+  defined by subtraction, so adding a national figure never means editing a
+  roster, and rosters may name slugs whose dossiers do not exist yet.
+- Local Leaders: Klobuchar, Craig, Flanagan, Ellison, Walz, Demuth, Finstad,
+  Jake Johnson, Tafoya, Lindell (`src/figures-mn.js`).
+- The 2028 Bench: nine additions in `src/figures-bench.js` (Rubio, Hawley,
+  Youngkin, Kemp, Josh Shapiro, Whitmer, Moore, Beshear, Pritzker) alongside
+  ten figures already on the board.
+- Commentators: eight additions in `src/figures-media.js` (PF Jung, Piers
+  Morgan, Andrew Wilson, Crowder, Fuentes, Prager, Knowles, Ramsey) alongside
+  nine already scored.
+- Every new figure answered the full 42-item instrument and has a per-question
+  dossier in `docs/figures/`. Each of those dossiers opens with an evidence-
+  density note: they are first pass and below the citation density of the
+  2026-07-18 batch.
+- The chart labels every mark on a roster of 20 or fewer, up from 14, so the
+  17-name Commentators roster is not left mostly unlabelled.
+
 ## 2026-07-18 - owner-feedback polish + recency update
 - Results now labels the second company column "Farthest company" instead of
   the opaque "Farthest remove"; ranking and distance behavior are unchanged.

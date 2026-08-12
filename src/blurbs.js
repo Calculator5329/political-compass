@@ -67,4 +67,14 @@ export const BLURBS = {
   moore: 'Maryland governor and veteran; service year, mass pardons, not running.',
   beshear: 'Kentucky governor twice-elected in Trump country; DGA chair.',
   pritzker: 'Illinois governor; the confrontation wing, billionaire division.',
+
+  // Commentators
+  pfjung: 'Self-described radical centrist; talks politics, states positions rarely.',
+  morgan: 'Uncensored host; anti-woke tabloid centrist who lost CNN over guns.',
+  wilson: 'The Crucible host; Orthodox convert who debates for a living.',
+  crowder: 'Louder with Crowder; the Change My Mind table, fifteen years on.',
+  fuentes: 'America First host; groyper leader staffing Republican offices.',
+  prager: 'PragerU co-founder; Reagan-era fusionism, still recording.',
+  knowles: 'Daily Wire Catholic post-liberal; Aquinas as constitutional theory.',
+  ramsey: 'Debt-free personal finance; the safety net as a moral failure.',
 };

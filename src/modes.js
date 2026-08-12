@@ -37,6 +37,19 @@ export const MODES = [
       'buttigieg', 'aoc', 'walz', 'harris', 'klobuchar',
     ],
   },
+  {
+    id: 'media',
+    name: 'Commentators',
+    blurb:
+      'The people arguing about all of it: streamers, podcasters, and ' +
+      'broadcasters, scored on talk rather than votes.',
+    members: [
+      'pfjung', 'destiny', 'piker', 'pakman', 'btc',
+      'morgan', 'wilson', 'jones', 'owens', 'shapiro',
+      'crowder', 'fuentes', 'carlson', 'prager', 'knowles',
+      'hutch', 'ramsey',
+    ],
+  },
 ];
 
 export const DEFAULT_MODE = 'national';

@@ -190,7 +190,9 @@ const FEATURED = new Set([
 // A roster small enough to print every name does; the crowded national board
 // keeps its hover-only rule so the label type stays large.
 function labelsFor(placed) {
-  return placed.length <= 14 ? new Set(placed.map((f) => f.slug)) : FEATURED;
+  // A hand-drawn roster labels every mark; only the national board, which is
+  // three times the size of any roster, falls back to the featured subset.
+  return placed.length <= 20 ? new Set(placed.map((f) => f.slug)) : FEATURED;
 }
 
 function figureMarks(placed, labelled = labelsFor(placed)) {

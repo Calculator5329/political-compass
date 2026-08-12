@@ -34,6 +34,14 @@
       rewritten `y03`, and two retirements adopted (2026-07-18)
 - [x] <!-- workspace:id=work:50c1dff0-2f11-5545-bc65-b4e20579e271 --> Split econ×social chart from the dim tags (2026-07-18; system axis is the main y)
 
+## Now
+- [x] Figure modes: rosters over the same scored figures, switchable on the
+      Figures tab. National (subtraction), Local Leaders (Minnesota 10),
+      The 2028 Bench, Commentators (2026-08-11)
+- [ ] Remaining mode groups Ethan asked for: world leaders, tech and money
+- [ ] Verification pass over the 27 figures added 2026-08-11: their dossiers are
+      first-pass and below the per-item citation density of the 2026-07-18 batch
+
 ## Later
 - [x] <!-- workspace:id=work:2472661c-7c23-5b6b-b801-e9e2e1825c3a --> Compare view v1: show-me toggle on Figures + nearest/farthest on results (2026-07-18)
 - [ ] <!-- workspace:id=work:5528d69b-342d-591e-98df-f9b0634bc49e --> Compare view v2: pick figures, overlay per-dimension deltas
