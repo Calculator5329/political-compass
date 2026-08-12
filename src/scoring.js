@@ -26,6 +26,20 @@ export function score(answers, questions) {
   };
 }
 
+// Figures are scored over the questions their dossier actually answers. A
+// respondent skipping an item is a non-answer that must not inflate their
+// score (handled above by the fixed ceiling); a figure missing an item means
+// the research pass has not covered it yet (`pending` wave items), and letting
+// it count toward the ceiling would drag every figure toward the center each
+// time the bank grows.
+export function scoreFigure(answers, questions) {
+  return score(answers, questions.filter((q) => q.id in answers));
+}
+
+export function subScoresFigure(answers, questions) {
+  return subScores(answers, questions.filter((q) => q.id in answers));
+}
+
 // Sub-dimension scores for the future 4-axis view.
 export function subScores(answers, questions) {
   const dims = {};

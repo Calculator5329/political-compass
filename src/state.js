@@ -61,6 +61,28 @@ export function migrateLegacyState(stored, freshState) {
   };
 }
 
+// Wave-2 bank growth (42 -> 54): a browser holding answers to the old bank
+// keeps every answer, its ledger signature, and its claim; the new items are
+// appended to the question order (caller supplies them pre-shuffled) and the
+// taker lands on the first of them instead of losing progress or diluting a
+// finished score with a dozen silent skips.
+export function migrateGrownBank(stored, questions, shuffledNewIds) {
+  if (!stored || !Array.isArray(stored.order)) return null;
+  if (stored.order.length >= questions.length) return null;
+  const ids = new Set(questions.map((q) => q.id));
+  if (!stored.order.every((id) => ids.has(id))) return null; // pre-42 legacy
+  const oldDone =
+    stored.order.every((id) => typeof stored.answers?.[id] === 'number') ||
+    stored.testScreen === 'results';
+  return {
+    ...stored,
+    order: [...stored.order, ...shuffledNewIds],
+    idx: oldDone ? stored.order.length : Math.min(stored.idx ?? 0, stored.order.length - 1),
+    screen: 'quiz',
+    testScreen: 'quiz',
+  };
+}
+
 export function backfillStoredSubscores(rows, state) {
   const recovered = state.legacySavedSubscores;
   if (!state.savedId || !recovered) return rows;

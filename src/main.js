@@ -1,13 +1,29 @@
-import { QUESTIONS } from './questions.js';
-import { LIKERT, score, subScores, quadrant, describe } from './scoring.js';
+import { PRINCIPLE_PAIRS, QUESTIONS } from './questions.js';
+import {
+  LIKERT, score, scoreFigure, subScores, subScoresFigure, quadrant, describe,
+} from './scoring.js';
 import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
 import { DEFAULT_MODE, MODES, figuresInMode, modeById } from './modes.js';
 import {
+  ballotRanking,
+  compressibility,
+  extremity,
+  factionFit,
+  figureMatches,
+  fitQuestionModels,
+  headToHead,
+  heterodoxy,
+  likertLabel,
+  pairConsistency,
+  trajectory,
+} from './insights.js';
+import {
   backfillStoredSubscores,
   isTestScreen,
+  migrateGrownBank,
   migrateLegacyState,
   rowsWithSubscores,
   splitLeaderboardRows,
@@ -42,6 +58,15 @@ function load() {
   try {
     const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (s && Array.isArray(s.order) && s.order.length === QUESTIONS.length) return s;
+    // Bank grew (wave-2 items): keep every answer and the ledger signature,
+    // append the new items, land the taker on the first of them.
+    const grown = migrateGrownBank(s, QUESTIONS, shuffle(
+      QUESTIONS.map((q) => q.id).filter((id) => !s?.order?.includes(id)),
+    ));
+    if (grown) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(grown));
+      return grown;
+    }
     const migrated = migrateLegacyState(s, fresh());
     if (migrated) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
@@ -87,6 +112,7 @@ function render() {
   else if (state.screen === 'quiz') renderQuiz();
   else if (state.screen === 'figures') renderFigures();
   else if (state.screen === 'factions') renderFactions();
+  else if (state.screen === 'compare') renderCompare();
   else if (state.screen === 'board') renderBoard();
   else renderResults();
 }
@@ -95,6 +121,7 @@ const NAV = [
   ['intro', 'The Test'],
   ['figures', 'Figures'],
   ['factions', 'Factions'],
+  ['compare', 'Head to Head'],
   ['board', 'Leaderboard'],
 ];
 
@@ -137,11 +164,13 @@ function drawOn(selector, point, marks, opts) {
 }
 
 // Every figure scored on the main plane and the sub-dimensions, once.
+// Figures score over the items their dossier answers (scoreFigure), so
+// pending wave-2 items don't drag the whole roster toward the center.
 function placedFigures() {
   return FIGURES.map((f) => ({
     ...f,
-    pt: score(f.answers, QUESTIONS),
-    subs: subScores(f.answers, QUESTIONS),
+    pt: scoreFigure(f.answers, QUESTIONS),
+    subs: subScoresFigure(f.answers, QUESTIONS),
   }));
 }
 
@@ -198,6 +227,7 @@ function labelsFor(placed) {
 function figureMarks(placed, labelled = labelsFor(placed)) {
   return placed.map((f) => ({
     x: f.pt.x, y: f.pt.y,
+    trail: trajectory(f, QUESTIONS).map((t) => ({ x: t.pt.x, y: t.pt.y, era: t.era })),
     label: labelled.has(f.slug)
       ? f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1)
       : '',
@@ -633,16 +663,109 @@ function advance() {
   else set({ idx: state.idx + 1 });
 }
 
+// Display copy for the per-dimension view. Which axis a dimension reads on is
+// computed from its weight vectors (dimAxis), never hardcoded here.
+const DIM_META = {
+  econ: { name: 'Economic', neg: 'Left', pos: 'Right' },
+  social: { name: 'Social', neg: 'Progressive', pos: 'Traditional' },
+  system: { name: 'System', neg: 'Institutionalist', pos: 'Insurgent' },
+  foreign: { name: 'Foreign', neg: 'Engagement', pos: 'Restraint' },
+  liberty: { name: 'Liberty', neg: 'Order', pos: 'Liberties' },
+  tech: { name: 'Technology', neg: 'Regulate', pos: 'Laissez-faire' },
+};
+
+// The axis a dimension's items load most heavily, from the weights themselves.
+function dimAxis(dim) {
+  let ax = 0, ay = 0;
+  for (const q of QUESTIONS) {
+    if (q.dim !== dim) continue;
+    ax += Math.abs(q.w.x);
+    ay += Math.abs(q.w.y);
+  }
+  return ax >= ay ? 'x' : 'y';
+}
+
+function clip(text, n = 92) {
+  return text.length > n ? `${text.slice(0, n - 1)}…` : text;
+}
+
+function pct(v) {
+  return `${Math.round(v * 100)}%`;
+}
+
+function dimBars(answers) {
+  const subs = subScores(answers, QUESTIONS);
+  return `<div class="dims">${Object.keys(DIM_META).map((dim) => {
+    const meta = DIM_META[dim];
+    const answered = QUESTIONS.filter((q) => q.dim === dim && typeof answers[q.id] === 'number').length;
+    const v = subs[dim]?.[dimAxis(dim)] ?? 0;
+    const left = ((v + 10) / 20) * 100;
+    return `<div class="dim-row">
+      <span class="dim-name smallcaps">${meta.name}</span>
+      <span class="dim-end muted">${meta.neg}</span>
+      <span class="dim-bar">${answered ? `<b class="dim-x" style="left:${left}%">✕</b>` : ''}</span>
+      <span class="dim-end muted">${meta.pos}</span>
+      <span class="dim-val muted">${answered ? fmt(v) : 'n/a'}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
 function renderResults() {
   const pt = score(state.answers, QUESTIONS);
-  const subs = subScores(state.answers, QUESTIONS);
-  const ranked = placedFigures()
-    .map((f) => ({ f, d: Math.hypot(f.pt.x - pt.x, f.pt.y - pt.y) }))
-    .sort((a, b) => a.d - b.d);
-  const neighbours = ranked.slice(0, 3);
-  const antipodes = ranked.slice(-3).reverse();
-  const company = (r) => `<li><span class="fig-name">${r.f.name}</span>
-    <span class="muted">${quadrant(r.f.pt)} · ${r.d.toFixed(1)} away</span></li>`;
+  const placed = placedFigures();
+
+  // Company by full answer vector, not map distance: two people can share a
+  // point through entirely different answers. Falls back to plane distance if
+  // too few items were answered to compare honestly.
+  const matches = figureMatches(state.answers, placed, QUESTIONS);
+  let neighbours, antipodes, companyNote;
+  if (matches.length >= 3) {
+    neighbours = matches.slice(0, 3);
+    antipodes = matches.slice(-3).reverse();
+    companyNote = 'Matched answer by answer across the whole questionnaire, not by map distance.';
+  } else {
+    const ranked = placed
+      .map((f) => ({ figure: f, d: Math.hypot(f.pt.x - pt.x, f.pt.y - pt.y) }))
+      .sort((a, b) => a.d - b.d);
+    neighbours = ranked.slice(0, 3);
+    antipodes = ranked.slice(-3).reverse();
+    companyNote = 'Too few answers for full matching; ranked by map distance instead.';
+  }
+  const company = (r, receipt) => `<li><span class="fig-name">${r.figure.name}</span>
+    <span class="muted">${'agreement' in r
+      ? `${pct(r.agreement)} aligned over ${r.shared} shared answers`
+      : `${quadrant(r.figure.pt)} · ${r.d.toFixed(1)} away`}</span>
+    ${receipt ? `<span class="company-receipt muted">${receipt}</span>` : ''}</li>`;
+  const agreeReceipt = (r) => r.agrees?.[0]
+    ? `Both of you: “${clip(r.agrees[0].q.text, 76)}”` : '';
+  const splitReceipt = (r) => r.disagrees?.[0]
+    ? `You split on: “${clip(r.disagrees[0].q.text, 76)}”` : '';
+
+  // Heterodoxy: where this taker breaks from what their own position
+  // predicts, measured against the figure roster's answer surface.
+  const models = fitQuestionModels(placed, QUESTIONS);
+  const breaks = heterodoxy(state.answers, pt, models, QUESTIONS)
+    .filter((h) => Math.abs(h.residual) >= 1.2)
+    .slice(0, 4);
+  const fit = compressibility(state.answers, pt, models, QUESTIONS);
+  const temper = extremity(state.answers, QUESTIONS);
+  const tensions = pairConsistency(state.answers, QUESTIONS, PRINCIPLE_PAIRS)
+    .filter((p) => Math.abs(p.tension) >= 2);
+
+  const fitLine = [
+    fit ? `Two axes explain ${pct(fit.r2)} of your ${fit.n} modelled answers.` : '',
+    `Full conviction on ${temper.strong} of ${temper.answered} answered;
+     ${temper.neutral} neutral${temper.skipped ? `, ${temper.skipped} skipped` : ''}.`,
+  ].filter(Boolean).join(' ');
+
+  const nearestFaction = factionFit(pt, FACTIONS)[0];
+  const factionLine = nearestFaction
+    ? `${nearestFaction.d <= 1 ? 'Your territory' : 'Nearest territory'}:
+       <em>${nearestFaction.faction.name}</em>`
+    : '';
+
+  // Ballot machinery, demonstrated on the one researched local roster.
+  const ballot = ballotRanking(state.answers, placed, QUESTIONS, modeById('local').members ?? []);
 
   app.append(el(`
     <p class="kicker center">The instrument renders its verdict</p>
@@ -655,19 +778,42 @@ function renderResults() {
       <div class="place">${quadrant(pt)}</div>
       <div class="coords">x ${fmt(pt.x)} · y ${fmt(pt.y)}</div>
       <p class="desc">${describe(pt)}</p>
-      <p class="muted mt">Sub-dimensions - econ ${fmt(subs.econ.x)}, social ${fmt(subs.social.x)},
-      system ${fmt(subs.system.y)}</p>
+      ${factionLine ? `<p class="muted">${factionLine}</p>` : ''}
     </div>
+    <h3 class="smallcaps center mt">The Six Dimensions</h3>
+    ${dimBars(state.answers)}
     <div class="company">
       <div class="company-col">
         <h3 class="smallcaps">Nearest company</h3>
-        <ul>${neighbours.map(company).join('')}</ul>
+        <ul>${neighbours.map((r) => company(r, agreeReceipt(r))).join('')}</ul>
       </div>
       <div class="company-col">
         <h3 class="smallcaps">Farthest company</h3>
-        <ul>${antipodes.map(company).join('')}</ul>
+        <ul>${antipodes.map((r) => company(r, splitReceipt(r))).join('')}</ul>
       </div>
     </div>
+    <p class="muted center company-note">${companyNote}</p>
+    ${breaks.length ? `
+      <h3 class="smallcaps center mt">Where You Break From Your Neighborhood</h3>
+      <ul class="hetero">${breaks.map((h) => `
+        <li>“${clip(h.q.text)}”<br />
+          <span class="muted">People near your position typically say
+          <em>${likertLabel(Math.round(h.expected))}</em>; you said
+          <em>${likertLabel(h.actual)}</em>.</span></li>`).join('')}
+      </ul>` : ''}
+    ${tensions.length ? `
+      <p class="muted center tension-note">The instrument notes you endorsed both sides of
+      ${tensions.length === 1 ? 'a mirrored pair' : `${tensions.length} mirrored pairs`} of
+      statements about the same power, read from opposite thrones.</p>` : ''}
+    <p class="muted center fit-line">${fitLine}</p>
+    ${ballot.length ? `
+      <h3 class="smallcaps center mt">The Minnesota Ballot, Ranked For You</h3>
+      <ol class="ballot">${ballot.map((r) => `
+        <li><span class="fig-name">${r.figure.name}</span>
+          <span class="muted">${pct(r.agreement)} aligned</span></li>`).join('')}
+      </ol>
+      <p class="muted center company-note">Ranked by shared answers with each figure's documented
+      record. Minnesota is the first researched ballot; other states follow the same machinery.</p>` : ''}
     <p class="center"><button class="ghost" id="seefigs">See yourself among the figures →</button></p>
     <div class="actions save-row">
       ${state.savedId
@@ -689,7 +835,7 @@ function renderResults() {
     saveBtn.textContent = 'Inscribing…';
     try {
       const { saveScore } = await import('./firebase.js');
-      const id = await saveScore(name, pt, quadrant(pt), subs);
+      const id = await saveScore(name, pt, quadrant(pt), subScores(state.answers, QUESTIONS));
       set({ savedId: id });
     } catch (e) {
       saveBtn.disabled = false;
@@ -716,6 +862,65 @@ function renderResults() {
     await navigator.clipboard.writeText(text);
     e.target.textContent = 'Copied ✓';
   });
+}
+
+// Head-to-head: any two figures, every shared question, sorted by how far
+// apart their documented records land.
+function renderCompare() {
+  const placed = placedFigures().sort((a, b) => a.name.localeCompare(b.name));
+  const a = placed.find((f) => f.slug === state.cmpA) ?? placed.find((f) => f.slug === 'trump') ?? placed[0];
+  const b = placed.find((f) => f.slug === state.cmpB) ?? placed.find((f) => f.slug === 'newsom') ?? placed[1];
+  const h2h = headToHead(a, b, QUESTIONS);
+  const shown = h2h.rows.slice(0, 12);
+  const pick = (id, chosen, other) => `
+    <select id="${id}">${placed.map((f) => `
+      <option value="${f.slug}" ${f.slug === chosen.slug ? 'selected' : ''}
+        ${f.slug === other.slug ? 'disabled' : ''}>${esc(f.name)}</option>`).join('')}
+    </select>`;
+  const sourceLinks = (f) => f.sources.slice(0, 3).map((s, i) =>
+    `<a href="${s.url}" target="_blank" rel="noopener" title="${esc(s.title)}">${i + 1}</a>`).join(' ');
+
+  app.append(el(`
+    <p class="kicker center">Two records, one instrument</p>
+    <h1 class="center">Head to Head</h1>
+    <div class="h2h-picks center">
+      ${pick('cmp-a', a, b)}
+      <span class="smallcaps h2h-vs">against</span>
+      ${pick('cmp-b', b, a)}
+    </div>
+    <div class="chart-wrap" id="wrap-compare">
+      <canvas class="compass"></canvas>
+      <div class="fig-tip" hidden></div>
+    </div>
+    <p class="center muted">Of ${h2h.rows.length} questions both records answer, they align on
+    ${h2h.aligned} and split hard on ${h2h.split}.
+    Sources - ${esc(a.name)}: ${sourceLinks(a)} · ${esc(b.name)}: ${sourceLinks(b)}</p>
+    <table class="h2h">
+      <thead><tr><th>The statement</th><th>${esc(a.name)}</th><th>${esc(b.name)}</th></tr></thead>
+      <tbody>${shown.map((r) => `
+        <tr class="${r.gap >= 3 ? 'h2h-split' : ''}">
+          <td>“${r.q.text}”</td>
+          <td>${likertLabel(r.a)}</td>
+          <td>${likertLabel(r.b)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+    <p class="muted center company-note">The ${shown.length} widest divergences, of
+    ${h2h.rows.length} shared questions.</p>
+  `));
+
+  const marks = [a, b].map((f) => ({
+    x: f.pt.x, y: f.pt.y,
+    trail: trajectory(f, QUESTIONS).map((t) => ({ x: t.pt.x, y: t.pt.y, era: t.era })),
+    label: f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1),
+    name: f.name,
+    blurb: BLURBS[f.slug] ?? '',
+    place: `${quadrant(f.pt)} · x ${fmt(f.pt.x)} · y ${fmt(f.pt.y)}`,
+  }));
+  drawOn('#wrap-compare canvas', null, marks);
+  attachFigureTip(app.querySelector('#wrap-compare'), marks);
+  app.querySelector('#cmp-a').addEventListener('change', (e) => set({ cmpA: e.target.value }));
+  app.querySelector('#cmp-b').addEventListener('change', (e) => set({ cmpB: e.target.value }));
 }
 
 function fmt(n) {

@@ -44,5 +44,14 @@
 
 ## Later
 - [x] <!-- workspace:id=work:2472661c-7c23-5b6b-b801-e9e2e1825c3a --> Compare view v1: show-me toggle on Figures + nearest/farthest on results (2026-07-18)
-- [ ] <!-- workspace:id=work:5528d69b-342d-591e-98df-f9b0634bc49e --> Compare view v2: pick figures, overlay per-dimension deltas
+- [x] <!-- workspace:id=work:5528d69b-342d-591e-98df-f9b0634bc49e --> Compare view v2: pick figures, overlay per-dimension deltas
+      (2026-08-11: shipped as the Head to Head tab - two-figure pick, shared
+      chart, divergence table sorted by Likert gap)
+- [ ] Research pass: score all figure dossiers against the 12 pending wave-2
+      items (f04-f08, l01-l03, t01-t03, y16), then drop their `pending` flags
+      (candidates and rationale: docs/question-expansion-2026-08.md)
+- [ ] Trajectory research: era-stamped answer sets (`eras`) for a first cohort
+      (Trump/Vance/Newsom 2016/2020) - rendering machinery already ships
+- [ ] Ballot rosters beyond Minnesota (machinery ships; each state is a
+      modes.js roster plus dossier research)
 - [x] <!-- workspace:id=work:b4d0b698-46aa-5d43-ae79-f62836c40b3b --> DEPLOYED (Ethan-directed 2026-07-18): https://political-test-2026.web.app

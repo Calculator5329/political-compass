@@ -21,6 +21,31 @@
 - The chart labels every mark on a roster of 20 or fewer, up from 14, so the
   17-name Commentators roster is not left mostly unlabelled.
 
+## 2026-08-11 - instrument expansion + insight features
+- Statement bank grows 42 -> 54: five new foreign items (Taiwan, military
+  budget, NATO burden-sharing, foreign aid, UN/WHO), a new `liberty` dimension
+  (surveillance, protest bans, speech law), a new `tech` dimension (AI
+  licensing, debanking, automation UBI), and `y16` completing the first
+  mirrored principle pair with `y04`. Full candidate list and cuts:
+  `docs/question-expansion-2026-08.md`. New items ship `pending` until a
+  figure-research pass covers them.
+- Figures now score over the items their dossier answers (`scoreFigure`), so a
+  growing bank can never drag the roster toward the center; a test pins this.
+- A stored 42-item browser state migrates forward: answers, ledger signature,
+  and claim survive, and the taker lands on the first new question.
+- Results gains: The Six Dimensions (per-dimension ink scales, dominant axis
+  computed from the weights), full-answer-vector nearest/farthest company with
+  quoted receipts, a heterodoxy report ("where you break from your
+  neighborhood," measured against an OLS answer surface fitted on the figure
+  roster), a compressibility line (how much of you two axes explain), a
+  mirrored-pair tension note, faction territory assignment, and the Minnesota
+  ballot ranked by shared answers.
+- New Head to Head tab: any two figures, shared chart, and their widest
+  divergences question by question with source links.
+- Trajectory machinery: a figure may carry era-stamped `eras` answer sets;
+  the chart draws a dashed ink trail through past positions. No era data is
+  researched yet, so nothing renders until it lands.
+
 ## 2026-07-18 - owner-feedback polish + recency update
 - Results now labels the second company column "Farthest company" instead of
   the opaque "Farthest remove"; ranking and distance behavior are unchanged.

@@ -55,4 +55,36 @@ export const QUESTIONS = [
   { id: 'f01', dim: 'foreign', text: 'The United States should stay out of foreign wars even when allies ask for help.', w: { x: 0.2, y: 0.6 } },
   { id: 'f02', dim: 'foreign', text: 'American support for Israel should continue largely unconditionally.', w: { x: 0.6, y: -0.3 } },
   { id: 'f03', dim: 'foreign', text: 'Continuing military aid to Ukraine is in America’s interest.', w: { x: -0.4, y: -0.6 } },
+
+  // ----- wave-2 expansion, curated 2026-08-11 (full candidate list and the
+  // rejects: docs/question-expansion-2026-08.md). `pending` marks items the
+  // figure dossiers have not been researched against yet: figures are scored
+  // on the subset they have answered, and the coverage test exempts these
+  // until a research pass lands and the flag comes off.
+  { id: 'f04', dim: 'foreign', pending: true, text: 'If China attacks Taiwan, the United States should defend it militarily.', w: { x: 0.1, y: -0.6 } },
+  { id: 'f05', dim: 'foreign', pending: true, text: 'The military budget should be cut substantially and the savings spent at home.', w: { x: -0.5, y: 0.3 } },
+  { id: 'f06', dim: 'foreign', pending: true, text: 'NATO allies that will not pay for their own defense should not count on American protection.', w: { x: 0.4, y: 0.5 } },
+  { id: 'f07', dim: 'foreign', pending: true, text: 'Foreign aid that fights famine and disease abroad is money well spent.', w: { x: -0.4, y: -0.5 } },
+  { id: 'f08', dim: 'foreign', pending: true, text: 'International bodies like the UN and the WHO have too much say over American policy.', w: { x: 0.4, y: 0.6 } },
+
+  // ----- liberty (order vs civil liberties; cross-cuts left/right) -----
+  { id: 'l01', dim: 'liberty', pending: true, text: 'Expanded government surveillance is an acceptable price for stopping terrorism and violent crime.', w: { x: 0.2, y: -0.6 } },
+  { id: 'l02', dim: 'liberty', pending: true, text: 'Authorities should be able to ban protests they judge a threat to public order.', w: { x: 0.3, y: -0.6 } },
+  { id: 'l03', dim: 'liberty', pending: true, text: 'Speech that demeans racial or religious groups should be punishable by law.', w: { x: -0.4, y: -0.4 } },
+
+  // ----- tech (the 2026 technology fights) -----
+  { id: 't01', dim: 'tech', pending: true, text: 'Frontier artificial intelligence should be licensed and regulated as strictly as aviation or pharmaceuticals, even if that slows it down.', w: { x: -0.4, y: -0.3 } },
+  { id: 't02', dim: 'tech', pending: true, text: 'Banks and payment processors should be barred from denying service over lawful speech or politics.', w: { x: 0.3, y: 0.5 } },
+  { id: 't03', dim: 'tech', pending: true, text: 'If automation and AI wipe out large numbers of jobs, the government should guarantee a basic income.', w: { x: -0.7, y: 0.1 } },
+
+  // ----- system, principle-pair probe (mirrors y04) -----
+  { id: 'y16', dim: 'system', pending: true, text: 'Career officials who resist a president’s orders on legal grounds are doing their job, not sabotaging democracy.', w: { x: -0.2, y: -0.7 } },
+];
+
+// Mirrored statement pairs: each pair asks for the same underlying power or
+// principle with the valence flipped. Endorsing both sides of a pair is a
+// measurable inconsistency, surfaced by pairConsistency() in insights.js.
+export const PRINCIPLE_PAIRS = [
+  ['y04', 'y16'],
+  ['y05', 'l02'],
 ];

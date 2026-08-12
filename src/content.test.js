@@ -5,10 +5,12 @@ import { describe, expect, it } from 'vitest';
 import { BLURBS } from './blurbs.js';
 import { FIGURES } from './figures.js';
 import { MODES, figuresInMode } from './modes.js';
-import { QUESTIONS } from './questions.js';
+import { PRINCIPLE_PAIRS, QUESTIONS } from './questions.js';
+import { score, scoreFigure } from './scoring.js';
 import {
   backfillStoredSubscores,
   legacySubscores,
+  migrateGrownBank,
   migrateLegacyState,
   rowsWithSubscores,
   splitLeaderboardRows,
@@ -30,14 +32,35 @@ describe('site copy', () => {
     }
   });
 
-  it('scores every figure against every current question', () => {
-    const ids = QUESTIONS.map((question) => question.id);
+  it('scores every figure against every researched question', () => {
+    // Wave-2 items ship `pending` until the dossier research pass covers
+    // them; everything else must be answered by every figure.
+    const ids = QUESTIONS.filter((question) => !question.pending)
+      .map((question) => question.id);
     for (const figure of FIGURES) {
       expect(
         ids.filter((id) => !(id in figure.answers)),
         `${figure.name} has unanswered current items`,
       ).toEqual([]);
     }
+  });
+
+  it('keeps principle pairs mirrored and figure scores immune to pending items', () => {
+    const byId = Object.fromEntries(QUESTIONS.map((q) => [q.id, q]));
+    for (const [aId, bId] of PRINCIPLE_PAIRS) {
+      const a = byId[aId];
+      const b = byId[bId];
+      expect(a, aId).toBeTruthy();
+      expect(b, bId).toBeTruthy();
+      // Mirrored statements must pull opposite ways on the system axis.
+      expect(Math.sign(a.w.y) * Math.sign(b.w.y), `${aId}/${bId}`).toBe(-1);
+    }
+    // A figure answering only researched items scores identically whether or
+    // not the pending wave exists: no drift toward the center as the bank grows.
+    const researched = QUESTIONS.filter((q) => !q.pending);
+    const figure = FIGURES[0];
+    expect(scoreFigure(figure.answers, QUESTIONS))
+      .toEqual(score(figure.answers, researched));
   });
 
   it('keeps the second full-instrument research corrections wired in', () => {
@@ -119,6 +142,29 @@ describe('site copy', () => {
   it('limits the second leaderboard plane to entries with both sub-scores', () => {
     const complete = { id: 'complete', es: 0, ss: -2 };
     expect(rowsWithSubscores([complete, { id: 'old' }, { id: 'partial', es: 1 }])).toEqual([complete]);
+  });
+
+  it('grows a stored 42-item state into the 54-item bank without losing anything', () => {
+    const oldIds = QUESTIONS.filter((q) => !q.pending).map((q) => q.id);
+    const newIds = QUESTIONS.filter((q) => q.pending).map((q) => q.id);
+    const answers = Object.fromEntries(oldIds.map((id) => [id, 1]));
+    const finished = migrateGrownBank(
+      { order: oldIds, answers, savedId: 'mine', testScreen: 'results', idx: 41 },
+      QUESTIONS,
+      newIds,
+    );
+    expect(finished.order).toEqual([...oldIds, ...newIds]);
+    expect(finished.savedId).toBe('mine');
+    expect(finished.idx).toBe(oldIds.length); // lands on the first new item
+    expect(finished.screen).toBe('quiz');
+    const midway = migrateGrownBank(
+      { order: oldIds, answers: { e01: 2 }, idx: 7 },
+      QUESTIONS,
+      newIds,
+    );
+    expect(midway.idx).toBe(7);
+    // A pre-42 legacy state (contains retired ids) is not this migration's job.
+    expect(migrateGrownBank({ order: ['e06'], answers: {} }, QUESTIONS, newIds)).toBeNull();
   });
 
   it('recovers exact legacy sub-scores from preserved browser answers', () => {

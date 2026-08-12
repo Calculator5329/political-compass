@@ -161,6 +161,38 @@ export function drawCompass(canvas, point /* {x,y} in [-10,10] or null */, marks
   // with no placed label and no dot; failing all, it slides downward on a
   // faint leader line. Keep the fallback inside the plotted page so dense
   // edge clusters move inward instead of disappearing under an axis caption.
+  // era trails: a figure with historical answer sets draws a dashed ink line
+  // through its past positions (hollow dots, small era captions) ending at the
+  // present-day mark. Data-driven: no figure carries eras until a research
+  // pass writes them, so this is invisible today.
+  for (const m of marks) {
+    if (!m.trail?.length) continue;
+    const px = (v) => c + (v / 10) * half;
+    const py = (v) => c - (v / 10) * half;
+    const pts = [...m.trail.map((t) => ({ x: px(t.x), y: py(t.y), era: t.era })),
+                 { x: px(m.x), y: py(m.y) }];
+    ctx.strokeStyle = alpha(INK, 0.45);
+    ctx.lineWidth = 1.1;
+    ctx.setLineDash([5, 4]);
+    for (let i = 0; i < pts.length - 1; i++) {
+      waveringLine(ctx, pts[i].x, pts[i].y, pts[i + 1].x, pts[i + 1].y, 12);
+    }
+    ctx.setLineDash([]);
+    ctx.font = `${Math.max(9, Math.round(s * 0.02))}px ${th.font}`;
+    ctx.textAlign = 'center';
+    for (const p of pts.slice(0, -1)) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
+      ctx.strokeStyle = alpha(th.accent, 0.7);
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      if (p.era) {
+        ctx.fillStyle = alpha(INK, 0.6);
+        ctx.fillText(p.era, p.x, p.y - 6);
+      }
+    }
+  }
+
   if (marks.length) {
     const labeled = marks.filter((m) => m.label).length;
     const dense = labeled > 30;

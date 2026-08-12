@@ -3,12 +3,14 @@ import { QUESTIONS } from './questions.js';
 import { score, subScores, quadrant } from './scoring.js';
 
 suite('instrument', () => {
-  it('has 42 questions across four dimensions, unique ids', () => {
-    expect(QUESTIONS).toHaveLength(42);
+  it('has 54 questions across six dimensions, unique ids', () => {
+    expect(QUESTIONS).toHaveLength(54);
     const byDim = {};
     for (const q of QUESTIONS) byDim[q.dim] = (byDim[q.dim] ?? 0) + 1;
-    expect(byDim).toEqual({ econ: 12, social: 13, system: 14, foreign: 3 });
-    expect(new Set(QUESTIONS.map((q) => q.id)).size).toBe(42);
+    expect(byDim).toEqual({
+      econ: 12, social: 13, system: 15, foreign: 8, liberty: 3, tech: 3,
+    });
+    expect(new Set(QUESTIONS.map((q) => q.id)).size).toBe(54);
   });
 
   it('is roughly balanced against agree-bias on both axes', () => {
@@ -48,9 +50,9 @@ suite('score', () => {
     expect(quadrant({ x: 3, y: -4 })).toBe('Institutionalist Right');
   });
 
-  it('subScores split by dimension and cover all four', () => {
+  it('subScores split by dimension and cover all six', () => {
     const subs = subScores({ y05: 2 }, QUESTIONS);
-    expect(Object.keys(subs).sort()).toEqual(['econ', 'foreign', 'social', 'system']);
+    expect(Object.keys(subs).sort()).toEqual(['econ', 'foreign', 'liberty', 'social', 'system', 'tech']);
     expect(subs.system.y).toBeGreaterThan(0);
     expect(subs.econ.y).toBe(0);
   });

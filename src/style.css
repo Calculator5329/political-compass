@@ -530,3 +530,82 @@ select#claim {
 }
 select#claim:invalid, select#claim option[value=""] { color: var(--ink-soft); }
 .fig-tip-desc:empty { display: none; }
+
+/* the six dimensions - thin ink scales with a red mark */
+.dims { max-width: 36rem; margin: 0.8rem auto 0; }
+.dim-row {
+  display: grid;
+  grid-template-columns: 6.2rem 6rem 1fr 6rem 3rem;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.45rem 0;
+}
+.dim-name { font-size: 0.82rem; }
+.dim-end { font-size: 0.78rem; font-family: var(--font-caps); }
+.dim-end:nth-child(4) { text-align: right; }
+.dim-val { font-size: 0.82rem; text-align: right; font-variant-numeric: tabular-nums; }
+.dim-bar {
+  position: relative;
+  height: 1.1rem;
+  border-bottom: 1px solid var(--rule);
+  background:
+    linear-gradient(var(--rule), var(--rule)) 50% 0 / 1px 100% no-repeat;
+}
+.dim-x {
+  position: absolute;
+  top: 0.05rem;
+  transform: translateX(-50%);
+  color: var(--accent);
+  font-weight: normal;
+  font-size: 0.95rem;
+}
+@media (max-width: 520px) {
+  .dim-row { grid-template-columns: 5rem 1fr 3rem; }
+  .dim-end { display: none; }
+}
+
+/* heterodoxy + notes on results */
+.hetero {
+  list-style: none;
+  max-width: 36rem;
+  margin: 0.8rem auto 0;
+  padding: 0;
+}
+.hetero li { margin: 0.7rem 0; }
+.hetero li .muted { font-size: 0.88rem; }
+.company-note, .fit-line, .tension-note { font-size: 0.88rem; max-width: 36rem; margin-left: auto; margin-right: auto; }
+.company-receipt { display: block; font-size: 0.78rem; font-style: italic; }
+
+/* the ranked ballot */
+.ballot { max-width: 26rem; margin: 0.8rem auto 0; padding-left: 1.6rem; }
+.ballot li { margin: 0.3rem 0; }
+.ballot li .muted { margin-left: 0.5rem; font-size: 0.85rem; }
+
+/* head to head */
+.h2h-picks { display: flex; justify-content: center; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+.h2h-picks select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  padding: 0.15rem 0.3rem;
+}
+.h2h-vs { color: var(--ink-soft); }
+.h2h {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+.h2h th {
+  font-family: var(--font-caps);
+  font-weight: normal;
+  text-align: left;
+  border-bottom: 1px solid var(--ink);
+  padding: 0.3rem 0.5rem;
+}
+.h2h td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.h2h td:first-child { width: 55%; }
+.h2h-split td:not(:first-child) { color: var(--accent); }
