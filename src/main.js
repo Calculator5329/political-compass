@@ -4,6 +4,7 @@ import { drawCompass, fitCanvas, hitMark, hitRegion } from './compass.js';
 import { FIGURES } from './figures.js';
 import { BLURBS } from './blurbs.js';
 import { FACTIONS } from './factions.js';
+import { DEFAULT_MODE, MODES, figuresInMode, modeById } from './modes.js';
 import {
   backfillStoredSubscores,
   isTestScreen,
@@ -186,10 +187,16 @@ const FEATURED = new Set([
   'desantis', 'newsom', 'harris', 'rogan',
 ]);
 
-function figureMarks(placed) {
+// A roster small enough to print every name does; the crowded national board
+// keeps its hover-only rule so the label type stays large.
+function labelsFor(placed) {
+  return placed.length <= 14 ? new Set(placed.map((f) => f.slug)) : FEATURED;
+}
+
+function figureMarks(placed, labelled = labelsFor(placed)) {
   return placed.map((f) => ({
     x: f.pt.x, y: f.pt.y,
-    label: FEATURED.has(f.slug)
+    label: labelled.has(f.slug)
       ? f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1)
       : '',
     name: f.name,
@@ -199,12 +206,17 @@ function figureMarks(placed) {
 }
 
 function renderFigures() {
-  const placed = placedFigures();
+  const mode = modeById(state.figMode ?? DEFAULT_MODE);
+  const placed = figuresInMode(placedFigures(), mode.id);
   const mine = effectivePoint();
   const showMe = state.showMe ?? true;
   app.append(el(`
     <p class="kicker center">Charted from the public record</p>
     <h1 class="center">The Figures</h1>
+    <div class="modes">
+      ${MODES.map((m) => `<button data-mode="${m.id}" class="${m.id === mode.id ? 'on' : ''}">${m.name}</button>`).join('')}
+    </div>
+    <p class="muted center mode-blurb">${mode.blurb}</p>
     <div class="charts-row">
       <div class="chart-col">
         <h2 class="center smallcaps chart-cap">The Political Plane</h2>
@@ -237,6 +249,7 @@ function renderFigures() {
     <p class="muted center">Each mark is the instrument scored from documented votes,
     policies, and on-record statements, answering the same ${QUESTIONS.length} questions you do.</p>
     <div class="figure-cards">
+      ${placed.length ? '' : '<p class="muted center">This roster is still being scored; its dossiers are not written yet.</p>'}
       ${placed.map((f, i) => `
         <div class="fig-card" data-fig="${i}">
           <span class="fig-seal">${seal(f.name)}</span>
@@ -251,7 +264,10 @@ function renderFigures() {
     </div>
   `));
   attachCardTips(placed);
-  const marks = figureMarks(placed);
+  app.querySelectorAll('.modes button').forEach((b) =>
+    b.addEventListener('click', () => set({ figMode: b.dataset.mode })));
+  const labelled = labelsFor(placed);
+  const marks = figureMarks(placed, labelled);
   drawOn('#wrap-main canvas', showMe ? mine : null, marks);
   attachFigureTip(
     app.querySelector('#wrap-main'),
@@ -263,7 +279,7 @@ function renderFigures() {
   // econ (x) × social (y): social-right scores plot upward as Traditional
   const subMarks = placed.map((f) => ({
     x: f.subs.econ.x, y: f.subs.social.x,
-    label: FEATURED.has(f.slug)
+    label: labelled.has(f.slug)
       ? f.name.replace(/,? (Jr\.|Sr\.|[IV]+)$/, '').split(' ').at(-1)
       : '',
     name: f.name,

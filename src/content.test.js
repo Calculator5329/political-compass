@@ -3,6 +3,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { FIGURES } from './figures.js';
+import { MODES, figuresInMode } from './modes.js';
 import { QUESTIONS } from './questions.js';
 import {
   backfillStoredSubscores,
@@ -55,6 +56,29 @@ describe('site copy', () => {
     for (const [slug, answers] of Object.entries(expected)) {
       expect(FIGURES.find((figure) => figure.slug === slug)?.answers, slug)
         .toMatchObject(answers);
+    }
+  });
+
+  it('keeps state-level figures off the national roster and on their own', () => {
+    const national = figuresInMode(FIGURES, 'national');
+    expect(national.filter((figure) => figure.local)).toEqual([]);
+    for (const figure of FIGURES) {
+      if (!figure.local) continue;
+      const rosters = MODES.filter((mode) => mode.members?.includes(figure.slug));
+      expect(rosters.length, `${figure.name} appears on no roster`).toBeGreaterThan(0);
+    }
+  });
+
+  it('orders a roster as written and ignores slugs with no figure yet', () => {
+    // Deliberately reversed against the roster order, so a filter that merely
+    // preserved the figures.js order would fail here.
+    const figures = [{ slug: 'z', local: true }, { slug: 'b' }, { slug: 'a' }];
+    MODES.push({ id: 'test-roster', members: ['a', 'missing', 'z'] });
+    try {
+      expect(figuresInMode(figures, 'test-roster').map((f) => f.slug)).toEqual(['a', 'z']);
+      expect(figuresInMode(figures, 'national').map((f) => f.slug)).toEqual(['b', 'a']);
+    } finally {
+      MODES.pop();
     }
   });
 

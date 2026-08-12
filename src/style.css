@@ -216,6 +216,38 @@ canvas.compass {
   border-radius: 2px;
 }
 
+/* roster switcher on the Figures page: a printed index line, not a toolbar */
+.modes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1rem 0.6rem;
+  margin: 0.1rem 0 0.5rem;
+}
+.modes button {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0.1rem 0.35rem;
+  font-family: var(--font-caps);
+  font-size: 0.86rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.modes button:hover { color: var(--ink); background: none; box-shadow: none; }
+.modes button:active { transform: none; }
+.modes button.on {
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--accent);
+}
+.mode-blurb {
+  max-width: 34rem;
+  margin: 0 auto 1.1rem;
+  font-size: 0.92rem;
+}
+
 .save-row input {
   font-family: var(--font-body);
   font-size: 1.05rem;
