@@ -44,4 +44,16 @@ export const BLURBS = {
   haley: 'Former UN ambassador; the establishment right’s last free-trader.',
   stewart: 'Daily Show host; prosecutor of cable news and donor politics.',
   ramaswamy: 'Ohio gubernatorial front-runner; abolish-the-agencies biotech founder.',
+
+  // Minnesota, 2026
+  klobuchar: 'Senator running for governor; antitrust author and pragmatist.',
+  craig: 'House Agriculture ranking member; the moderate in the Senate primary.',
+  flanagan: 'Lieutenant governor; Medicare for All progressive of the Senate primary.',
+  ellison: 'Attorney general; has sued the Trump administration more than fifty times.',
+  walz: 'Departing governor and 2024 running mate; trifecta legislator.',
+  demuth: 'Speaker of the Minnesota House; the GOP’s competence candidate for governor.',
+  finstad: 'First District Republican; farm-state party-line vote.',
+  jakejohnson: 'Rochester math teacher; small-dollar DFL challenger in the First.',
+  tafoya: 'Sideline reporter turned Republican Senate nominee.',
+  lindell: 'MyPillow founder; Trump-endorsed candidate and election denier.',
 };

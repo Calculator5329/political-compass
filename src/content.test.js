@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
+import { BLURBS } from './blurbs.js';
 import { FIGURES } from './figures.js';
 import { MODES, figuresInMode } from './modes.js';
 import { QUESTIONS } from './questions.js';
@@ -56,6 +57,20 @@ describe('site copy', () => {
     for (const [slug, answers] of Object.entries(expected)) {
       expect(FIGURES.find((figure) => figure.slug === slug)?.answers, slug)
         .toMatchObject(answers);
+    }
+  });
+
+  it('gives every figure a unique slug, a blurb, and an evidence dossier', () => {
+    const slugs = FIGURES.map((figure) => figure.slug);
+    expect(new Set(slugs).size, 'duplicate slug').toBe(slugs.length);
+    const dossiers = new Set(
+      readdirSync(join(srcDir, '..', 'docs', 'figures'))
+        .filter((name) => name.endsWith('.md'))
+        .map((name) => name.replace(/\.md$/, '')),
+    );
+    for (const figure of FIGURES) {
+      expect(BLURBS[figure.slug], `${figure.name} has no blurb`).toBeTruthy();
+      expect(dossiers.has(figure.slug), `${figure.name} has no evidence dossier`).toBe(true);
     }
   });
 
