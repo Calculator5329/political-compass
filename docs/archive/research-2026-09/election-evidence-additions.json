@@ -1,0 +1,845 @@
+{
+  "reviewedAt": "2026-09-05",
+  "figures": {
+    "flanagan": {
+      "items": {
+        "e02": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Campaign endorses Medicare for All. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e04": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Campaign proposes a $17 federal wage floor indexed to inflation. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e07r2": {
+          "status": "inferred",
+          "value": 1,
+          "rationale": "Campaign supports national paid family leave; financing details are unspecified. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e09": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Campaign endorses the PRO Act and collective bargaining. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s01": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Campaign supports nationwide abortion access and the Women’s Health Protection Act. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s03": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Campaign supports assault-weapon, high-capacity-magazine and ghost-gun bans. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e15": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Campaign supports publicly financed pre-K and universal childcare. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e01": {
+          "status": "documented",
+          "value": -1,
+          "rationale": "Campaign opposes broad farm tariffs while retaining targeted mining protection. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "f02": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Campaign supports halting offensive weapons sales to Israel. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "y08": {
+          "status": "documented",
+          "value": 1,
+          "rationale": "Campaign criticizes corporate influence across both parties. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "c02": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Campaign prioritizes housing construction and affordable homes. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e10r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Targeted public-service loan relief does not establish blanket cancellation. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "f03": {
+          "status": "inferred",
+          "value": 1,
+          "rationale": "Supporting Ukraine is explicit; military assistance is not specified. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "LGBTQ nondiscrimination does not establish official-document sex categories. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s13": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Equality Act support alone does not establish sports eligibility. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e03": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Higher contributions from wealthy people do not specify a wealth tax. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "l04": {
+          "status": "inferred",
+          "value": 1,
+          "rationale": "Due-process protection supports hearings; procedural details remain unspecified. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Flanagan campaign: priorities",
+              "url": "https://peggyflanagan.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        }
+      }
+    },
+    "tafoya": {
+      "items": {
+        "s13": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Campaign explicitly opposes transgender women participating in women’s sports. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s05r2": {
+          "status": "documented",
+          "value": 1,
+          "rationale": "Campaign supports deporting undocumented people convicted of crimes; it does not endorse removing everyone. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Attacking both government and corporate health bureaucracy does not resolve universal coverage. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e04": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Middle-class tax cuts do not establish a minimum-wage position. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e07r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "No federal paid-leave funding position found on the inspected issue page. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e09": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "No union-benefit position found on the inspected issue page. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e10r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "No blanket loan-cancellation position found on the inspected issue page. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e03": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Middle-class tax policy does not establish a wealth-tax position. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "A sports policy does not establish identity-document categories. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "y02r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Voter-ID advocacy does not establish trust in the accuracy of vote counts. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Tafoya campaign: issues",
+              "url": "https://micheletafoya.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s01": {
+          "status": "mixed",
+          "value": 0,
+          "rationale": "The cited dossier reports support for access through twelve weeks plus prior advocacy for a group supporting bans; the position cannot be summarized as either maximal access or prohibition. Retained from the 2026-08-11 dossier after exact-item mapping review; external source not reverified in this pass.",
+          "sources": [
+            {
+              "title": "Retained dossier source: Tafoya abortion interview",
+              "url": "https://www.minnpost.com/national/washington/2026/05/michele-tafoya-has-support-of-national-gop-but-winning-over-state-activists-challenge/"
+            }
+          ],
+          "sourceDate": null
+        }
+      }
+    },
+    "klobuchar": {
+      "items": {
+        "e02": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office explicitly supports universal coverage via federal public insurance and program expansion. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: health care",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/health-care"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e04": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Office proposes a federal minimum wage of at least $15. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: jobs and the economy",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/jobs-and-the-economy"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e07r2": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office endorses federal paid leave and cosponsors the national FAMILY insurance program. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: families children",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/families-children"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e09": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office identifies support for unions as a means of strengthening working families. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: families children",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/families-children"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e15": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office supports federal childcare grants, Head Start and the childcare block grant. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: families children",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/families-children"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s01": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office supports codifying Roe through the Women’s Health Protection Act. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: ethics and democracy",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/ethics-and-democracy"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s06r2": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office supports 250,000 additional visas and employment permits over five years. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: immigration",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/?p=immigration"
+            }
+          ],
+          "sourceDate": null
+        },
+        "y19": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office explicitly says the administration must comply with court orders. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: immigration",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/?p=immigration"
+            }
+          ],
+          "sourceDate": null
+        },
+        "f03": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Office explicitly commits to continued military assistance for Ukraine. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: national security",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/national-security"
+            }
+          ],
+          "sourceDate": null
+        },
+        "l04": {
+          "status": "inferred",
+          "value": 1,
+          "rationale": "Office defends due process, counsel and additional immigration judges; slower individual hearings are not directly addressed. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Klobuchar Senate office: immigration",
+              "url": "https://www.klobuchar.senate.gov/public/index.cfm/?p=immigration"
+            }
+          ],
+          "sourceDate": null
+        }
+      }
+    },
+    "demuth": {
+      "items": {
+        "b04": {
+          "status": "documented",
+          "value": 1,
+          "rationale": "Campaign promises to repeal Minnesota’s nuclear moratorium as part of its energy strategy; carbon reduction is not its stated rationale. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s07": {
+          "status": "inferred",
+          "value": -1,
+          "rationale": "Campaign opposes classroom racial ideology; applying this to the exact systemic-racism wording requires inference. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s13": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Office explicitly supports excluding transgender girls from school girls’ sports. Reviewed 2026-09-05; historical source, not a new candidate response.",
+          "sources": [
+            {
+              "title": "Demuth legislative release: girls sports",
+              "url": "https://www.house.mn.gov/members/profile/news/15498/50258"
+            }
+          ],
+          "sourceDate": "2025-03-04"
+        },
+        "e12": {
+          "status": "inferred",
+          "value": 1,
+          "rationale": "Campaign links lower business taxes to economic opportunity; ordinary-worker incidence is not established. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: affordability agenda",
+              "url": "https://lisaformn.com/affordability-agenda/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "General tax-cut advocacy does not establish opposition to universal health insurance. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e03": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Income-tax cuts do not establish a position on a $50-million wealth tax. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Sports restrictions do not establish official-document categories. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s09": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Sports restrictions do not establish a ban on medical care for minors. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e07r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "State leave policy cannot automatically answer the revised federal-funding item. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Demuth campaign: priorities",
+              "url": "https://lisaformn.com/priorities/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s01": {
+          "status": "documented",
+          "value": -1,
+          "rationale": "The cited dossier reports authorship of an abortion ban and votes against legal-access protections, with a later settled-law framing. Retained from the 2026-08-11 dossier after exact-item mapping review; external source not reverified in this pass.",
+          "sources": [
+            {
+              "title": "Retained dossier source: Demuth abortion record",
+              "url": "https://abetterminnesota.org/2025/11/lisa-demuth-is-wrong-for-minnesota/"
+            }
+          ],
+          "sourceDate": null
+        }
+      }
+    },
+    "finstad": {
+      "items": {
+        "s13": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Original cosponsor of H.R. 28 restricting female school athletics by birth sex. Reviewed 2026-09-05; historical source, not a new candidate response.",
+          "sources": [
+            {
+              "title": "GovInfo: H.R. 28 introduction",
+              "url": "https://www.govinfo.gov/app/details/BILLS-119hr28ih"
+            }
+          ],
+          "sourceDate": "2025-01-03"
+        },
+        "f03": {
+          "status": "documented",
+          "value": -1,
+          "rationale": "Voted no on the 2024 Ukraine security supplemental; this documents that aid vote, not rejection of every conceivable package. Reviewed 2026-09-05; historical source, not a new candidate response.",
+          "sources": [
+            {
+              "title": "House Clerk: roll call 151",
+              "url": "https://clerk.house.gov/Votes/2024151"
+            }
+          ],
+          "sourceDate": "2024-04-20"
+        },
+        "s05r2": {
+          "status": "documented",
+          "value": 1,
+          "rationale": "Campaign supports expanded immigration enforcement and deportation of fraud offenders; narrower than universal removal. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Finstad campaign: issues",
+              "url": "https://finstadforcongress.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e12": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Support for a small-business deduction does not establish the incidence of corporate rate cuts. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Finstad campaign: issues",
+              "url": "https://finstadforcongress.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e04": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Opposing general mandates does not establish opposition to a wage floor. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Finstad campaign: issues",
+              "url": "https://finstadforcongress.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "No nationwide health-guarantee position established by this campaign page. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Finstad campaign: issues",
+              "url": "https://finstadforcongress.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "A sports bill does not establish official-document categories. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Finstad campaign: issues",
+              "url": "https://finstadforcongress.com/issues/"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e10r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Criticism of college debt and federal education bureaucracy does not explicitly oppose loan cancellation. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Finstad House office: education",
+              "url": "https://finstad.house.gov/issues/education/"
+            }
+          ],
+          "sourceDate": null
+        }
+      }
+    },
+    "jakejohnson": {
+      "items": {
+        "e01": {
+          "status": "documented",
+          "value": -2,
+          "rationale": "Campaign explicitly proposes ending massive tariffs. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "c02": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "Campaign prioritizes faster home construction to lower costs. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e14": {
+          "status": "inferred",
+          "value": 1,
+          "rationale": "Balanced-budget and debt-ceiling pledges suggest deficit priority, but the tax-cut tradeoff is not explicit. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e02": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Medicare and Medicaid protection does not establish universal insurance. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e03": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Higher taxes on wealthy people do not specify a tax on wealth. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e05": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Agricultural antitrust does not establish support for breaking up technology companies. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e07r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Being a teacher or union leader does not establish federal paid-leave funding. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e09": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "Union membership alone is insufficient evidence for this evaluative claim. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "e10r2": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "No loan-cancellation position found on the inspected priority page. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "y14": {
+          "status": "unknown",
+          "value": null,
+          "rationale": "A proposed family/donor pardon ban does not explicitly answer pardons for political violence. Reviewed 2026-09-05; source publication date unavailable.",
+          "sources": [
+            {
+              "title": "Johnson campaign: priorities",
+              "url": "https://www.jakejohnsonforcongress.com/priorities"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s01": {
+          "status": "documented",
+          "value": 2,
+          "rationale": "The cited dossier explicitly reports support for abortion choice; this directly answers legal access, without inferring other DFL positions. Retained from the 2026-08-11 dossier after exact-item mapping review; external source not reverified in this pass.",
+          "sources": [
+            {
+              "title": "Retained dossier source: Johnson candidate profile",
+              "url": "https://ballotpedia.org/Jake_Johnson_(Minnesota)"
+            }
+          ],
+          "sourceDate": null
+        },
+        "s03": {
+          "status": "documented",
+          "value": -1,
+          "rationale": "The cited dossier supports gun ownership with background checks and red-flag laws; this rejects the blanket claim that further restrictions violate rights. Retained from the 2026-08-11 dossier after exact-item mapping review; external source not reverified in this pass.",
+          "sources": [
+            {
+              "title": "Retained dossier source: Johnson candidate profile",
+              "url": "https://ballotpedia.org/Jake_Johnson_(Minnesota)"
+            }
+          ],
+          "sourceDate": null
+        }
+      }
+    }
+  }
+}
