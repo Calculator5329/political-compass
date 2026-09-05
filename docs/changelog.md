@@ -1,6 +1,7 @@
 # Changelog
 
 ## 2026-09-05 - Political Atlas
+- Live verification exposed the default one-hour landing-page cache. Hosting now revalidates pages and evidence on each visit while fingerprinted assets remain immutable.
 - Owner-approved expansion: 83 propositions, with a 30-item core and optional chapters.
 - Explicit independent provisional dimensions replace the dominant-axis topic bars. Unknown, mixed, neutral, certainty and importance are separate. Revised items have new IDs.
 - Current figure comparisons use documented exact-question positions only, with visible sources, rationales, dates and missing coverage. The 69-figure inventory accounts for every current item; research gaps remain unknown.
