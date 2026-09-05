@@ -25,7 +25,8 @@
 - [x] <!-- workspace:id=work:432e9500-bd89-58c4-a607-84355aea73b9 --> Keep the take-the-survey fallback visible beside leaderboard claiming,
       contain dense edge labels, and prevent fresh side-by-side canvases from
       inheriting a provisional one-pixel backing store (2026-07-18)
-- [ ] <!-- workspace:id=work:926e5b8f-28d6-5503-9a3c-8be2646d64c8 --> Share-card image export (canvas → PNG of the marked map)
+- [x] <!-- workspace:id=work:926e5b8f-28d6-5503-9a3c-8be2646d64c8 --> Share-card image export (canvas → PNG of the marked map)
+      (2026-09-05: selected atlas dimensions, version and provisional label included)
 
 ## Next
 - [x] <!-- workspace:id=work:1500bc3a-c429-550e-bb83-2d9440cffac1 --> Public-figure mode: 42 figures, per-question evidence dossiers in
@@ -38,7 +39,8 @@
 - [x] <!-- workspace:id=work:3745cd74-1a97-5365-87be-c62b5237e6f7 --> Figure modes: rosters over the same scored figures, switchable on the
       Figures tab. National (subtraction), Local Leaders (Minnesota 10),
       The 2028 Bench, Commentators (2026-08-11)
-- [ ] <!-- workspace:id=work:15cdcf8f-9665-5de0-9760-c097f45877ca --> Remaining mode groups Ethan asked for: world leaders, tech and money
+- [x] <!-- workspace:id=work:15cdcf8f-9665-5de0-9760-c097f45877ca --> Remaining mode groups Ethan asked for: world leaders, tech and money
+      (2026-09-05: collections available; US-frame limitations and missing evidence explicit)
 - [ ] <!-- workspace:id=work:b9513d65-7ff0-50aa-b16e-55dbe8101058 --> Verification pass over the 27 figures added 2026-08-11: their dossiers are
       first-pass and below the per-item citation density of the 2026-07-18 batch
 
@@ -55,3 +57,18 @@
 - [ ] <!-- workspace:id=work:7b217a42-7288-534f-8b7f-4e8e72bb83c7 --> Ballot rosters beyond Minnesota (machinery ships; each state is a
       modes.js roster plus dossier research)
 - [x] <!-- workspace:id=work:b4d0b698-46aa-5d43-ae79-f62836c40b3b --> DEPLOYED (Ethan-directed 2026-07-18): https://political-test-2026.web.app
+
+## Atlas delivery, 2026-09-05
+
+Ethan approved all review proposals and explicitly authorized implementation, commit,
+push and redeploy. Implemented the short core plus optional chapters, independent
+provisional scoring, exact-wording evidence, priorities/certainty/reasons, local
+comparison and discussion, tradeoffs, notebook history, question/evidence versioning,
+pilot workflow, evidence challenges, PNG exports and versioned ledger. See
+`docs/intent.md`, `docs/changelog.md` and `public/release-notes.md`.
+
+The open research items above remain research, not completed by substituting
+unknown values. Every current question/figure pair is inventoried; most lack
+adequate evidence. Race records cover three Minnesota races, with final-ballot
+certification explicitly unverified. A real respondent pilot and statistical
+calibration have not occurred; the app includes the workflow and states this limit.

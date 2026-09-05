@@ -3,20 +3,23 @@
 // normalization ceiling, so skipping can't inflate a score.
 
 export const LIKERT = [
-  { v: -2, label: 'Strongly disagree' },
-  { v: -1, label: 'Disagree' },
-  { v: 0, label: 'Neutral / unsure' },
-  { v: 1, label: 'Agree' },
-  { v: 2, label: 'Strongly agree' },
+  { v: -2, label: "Strongly disagree" },
+  { v: -1, label: "Disagree" },
+  { v: 0, label: "Neutral / unsure" },
+  { v: 1, label: "Agree" },
+  { v: 2, label: "Strongly agree" },
 ];
 
 export function score(answers, questions) {
-  let x = 0, y = 0, xCeil = 0, yCeil = 0;
+  let x = 0,
+    y = 0,
+    xCeil = 0,
+    yCeil = 0;
   for (const q of questions) {
     xCeil += 2 * Math.abs(q.w.x);
     yCeil += 2 * Math.abs(q.w.y);
     const v = answers[q.id];
-    if (typeof v !== 'number') continue;
+    if (typeof v !== "number") continue;
     x += v * q.w.x;
     y += v * q.w.y;
   }
@@ -33,11 +36,17 @@ export function score(answers, questions) {
 // it count toward the ceiling would drag every figure toward the center each
 // time the bank grows.
 export function scoreFigure(answers, questions) {
-  return score(answers, questions.filter((q) => q.id in answers));
+  return score(
+    answers,
+    questions.filter((q) => q.id in answers),
+  );
 }
 
 export function subScoresFigure(answers, questions) {
-  return subScores(answers, questions.filter((q) => q.id in answers));
+  return subScores(
+    answers,
+    questions.filter((q) => q.id in answers),
+  );
 }
 
 // Sub-dimension scores for the future 4-axis view.
@@ -45,21 +54,25 @@ export function subScores(answers, questions) {
   const dims = {};
   for (const q of questions) (dims[q.dim] ??= []).push(q);
   return Object.fromEntries(
-    Object.entries(dims).map(([dim, qs]) => [dim, score(answers, qs)])
+    Object.entries(dims).map(([dim, qs]) => [dim, score(answers, qs)]),
   );
 }
 
 export function quadrant({ x, y }) {
-  const vert = y >= 0 ? 'Insurgent' : 'Institutionalist';
-  const horiz = x < 0 ? 'Left' : 'Right';
+  const vert = y >= 0 ? "Insurgent" : "Institutionalist";
+  const horiz = x < 0 ? "Left" : "Right";
   return `${vert} ${horiz}`;
 }
 
 const DESCRIPTIONS = {
-  'Insurgent Left': 'You want structural economic and social change, and you doubt the system as it stands can deliver it.',
-  'Insurgent Right': 'You hold traditional or market-right commitments and believe entrenched institutions are working against them.',
-  'Institutionalist Left': 'You want progressive outcomes pursued through courts, elections, expertise, and process.',
-  'Institutionalist Right': 'You favor markets and tradition, defended through the same institutions the system already has.',
+  "Insurgent Left":
+    "You want structural economic and social change, and you doubt the system as it stands can deliver it.",
+  "Insurgent Right":
+    "You hold traditional or market-right commitments and believe entrenched institutions are working against them.",
+  "Institutionalist Left":
+    "You want progressive outcomes pursued through courts, elections, expertise, and process.",
+  "Institutionalist Right":
+    "You favor markets and tradition, defended through the same institutions the system already has.",
 };
 
 export function describe(pt) {
@@ -68,4 +81,81 @@ export function describe(pt) {
 
 function round2(n) {
   return Math.round(n * 100) / 100;
+}
+
+// Atlas scoring is independent of the retained legacy coordinate system.
+// Unknown, mixed, skipped and missing answers never become centrist positions.
+export function positionValue(answer) {
+  return answer?.status === "position" &&
+    Number.isInteger(answer.value) &&
+    Math.abs(answer.value) <= 2
+    ? answer.value
+    : null;
+}
+
+export function profileScores(answers, bank, axes, minimum = 3) {
+  return Object.fromEntries(
+    Object.keys(axes).map((axis) => {
+      const items = bank.filter(
+        (q) => Number.isFinite(q.loads?.[axis]) && q.loads[axis] !== 0,
+      );
+      const rows = items.filter((q) => positionValue(answers[q.id]) !== null);
+      const ceiling = rows.reduce((n, q) => n + 2 * Math.abs(q.loads[axis]), 0);
+      const numerator = rows.reduce(
+        (n, q) => n + positionValue(answers[q.id]) * q.loads[axis],
+        0,
+      );
+      return [
+        axis,
+        {
+          value:
+            rows.length >= minimum && ceiling
+              ? round2((10 * numerator) / ceiling)
+              : null,
+          answered: rows.length,
+          total: items.length,
+          minimum,
+          provisional: true,
+        },
+      ];
+    }),
+  );
+}
+
+export function comparePositions(
+  left,
+  right,
+  bank,
+  weighted = false,
+  minimum = 6,
+) {
+  const rows = bank.flatMap((q) => {
+    const a = positionValue(left[q.id]),
+      b = positionValue(right[q.id]);
+    if (a === null || b === null) return [];
+    const weight = weighted ? (left[q.id].importance ?? 1) : 1;
+    return weight > 0 ? [{ q, a, b, gap: Math.abs(a - b), weight }] : [];
+  });
+  const ceiling = rows.reduce((n, r) => n + r.weight * 4, 0);
+  return {
+    rows: rows.sort((a, b) => b.gap - a.gap),
+    shared: rows.length,
+    similarity:
+      rows.length >= minimum && ceiling
+        ? round2(
+            100 *
+              (1 - rows.reduce((n, r) => n + r.gap * r.weight, 0) / ceiling),
+          )
+        : null,
+  };
+}
+
+export function profilePoint(profile, xAxis, yAxis) {
+  const x = profile[xAxis]?.value,
+    y = profile[yAxis]?.value;
+  return typeof x === "number" && typeof y === "number" ? { x, y } : null;
+}
+
+export function pointDistance(a, b) {
+  return a && b ? Math.hypot(a.x - b.x, a.y - b.y) : null;
 }

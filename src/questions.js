@@ -1,3 +1,4 @@
+// Retained 54-item legacy bank. The live atlas uses instrument.js.
 // The instrument. Each statement loads on the two axes via a weight vector:
 //   x: left (−) ↔ right (+)      y: institutionalist (−) ↔ insurgent (+)
 // dim tags the sub-dimension (econ / social / system / foreign) so alternate

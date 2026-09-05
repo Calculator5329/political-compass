@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-09-05 - Political Atlas
+- Owner-approved expansion: 83 propositions, with a 30-item core and optional chapters.
+- Explicit independent provisional dimensions replace the dominant-axis topic bars. Unknown, mixed, neutral, certainty and importance are separate. Revised items have new IDs.
+- Current figure comparisons use documented exact-question positions only, with visible sources, rationales, dates and missing coverage. The 69-figure inventory accounts for every current item; research gaps remain unknown.
+- Added priorities, reasons, context prompts, nearby-profile and constructed cancellation examples, hypothetical tradeoffs, local voluntary comparison and a discussion guide.
+- Added a private versioned notebook with frozen snapshots, change explanations, backups, restore and reversible archiving.
+- Added user-submitted evidence challenge drafts, an interpretation-pilot workflow, race-specific Minnesota records with unscored candidates, world/technology collections, labeled PNG export and version-separated public ledger entries.
+- Preserved manuscript styling and legacy records. Previous UI and deployment instructions are archived under `docs/archive/atlas-v1/`.
+- Validation: 44 automated tests, production build and desktop/mobile browser checks. Exact final verification/deployment records are linked from `docs/DEPLOY-OWNER-ACTION.md`. No human calibration or final-ballot certification is claimed.
+
 ## 2026-08-11 - figure modes, and 27 new figures
 - Figures tab now switches between rosters: National, Local Leaders,
   The 2028 Bench, and Commentators. Membership is display-only, drawn by hand

@@ -1,0 +1,290 @@
+{
+  "instrument": "atlas-2026.09.05",
+  "reviewedAt": "2026-09-05",
+  "figures": 69,
+  "questions": 83,
+  "currentRows": {
+    "documented": 184,
+    "inferred": 1448,
+    "unknown": 4089,
+    "mixed": 6
+  },
+  "usable": [
+    {
+      "slug": "trump",
+      "documented": 22
+    },
+    {
+      "slug": "vance",
+      "documented": 17
+    },
+    {
+      "slug": "miller",
+      "documented": 0
+    },
+    {
+      "slug": "bannon",
+      "documented": 0
+    },
+    {
+      "slug": "jones",
+      "documented": 0
+    },
+    {
+      "slug": "pence",
+      "documented": 0
+    },
+    {
+      "slug": "romney",
+      "documented": 0
+    },
+    {
+      "slug": "newsom",
+      "documented": 11
+    },
+    {
+      "slug": "harris",
+      "documented": 14
+    },
+    {
+      "slug": "biden",
+      "documented": 17
+    },
+    {
+      "slug": "obama",
+      "documented": 0
+    },
+    {
+      "slug": "sanders",
+      "documented": 21
+    },
+    {
+      "slug": "aoc",
+      "documented": 18
+    },
+    {
+      "slug": "mamdani",
+      "documented": 0
+    },
+    {
+      "slug": "piker",
+      "documented": 0
+    },
+    {
+      "slug": "west",
+      "documented": 0
+    },
+    {
+      "slug": "musk",
+      "documented": 0
+    },
+    {
+      "slug": "rogan",
+      "documented": 0
+    },
+    {
+      "slug": "cheney",
+      "documented": 0
+    },
+    {
+      "slug": "rfk",
+      "documented": 0
+    },
+    {
+      "slug": "paul",
+      "documented": 10
+    },
+    {
+      "slug": "pakman",
+      "documented": 0
+    },
+    {
+      "slug": "btc",
+      "documented": 0
+    },
+    {
+      "slug": "destiny",
+      "documented": 0
+    },
+    {
+      "slug": "hutch",
+      "documented": 0
+    },
+    {
+      "slug": "pool",
+      "documented": 0
+    },
+    {
+      "slug": "putin",
+      "documented": 0
+    },
+    {
+      "slug": "xi",
+      "documented": 0
+    },
+    {
+      "slug": "desantis",
+      "documented": 0
+    },
+    {
+      "slug": "warren",
+      "documented": 21
+    },
+    {
+      "slug": "buttigieg",
+      "documented": 0
+    },
+    {
+      "slug": "fetterman",
+      "documented": 0
+    },
+    {
+      "slug": "mtg",
+      "documented": 0
+    },
+    {
+      "slug": "shapiro",
+      "documented": 0
+    },
+    {
+      "slug": "kirk",
+      "documented": 0
+    },
+    {
+      "slug": "carlson",
+      "documented": 0
+    },
+    {
+      "slug": "gabbard",
+      "documented": 0
+    },
+    {
+      "slug": "owens",
+      "documented": 0
+    },
+    {
+      "slug": "maher",
+      "documented": 0
+    },
+    {
+      "slug": "haley",
+      "documented": 0
+    },
+    {
+      "slug": "stewart",
+      "documented": 0
+    },
+    {
+      "slug": "ramaswamy",
+      "documented": 0
+    },
+    {
+      "slug": "klobuchar",
+      "documented": 10
+    },
+    {
+      "slug": "craig",
+      "documented": 0
+    },
+    {
+      "slug": "flanagan",
+      "documented": 10
+    },
+    {
+      "slug": "ellison",
+      "documented": 0
+    },
+    {
+      "slug": "walz",
+      "documented": 0
+    },
+    {
+      "slug": "demuth",
+      "documented": 3
+    },
+    {
+      "slug": "finstad",
+      "documented": 3
+    },
+    {
+      "slug": "jakejohnson",
+      "documented": 4
+    },
+    {
+      "slug": "tafoya",
+      "documented": 2
+    },
+    {
+      "slug": "lindell",
+      "documented": 0
+    },
+    {
+      "slug": "rubio",
+      "documented": 0
+    },
+    {
+      "slug": "hawley",
+      "documented": 1
+    },
+    {
+      "slug": "youngkin",
+      "documented": 0
+    },
+    {
+      "slug": "kemp",
+      "documented": 0
+    },
+    {
+      "slug": "jshapiro",
+      "documented": 0
+    },
+    {
+      "slug": "whitmer",
+      "documented": 0
+    },
+    {
+      "slug": "moore",
+      "documented": 0
+    },
+    {
+      "slug": "beshear",
+      "documented": 0
+    },
+    {
+      "slug": "pritzker",
+      "documented": 0
+    },
+    {
+      "slug": "pfjung",
+      "documented": 0
+    },
+    {
+      "slug": "morgan",
+      "documented": 0
+    },
+    {
+      "slug": "wilson",
+      "documented": 0
+    },
+    {
+      "slug": "crowder",
+      "documented": 0
+    },
+    {
+      "slug": "fuentes",
+      "documented": 0
+    },
+    {
+      "slug": "prager",
+      "documented": 0
+    },
+    {
+      "slug": "knowles",
+      "documented": 0
+    },
+    {
+      "slug": "ramsey",
+      "documented": 0
+    }
+  ]
+}

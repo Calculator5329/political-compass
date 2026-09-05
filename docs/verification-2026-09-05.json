@@ -1,0 +1,210 @@
+{
+  "success": true,
+  "numTotalTests": 44,
+  "numPassedTests": 44,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "startTime": 1788648960889,
+  "files": [
+    {
+      "file": "atlas.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "independent profiles keeps unknowns unknown and requires enough stated positions",
+          "status": "passed"
+        },
+        {
+          "name": "independent profiles normalizes only stated positions and reports incomplete coverage",
+          "status": "passed"
+        },
+        {
+          "name": "independent profiles does not conflate UBI with AI regulation or certainty with ideology",
+          "status": "passed"
+        },
+        {
+          "name": "independent profiles covers every question in exactly one selectable chapter",
+          "status": "passed"
+        },
+        {
+          "name": "comparisons and migration keeps original uncertain responses uncertain and requests revised answers again",
+          "status": "passed"
+        },
+        {
+          "name": "comparisons and migration excludes guessed evidence and never transfers a revised figure answer",
+          "status": "passed"
+        },
+        {
+          "name": "comparisons and migration changes optional match weighting without using uncertainty as neutral",
+          "status": "passed"
+        },
+        {
+          "name": "comparisons and migration requires explicit export consent and excludes private reasons and notes",
+          "status": "passed"
+        },
+        {
+          "name": "comparisons and migration freezes notebook scores and compares only identical wording",
+          "status": "passed"
+        },
+        {
+          "name": "comparisons and migration rejects malformed imported scores before notebook state can be mutated",
+          "status": "passed"
+        },
+        {
+          "name": "election and evidence records keeps unscored candidates in named races and matches exact figure names",
+          "status": "passed"
+        },
+        {
+          "name": "election and evidence records never gives unknown or inferred evidence a numeric value",
+          "status": "passed"
+        },
+        {
+          "name": "demonstrates cancellation with explicitly constructed profiles",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "content.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "site copy contains no em dashes",
+          "status": "passed"
+        },
+        {
+          "name": "site copy scores every figure against every researched question",
+          "status": "passed"
+        },
+        {
+          "name": "site copy keeps principle pairs mirrored and figure scores immune to pending items",
+          "status": "passed"
+        },
+        {
+          "name": "site copy keeps the second full-instrument research corrections wired in",
+          "status": "passed"
+        },
+        {
+          "name": "site copy gives every figure a unique slug, a blurb, and an evidence dossier",
+          "status": "passed"
+        },
+        {
+          "name": "site copy keeps state-level figures off the national roster and on their own",
+          "status": "passed"
+        },
+        {
+          "name": "site copy orders a roster as written and ignores slugs with no figure yet",
+          "status": "passed"
+        },
+        {
+          "name": "site copy returns saved reference pages to the correct Test screen",
+          "status": "passed"
+        },
+        {
+          "name": "site copy does not draw a saved current result twice on the leaderboard",
+          "status": "passed"
+        },
+        {
+          "name": "site copy limits the second leaderboard plane to entries with both sub-scores",
+          "status": "passed"
+        },
+        {
+          "name": "site copy grows a stored 42-item state into the 54-item bank without losing anything",
+          "status": "passed"
+        },
+        {
+          "name": "site copy recovers exact legacy sub-scores from preserved browser answers",
+          "status": "passed"
+        },
+        {
+          "name": "site copy backfills only the matching legacy row and preserves recorded scores",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "insights.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "figure matching ranks by mean Likert agreement over shared items and reports receipts",
+          "status": "passed"
+        },
+        {
+          "name": "figure matching skips figures with too few shared answered items",
+          "status": "passed"
+        },
+        {
+          "name": "expectation models and heterodoxy recovers a linear answer surface and flags the taker deviation",
+          "status": "passed"
+        },
+        {
+          "name": "expectation models and heterodoxy scores a conforming taker as highly compressible",
+          "status": "passed"
+        },
+        {
+          "name": "temperament, pairs, factions counts answer strengths and skips",
+          "status": "passed"
+        },
+        {
+          "name": "temperament, pairs, factions measures endorsement of both sides of a mirrored pair as tension",
+          "status": "passed"
+        },
+        {
+          "name": "temperament, pairs, factions declares every shipped principle pair on real questions",
+          "status": "passed"
+        },
+        {
+          "name": "temperament, pairs, factions sorts factions by normalized ellipse distance, inside first",
+          "status": "passed"
+        },
+        {
+          "name": "ballot, head-to-head, trajectories ranks only the named roster",
+          "status": "passed"
+        },
+        {
+          "name": "ballot, head-to-head, trajectories sorts head-to-head rows by divergence and counts alignment",
+          "status": "passed"
+        },
+        {
+          "name": "ballot, head-to-head, trajectories scores era answer sets through the instrument",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "scoring.test.js",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "instrument has 54 questions across six dimensions, unique ids",
+          "status": "passed"
+        },
+        {
+          "name": "instrument is roughly balanced against agree-bias on both axes",
+          "status": "passed"
+        },
+        {
+          "name": "score returns 0,0 for no answers",
+          "status": "passed"
+        },
+        {
+          "name": "score never exceeds \u00b110 even at maximum polarization",
+          "status": "passed"
+        },
+        {
+          "name": "score skipped questions cannot inflate the score",
+          "status": "passed"
+        },
+        {
+          "name": "score quadrant boundaries",
+          "status": "passed"
+        },
+        {
+          "name": "score subScores split by dimension and cover all six",
+          "status": "passed"
+        }
+      ]
+    }
+  ]
+}
