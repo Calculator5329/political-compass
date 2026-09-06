@@ -183,3 +183,7 @@
 - Fresh side-by-side charts reject provisional sub-pixel canvas sizes and
   repaint after flex layout settles. Chromium at 1280×800 verified two
   499×499 backing stores, exact 1280px page containment, and no console errors.
+
+## 2026-09-06 — Restore pre-Atlas production
+
+Restored the exact August 1 Firebase Hosting version at Ethan’s request after reported chart/save workflow regressions. Preserved Atlas source and history for individual local review. Recorded the developer-in-the-loop requirement in docs/intent.md and the actual rollback receipt in docs/rollback-2026-09-06.json.
