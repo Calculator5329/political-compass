@@ -1,0 +1,11 @@
+{
+  "requestedVersion": "projects/185382068975/sites/political-test-2026/versions/9467c53d630fddaf",
+  "release": {
+    "name": "projects/185382068975/sites/political-test-2026/channels/live/releases/1788727816521000",
+    "type": "ROLLBACK",
+    "releaseTime": "2026-09-06T20:50:16.521Z",
+    "version": "projects/185382068975/sites/political-test-2026/versions/9467c53d630fddaf"
+  },
+  "currentVersion": "projects/185382068975/sites/political-test-2026/versions/9467c53d630fddaf",
+  "verifiedAt": "2026-09-06T20:50:17.578Z"
+}

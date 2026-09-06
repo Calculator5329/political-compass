@@ -1,5 +1,11 @@
 # Political Atlas deployment record
 
+## Current production: rolled back September 6, 2026
+
+At Ethan’s request, Hosting now serves the exact pre-Atlas August 1 version `9467c53d630fddaf`. Firebase returned a ROLLBACK release and its live channel confirmed that version. See `docs/rollback-2026-09-06.json`. Browser reload showed the original survey and both figure chart headings plus the claim-your-mark control. No Firestore or browser storage was changed by the rollback operation. Atlas application code remains preserved in Git and local worktrees for individual local review; the September 5 deployment authorization is superseded.
+
+## Historical Atlas deployment
+
 Ethan explicitly authorized implementation, commit, push and redeployment in the
 2026-09-05 conversation. This is the site-specific authority for this release.
 Earlier owner-only deployment instructions are retained in

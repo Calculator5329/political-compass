@@ -1,6 +1,12 @@
 # Political Atlas intent
 
-## Owner decision, 2026-09-05
+## Owner correction, 2026-09-06 — current authority
+
+Ethan requested restoring the pre-Atlas production release after reporting regressions in the original multi-figure two-axis charts and save workflows. Broad approval of ideas did not establish feature parity. Preserve the original Political Plane and Economic × Social Plane, figure overlays, saved results and claim-your-mark workflows unless Ethan explicitly approves a replacement after seeing it locally.
+
+Review proposed changes individually with Ethan in local previews, with back-and-forth developer input before advancing. Do not batch-redeploy the Atlas based on the superseded September 5 authorization. Passing tests is not evidence that the user experience or feature set was preserved. Keep the Atlas implementation and history available for selective reuse. Production was restored to Firebase version `9467c53d630fddaf` (the August 1 release); repository application source still contains the Atlas candidate and must not be mistaken for the live baseline.
+
+## Owner decision, 2026-09-05 — superseded for future deployment
 Ethan approved all proposals in the Political Compass review and explicitly requested implementation, commit, push, and redeployment of political-test-2026.web.app. Preserve the ink-on-paper identity, vanilla Vite architecture, existing records, and local-first answers. This is the site-specific deployment authorization for this update.
 
 The product is a political atlas with a short core survey, optional policy modules, transparent provisional dimensions, documented figure comparisons, a private civic notebook, consented comparison, tradeoff exploration and race-specific election context. It does not diagnose an identity or claim population validation.
