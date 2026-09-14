@@ -102,34 +102,34 @@
   Kirk, Ramaswamy, Harris, RFK Jr., and Hutch receive narrower corrections.
   The remaining 31 figures were explicitly reviewed and retained.
 
-- 2026-07-18 — v0.3 LIVE at https://political-test-2026.web.app: Firestore
+- 2026-07-18: v0.3 LIVE at https://political-test-2026.web.app: Firestore
   leaderboard (save name+score, create-only schema-validated rules), Figures
-  view — 14 public figures scored against the instrument by four parallel
+  view, 14 public figures scored against the instrument by four parallel
   research agents from documented positions with cited sources, multi-mark
   compass rendering, tabbed nav. Firebase project political-compass-2026.
 
-- 2026-07-18 — v0.2: five-theme system (Manuscript, Broadsheet, Terminal,
+- 2026-07-18: v0.2: five-theme system (Manuscript, Broadsheet, Terminal,
   Federal, Arcade) with per-theme tokens driving page + canvas, persisted
   switcher dock; 9 statement rewrites from Ethan's ambiguity review (concrete
   mechanisms replace bundled propositions; balance tests still green).
 
-- 2026-07-18 — v0.1: full quiz flow (36-statement draft bank, Likert, shuffle,
+- 2026-07-18: v0.1: full quiz flow (36-statement draft bank, Likert, shuffle,
   localStorage resume), scoring with skip-proof normalization + sub-dimension
   scores, hand-drawn canvas compass, ink-on-paper UI. 7 vitest tests.
 
-## 2026-07-18 — deep-research figure pass
+## 2026-07-18: deep-research figure pass
 - 14 research agents re-verified all 28 existing figures (per-question, cite-required)
   and added 14 new ones (DeSantis, Warren, Buttigieg, Fetterman, MTG, Shapiro, Kirk,
-  Carlson, Gabbard, Owens, Maher, Haley, Stewart, Ramaswamy) — 42 total.
+  Carlson, Gabbard, Owens, Maher, Haley, Stewart, Ramaswamy), 42 total.
 - Evidence dossiers: docs/figures/<slug>.md (36 scores each, quote+URL per item);
   rubric in docs/figures/METHOD.md; ~90 scores corrected (uncited inferences zeroed,
-  recency flips applied — e.g. RFK abortion, Destiny y-axis, Musk/Rogan economics).
+  recency flips applied, e.g. RFK abortion, Destiny y-axis, Musk/Rogan economics).
 - docs/figures/analyze.mjs: per-question spread, axis correlations, map crowding.
 - docs/figures/QUESTION-PROPOSALS.md: differentiation analysis + 8 candidate items
-  (foreign-policy dim, loyalist-splitters, left-shelf splitters) — Ethan-gated.
+  (foreign-policy dim, loyalist-splitters, left-shelf splitters), Ethan-gated.
 - Themed SVG favicon (public/favicon.svg): ink compass rose on paper, red-ink ✕.
 
-## 2026-07-18 — figures UX round 2
+## 2026-07-18: figures UX round 2
 - Label de-overlap rewritten: 8 candidate anchors per label, collision-checked
   against labels AND dots; denser font at 30+ marks.
 - Figures page: "Mark my position" toggle (persisted), take-the-survey link when
@@ -140,7 +140,7 @@
   Old Guard Right) on the compass + legend; src/factions.js is display-only.
 - compass.js: axis labels + region ellipses now parametrized (opts).
 
-## 2026-07-18 — factions polish
+## 2026-07-18: factions polish
 - Faction territories are hoverable: same marginalia tooltip (name, blurb,
   member count); dots take precedence, overlaps resolve to nearest centre.
 - Renames (Ethan): Liberal Establishment → Democratic Establishment,
@@ -151,7 +151,7 @@
   marks skip the econ×social ✕ (no per-question data).
 - Scrollbar rail hidden (scrolling unaffected).
 
-## 2026-07-18 — figures page compaction + deploy
+## 2026-07-18: figures page compaction + deploy
 - Charts side by side (The Political Plane / The Economic × Social Plane),
   stacking on mobile; captions added.
 - Em dashes removed from the two figure-page paragraphs; take-the-survey line
@@ -160,7 +160,7 @@
   (note on hover), quadrant + coords, numbered source links.
 - Deployed to https://political-test-2026.web.app (Ethan-directed).
 
-## 2026-07-18 — chart legibility + layout
+## 2026-07-18: chart legibility + layout
 - Only 10 featured figures get printed labels (Trump, Vance, Obama, Sanders,
   AOC, Musk, DeSantis, Newsom, Harris, Rogan); the rest are hover-only. Label
   type is larger; unlabeled dots slightly bigger/darker.
@@ -168,19 +168,19 @@
 - Tabs restyled as a manuscript running head: chromeless small caps with
   fleuron separators and a tilted red-ink underline on the active page.
 
-## 2026-07-18 — sub-plane mark everywhere
+## 2026-07-18: sub-plane mark everywhere
 - Ledger entries now store econ/social sub-scores (es/ss; firestore.rules
   extended with optional validated fields, deployed).
 - Claimed marks with sub-scores draw the ✕ on the Economic × Social plane too;
   older entries show a retake hint instead of a wrong mark.
 
-## 2026-07-18 — card tooltips + claim placeholder
+## 2026-07-18: card tooltips + claim placeholder
 - Figure-card hover now uses the themed marginalia tooltip (name, blurb, full
   placement note) instead of the native title attribute.
 - Claim dropdown placeholder is disabled/hidden "choose your name" rather than
   a selectable "the ledger" entry.
 
-## 2026-07-18 — final Figures feedback pass
+## 2026-07-18: final Figures feedback pass
 - Unanswered visitors always retain "Take the survey to set your own ✕ among
   them"; leaderboard failure or an empty ledger now removes only the claim
   control instead of the survey path.
@@ -190,6 +190,6 @@
   repaint after flex layout settles. Chromium at 1280×800 verified two
   499×499 backing stores, exact 1280px page containment, and no console errors.
 
-## 2026-09-06 — Restore pre-Atlas production
+## 2026-09-06: Restore pre-Atlas production
 
 Restored the exact August 1 Firebase Hosting version at Ethan’s request after reported chart/save workflow regressions. Preserved Atlas source and history for individual local review. Recorded the developer-in-the-loop requirement in docs/intent.md and the actual rollback receipt in docs/rollback-2026-09-06.json.
