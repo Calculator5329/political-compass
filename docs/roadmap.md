@@ -2,7 +2,7 @@
 
 ## Now
 
-- [ ] Production hotfix for the 2026-09-13 QA nits (nav overflow at phone widths, confident "Insurgent Right" verdict for an all-neutral or all-skipped run, dead romney.senate.gov / gabbard.house.gov / supernewsworld.com citations). Master carries the fixes on the Atlas source; production is the rolled-back August 1 build, so a hotfix branch off 87ffe1d with the same three changes needs Ethan's local review and deploy, or the fixes ride the Atlas release. Owner decision.
+- [ ] <!-- workspace:id=work:d0be39d5-f1b5-5c35-b92e-6cf8cb0d840c --> Production hotfix for the 2026-09-13 QA nits (nav overflow at phone widths, confident "Insurgent Right" verdict for an all-neutral or all-skipped run, dead romney.senate.gov / gabbard.house.gov / supernewsworld.com citations). Master carries the fixes on the Atlas source; production is the rolled-back August 1 build, so a hotfix branch off 87ffe1d with the same three changes needs Ethan's local review and deploy, or the fixes ride the Atlas release. Owner decision.
 - [x] <!-- workspace:id=work:2528706c-86d7-5c29-be90-66a6da2cb165 --> [ETHAN] Deploy the verified owner-feedback update using
       `docs/DEPLOY-OWNER-ACTION.md`
       *(Ethan ran the deploy 2026-08-01 via the brief3 run-type packet;
