@@ -58,7 +58,7 @@ Acted on sex-binary policy in the sports context and echoes it rhetorically; the
 
 ### s03 · score +1
 "2nd Amendment: Our right 'shall not be infringed'" — her own Substack, 2024 (https://tulsi.substack.com/p/2nd-amendment-our-right-shall-not)
-A documented flip: in Congress she had an NRA F-rating and backed an assault-weapons ban (https://gabbard.house.gov/gun-control). Current position dominates; +1 because the reversal is recent and rhetorical.
+A documented flip: in Congress she had an NRA F-rating and backed an assault-weapons ban (https://web.archive.org/web/20201226082737/https://gabbard.house.gov/gun-control). Current position dominates; +1 because the reversal is recent and rhetorical.
 
 ### s04 · score −1
 Delivered a "blunt message to far-left rioters," defending police against the defund movement — Glenn Beck Program, via Blaze (https://www.theblaze.com/shows/the-glenn-beck-program/tulsi-gabbard-message)
@@ -83,7 +83,7 @@ A practicing Hindu who campaigns on respect for faith in public life; stated, no
 No findable direct position on state bans overriding parents and doctors; her sports bill and anti-"gender ideology" rhetoric point one way, but her parental-rights framing cuts against the "even when parents approve" clause. Genuinely unresolved.
 
 ### s10 · score +2
-Introduced the Ending Federal Marijuana Prohibition Act; "Marijuana use is a personal choice and should not be a criminal act." — her House office (https://gabbard.house.gov/news/in-the-news/qa-congresswoman-tulsi-gabbard-future-marijuana-legalization)
+Introduced the Ending Federal Marijuana Prohibition Act; "Marijuana use is a personal choice and should not be a criminal act." — her House office (https://web.archive.org/web/20201226111324/https://gabbard.house.gov/news/in-the-news/qa-congresswoman-tulsi-gabbard-future-marijuana-legalization)
 Repeated legislation (also MORE Act) and never repudiated.
 
 ### s11 · score +1
@@ -142,6 +142,6 @@ Rhetorical support for compromise even as she attacks both establishments; hedge
 - CNN on her DNI deep-state focus and exit — https://www.cnn.com/2026/05/23/politics/tulsi-gabbard-sidelined-deep-state-trump-grievances
 - Trump endorsement / "cabal of warmongers" — https://thehill.com/homenews/campaign/4848258-tulsi-gabbard-endorse-donald-trump/
 - FISA 702 flip coverage — https://www.washingtonpost.com/national-security/2025/01/28/tulsi-gabbard-section-702-fisa-surveillance/
-- Marijuana prohibition repeal bill — https://gabbard.house.gov/news/press-releases/rep-tulsi-gabbard-introduces-bill-end-marijuana-prohibition-expunge-prior
+- Marijuana prohibition repeal bill — https://web.archive.org/web/20210102181538/https://gabbard.house.gov/news/press-releases/rep-tulsi-gabbard-introduces-bill-end-marijuana-prohibition-expunge-prior
 - 2nd Amendment Substack (gun flip) — https://tulsi.substack.com/p/2nd-amendment-our-right-shall-not
 - PBS 2020 candidate-stands profile (economic record) — https://www.pbs.org/newshour/politics/what-does-rep-tulsi-gabbard-believe-where-the-candidate-stands-on-7-issues

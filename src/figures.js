@@ -477,7 +477,7 @@ const BASE_FIGURES = [
       },
       {
         "title": "Taxes - Senator Mitt Romney",
-        "url": "https://www.romney.senate.gov/issues/taxes"
+        "url": "https://web.archive.org/web/20220117010447/https://www.romney.senate.gov/issues/taxes"
       },
       {
         "title": "Romney calls student loan forgiveness a bribe - Deseret News",
@@ -1535,10 +1535,6 @@ const BASE_FIGURES = [
         "url": "https://davidpakman.com/may-13-2025/"
       },
       {
-        "title": "Medicare for All funding segment - David Pakman Show",
-        "url": "https://www.supernewsworld.com/Heres-EXACTLY-How-We-Pay-For-Medicare-For-All---David-Pakman-Show-3018281.html"
-      },
-      {
         "title": "David Pakman - Wikipedia",
         "url": "https://en.wikipedia.org/wiki/David_Pakman"
       }
@@ -2571,7 +2567,7 @@ const BASE_FIGURES = [
       },
       {
         "title": "Ending Federal Marijuana Prohibition Act - House office",
-        "url": "https://gabbard.house.gov/news/press-releases/rep-tulsi-gabbard-introduces-bill-end-marijuana-prohibition-expunge-prior"
+        "url": "https://web.archive.org/web/20210102181538/https://gabbard.house.gov/news/press-releases/rep-tulsi-gabbard-introduces-bill-end-marijuana-prohibition-expunge-prior"
       },
       {
         "title": "2nd Amendment 'shall not be infringed' - her Substack",

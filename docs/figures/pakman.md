@@ -15,7 +15,7 @@ the pure-institutionalist floor.
 Wrote a dedicated op-ed against broad tariffs and has run repeated segments (e.g. "Trump tariffs deemed illegal," May 29, 2025, https://davidpakman.com/may-29-2025/) on their consumer harm.
 
 ### e02 · score +2
-"Here's EXACTLY how we pay for Medicare for All" — David Pakman Show segment (https://www.supernewsworld.com/Heres-EXACTLY-How-We-Pay-For-Medicare-For-All---David-Pakman-Show-3018281.html)
+"Here's EXACTLY how we pay for Medicare for All" — David Pakman Show segment (segment link dead, no archive copy found 2026-09-13)
 Long-running on-show advocacy for single-payer, including full segments defending its financing; 2025 episodes attack Medicaid cuts ("They're cutting Medicaid," May 13, 2025, https://davidpakman.com/may-13-2025/).
 
 ### e03 · score +1
@@ -159,7 +159,7 @@ Believes in compromise as the system working — hedged by his view that today's
 - The Echo Machine (Beacon Press) — https://www.beacon.org/The-Echo-Machine-P2164.aspx
 - The Echo Machine (Penguin Random House) — https://www.penguinrandomhouse.com/books/770202/the-echo-machine-by-david-pakman/
 - David Pakman Show episode archive (May 13 / May 29 / Apr 11 / Oct 20, 2025) — https://davidpakman.com/may-13-2025/
-- Medicare for All funding segment — https://www.supernewsworld.com/Heres-EXACTLY-How-We-Pay-For-Medicare-For-All---David-Pakman-Show-3018281.html
+- Medicare for All funding segment — link dead, no archive copy found 2026-09-13
 - David Pakman — Wikipedia — https://en.wikipedia.org/wiki/David_Pakman
 
 ## Changes from previous scoring

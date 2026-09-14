@@ -248,6 +248,11 @@ canvas.compass {
   body {
     font-size: 18px;
   }
+  .tabs button {
+    padding: 0.15rem 0.55rem;
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+  }
   h1 {
     font-size: 2.1rem;
   }
@@ -259,7 +264,8 @@ canvas.compass {
 /* tabs, save row, board, figures */
 .tabs {
   display: flex;
-  gap: 0;
+  flex-wrap: wrap;
+  gap: 0.1rem 0;
   justify-content: center;
   align-items: baseline;
   margin-bottom: 1.5rem;

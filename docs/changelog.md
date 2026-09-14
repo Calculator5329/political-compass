@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-13 - QA nits from the site sweep
+- Nav tabs wrap on phone widths instead of pushing the page wider than the viewport; buttons tighten under 560px.
+- `quadrant()` returns "Unplaced" at the origin, where an all-neutral or all-skipped run lands, and `describe()` explains why instead of printing a confident quadrant. Test added and watched to fail first.
+- Seven citation links on dead hosts (romney.senate.gov, gabbard.house.gov) now point at Wayback Machine copies in the figure evidence, figure dossiers and `src/figures.js`. The supernewsworld.com Pakman segment has no archive copy and was removed as a source; the dossier notes the dead link.
+- Production still serves the August 1 build (rolled back 2026-09-06), so these fixes reach the live site only through an owner-reviewed hotfix or the Atlas release. See the roadmap item.
+
 ## 2026-09-05 - Political Atlas
 - Live verification exposed the default one-hour landing-page cache. Hosting now revalidates pages and evidence on each visit while fingerprinted assets remain immutable.
 - Owner-approved expansion: 83 propositions, with a 30-item core and optional chapters.

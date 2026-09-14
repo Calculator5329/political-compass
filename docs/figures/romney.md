@@ -19,11 +19,11 @@ Opposed Medicare for All and single-payer throughout his Senate term, favoring m
 Consistently against a federal guarantee, but not a repeal absolutist — he defends pre-existing-condition protections; hedged opposition, not crusading.
 
 ### e03 · score −2
-Opposed the 2021 Democratic billionaires' unrealized-gains tax and every wealth-tax proposal of his career. — Senate record (https://www.romney.senate.gov/issues/taxes)
+Opposed the 2021 Democratic billionaires' unrealized-gains tax and every wealth-tax proposal of his career. — Senate record (https://web.archive.org/web/20220117010447/https://www.romney.senate.gov/issues/taxes)
 His own tax page celebrates rate cuts and competitiveness; taxing wealth stocks is squarely against his repeatedly stated framework.
 
 ### e04 · score −1
-Co-sponsored the Higher Wages for American Workers Act raising the federal minimum wage to $10 with mandatory E-Verify. — Feb 2021 (https://www.romney.senate.gov/romney-cotton-colleagues-introduce-bill-to-raise-minimum-wage/)
+Co-sponsored the Higher Wages for American Workers Act raising the federal minimum wage to $10 with mandatory E-Verify. — Feb 2021 (https://web.archive.org/web/20240105113917/https://www.romney.senate.gov/romney-cotton-colleagues-introduce-bill-to-raise-minimum-wage/)
 He acted for a (modest) government-set wage floor, so he disagrees with the statement — but the low target and E-Verify pairing keep it at −1.
 
 ### e05 · score −1
@@ -35,11 +35,11 @@ Pushed the bipartisan TRUST Act rescue-committee process for Social Security rat
 Record is genuinely mixed/silent on individual accounts in the 2019–2025 window; scored 0.
 
 ### e07 · score +1
-Proposed the Family Security Act — a federal monthly child allowance of up to $350/child. — Feb 2021 (https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf)
+Proposed the Family Security Act — a federal monthly child allowance of up to $350/child. — Feb 2021 (https://web.archive.org/web/20240118144244/https://www.romney.senate.gov/wp-content/uploads/2021/02/family-security-act_one-pager.pdf)
 A real federal family-benefit program from his own desk, though it is a cash allowance rather than paid leave/child care per se, and paired with offsets — +1.
 
 ### e08 · score −1
-"By fortifying U.S. anti-money laundering frameworks, our legislation cracks down on crypto-facilitated crimes." — CANSEE Act release, Jul 2023 (https://www.romney.senate.gov/romney-colleagues-introduce-crypto-anti-money-laundering-bill-to-stop-illicit-transfers/)
+"By fortifying U.S. anti-money laundering frameworks, our legislation cracks down on crypto-facilitated crimes." — CANSEE Act release, Jul 2023 (https://web.archive.org/web/20241106212617/https://www.romney.senate.gov/romney-colleagues-introduce-crypto-anti-money-laundering-bill-to-stop-illicit-transfers/)
 He legislated to apply bank-style AML law to DeFi — the opposite of leaving crypto alone; targeted rather than comprehensive, so −1.
 
 ### e09 · score −1
@@ -55,7 +55,7 @@ Endorsed "a price on carbon... with border adjustment taxes" as the most effecti
 Repeatedly voiced carbon-tax support and named climate a "critical challenge," but never signed onto carbon-pricing legislation — support stayed rhetorical, so +1 not +2.
 
 ### e12 · score +1
-"I would have supported the 2017 Tax Cuts and Jobs Act as it... made our corporate tax rate competitive." — Senate taxes page (https://www.romney.senate.gov/issues/taxes)
+"I would have supported the 2017 Tax Cuts and Jobs Act as it... made our corporate tax rate competitive." — Senate taxes page (https://web.archive.org/web/20220117010447/https://www.romney.senate.gov/issues/taxes)
 Explicit endorsement of corporate-rate cuts as pro-worker competitiveness policy; rhetorical (he wasn't seated for the vote), so +1.
 
 ### s01 · score −1
@@ -75,7 +75,7 @@ Opposed the defund-the-police movement while supporting policing reform after ma
 Disagrees with redirecting police budgets, but from a reformist rather than combative posture — −1.
 
 ### s05 · score −1
-His immigration bill raises "civil and criminal penalties on employers that hire unauthorized aliens" — enforcement via E-Verify, not roundups. — Feb 2021 (https://www.romney.senate.gov/romney-cotton-colleagues-introduce-bill-to-raise-minimum-wage/)
+His immigration bill raises "civil and criminal penalties on employers that hire unauthorized aliens" — enforcement via E-Verify, not roundups. — Feb 2021 (https://web.archive.org/web/20240105113917/https://www.romney.senate.gov/romney-cotton-colleagues-introduce-bill-to-raise-minimum-wage/)
 Supports interior enforcement but has long criticized indiscriminate tactics (family separation); rejects "whatever it takes" — −1.
 
 ### s06 · score +1
@@ -157,11 +157,11 @@ Repeatedly acted on cross-party compromise as the system working — +2.
 ## Key sources
 - Romney rips Trump tariffs — https://thehill.com/blogs/blog-briefing-room/news/395851-romney-rips-trump-tariffs-trade-wars-at-a-tax-on-americans/
 - Romney reflects on life after politics (SMU, 2025) — https://smudailycampus.com/1067405/news/mitt-romney-reflects-on-life-after-politics-government-shutdown-the-republican-partys-future/
-- Taxes | Senator Mitt Romney — https://www.romney.senate.gov/issues/taxes
+- Taxes | Senator Mitt Romney — https://web.archive.org/web/20220117010447/https://www.romney.senate.gov/issues/taxes
 - Romney calls student loan forgiveness a bribe — https://www.deseret.com/utah/2022/8/24/23320337/mitt-romney-comments-on-biden-student-loan-forgiveness
 - Romney's climate legacy — E&E News — https://www.eenews.net/articles/romneys-climate-legacy-a-champion-with-few-results/
 - Romney links TikTok ban to pro-Palestinian content — Axios — https://www.axios.com/local/salt-lake-city/2024/05/06/senator-romney-antony-blinken-tiktok-ban-israel-palestinian-content
-- Romney–Cotton minimum wage bill — https://www.romney.senate.gov/romney-cotton-colleagues-introduce-bill-to-raise-minimum-wage/
+- Romney–Cotton minimum wage bill — https://web.archive.org/web/20240105113917/https://www.romney.senate.gov/romney-cotton-colleagues-introduce-bill-to-raise-minimum-wage/
 - Political positions of Mitt Romney — https://en.wikipedia.org/wiki/Political_positions_of_Mitt_Romney
 
 ## Changes from previous scoring

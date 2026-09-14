@@ -1,6 +1,6 @@
 import { describe as suite, it, expect } from 'vitest';
 import { QUESTIONS } from './questions.js';
-import { score, subScores, quadrant } from './scoring.js';
+import { score, subScores, quadrant, describe } from './scoring.js';
 
 suite('instrument', () => {
   it('has 54 questions across six dimensions, unique ids', () => {
@@ -48,6 +48,12 @@ suite('score', () => {
   it('quadrant boundaries', () => {
     expect(quadrant({ x: -3, y: 4 })).toBe('Insurgent Left');
     expect(quadrant({ x: 3, y: -4 })).toBe('Institutionalist Right');
+  });
+
+  it('an all-neutral or all-skipped run sits at the origin and gets no quadrant', () => {
+    expect(quadrant({ x: 0, y: 0 })).toBe('Unplaced');
+    expect(describe({ x: 0, y: 0 })).toMatch(/cancel|unanswered/i);
+    expect(quadrant({ x: 0.01, y: 0 })).toBe('Insurgent Right');
   });
 
   it('subScores split by dimension and cover all six', () => {

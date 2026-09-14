@@ -58,13 +58,18 @@ export function subScores(answers, questions) {
   );
 }
 
+// The origin is where "no answers" and "every answer neutral" both land.
+// It is not a position, so it never gets a quadrant name.
 export function quadrant({ x, y }) {
+  if (x === 0 && y === 0) return "Unplaced";
   const vert = y >= 0 ? "Insurgent" : "Institutionalist";
   const horiz = x < 0 ? "Left" : "Right";
   return `${vert} ${horiz}`;
 }
 
 const DESCRIPTIONS = {
+  Unplaced:
+    "Your answers cancel out or were left unanswered, so there is no quadrant to report. Answer a few more statements to place a point.",
   "Insurgent Left":
     "You want structural economic and social change, and you doubt the system as it stands can deliver it.",
   "Insurgent Right":
