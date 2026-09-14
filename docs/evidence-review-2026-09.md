@@ -1,4 +1,4 @@
-# Figure evidence review — 2026-09-05
+# Figure evidence review: 2026-09-05
 
 The index now covers all 69 figures and all 83 current atlas questions, while preserving every original 54-item row. The union contains 98 IDs per figure: 6,762 rows. This follow-up individually reviewed the Sanders, Vance, Warren, Biden, Harris, Newsom, Paul, Trump and AOC dossiers against the actual current wording in `src/instrument.js`.
 
@@ -59,23 +59,23 @@ The following table retains the exact first-pass source audit. Original IDs rema
 
 | Figure / original item | Disposition in that pass | Source |
 |---|---|---|
-| Donald Trump / `t02` | documented | [Executive Order 14331 — Guaranteeing Fair Banking for All Americans](https://www.whitehouse.gov/presidential-actions/2025/08/guaranteeing-fair-banking-for-all-americans/) |
-| Donald Trump / `t01` | documented | [White House — America’s AI Action Plan](https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/) |
-| JD Vance / `t01` | documented | [Vice President Vance — Paris AI Action Summit remarks](https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-artificial-intelligence-action-summit-paris-france) |
-| JD Vance / `l03` | documented | [Vice President Vance — Munich Security Conference remarks](https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-munich-security-conference-0) |
-| JD Vance / `f06` | inferred | [Vice President Vance — Munich Security Conference remarks](https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-munich-security-conference-0) |
-| Gavin Newsom / `t01` | inferred | [Newsom — SB1047 veto message](https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf); [Newsom — SB53 signing, 2025-09-29](https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/) |
-| Bernie Sanders / `f05` | documented | [Sanders — Cut the Pentagon by 10%](https://www.sanders.senate.gov/press-releases/sanders-cut-the-pentagon-by-10-to-hire-more-teachers-build-more-homes-and-create-more-jobs/) |
-| Amy Klobuchar / `f05` | documented | [Congressional Record — vote 135 on Sanders amendment 1788](https://www.congress.gov/116/crec/2020/07/22/modified/CREC-2020-07-22-pt1-PgS4365-3.htm) |
-| Elizabeth Warren / `f05` | documented | [Congressional Record — vote 135 on Sanders amendment 1788](https://www.congress.gov/116/crec/2020/07/22/modified/CREC-2020-07-22-pt1-PgS4365-3.htm) |
-| Bernie Sanders / `f07` | documented | [Sanders — USAID cuts statement](https://www.sanders.senate.gov/press-releases/news-sanders-statement-usaid-cuts-will-lead-to-millions-of-preventable-deaths/) |
-| Rand Paul / `l01` | documented | [Paul — amendments opposing expanded surveillance](https://www.paul.senate.gov/senate-to-vote-on-dr-pauls-amendments-to-eliminate-unconstitutional-practices-in-fake-fisa-reform-and-government-spying/) |
-| Bernie Sanders / `l01` | documented | [Senate vote 144 — Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
-| Elizabeth Warren / `l01` | documented | [Senate vote 144 — Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
-| Josh Hawley / `l01` | documented | [Senate vote 144 — Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
-| Alexandria Ocasio-Cortez / `f05` | documented | [House Clerk — Ocasio-Cortez amendment 40, roll call 284](https://clerk.house.gov/Votes/2021284); [AOC foreign policy — indexed excerpt; full page unavailable](https://ocasio-cortez.house.gov/legislation/foreign-policy) |
-| Donald Trump / `f08` | documented | [White House — withdrawal from international organizations](https://www.whitehouse.gov/fact-sheets/2026/01/fact-sheet-president-donald-j-trump-withdraws-the-united-states-from-international-organizations-that-are-contrary-to-the-interests-of-the-united-states/) |
-| JD Vance / `l01` | unknown | [Senate vote 144 — Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
+| Donald Trump / `t02` | documented | [Executive Order 14331: Guaranteeing Fair Banking for All Americans](https://www.whitehouse.gov/presidential-actions/2025/08/guaranteeing-fair-banking-for-all-americans/) |
+| Donald Trump / `t01` | documented | [White House: America’s AI Action Plan](https://www.whitehouse.gov/releases/2025/07/white-house-unveils-americas-ai-action-plan/) |
+| JD Vance / `t01` | documented | [Vice President Vance: Paris AI Action Summit remarks](https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-artificial-intelligence-action-summit-paris-france) |
+| JD Vance / `l03` | documented | [Vice President Vance: Munich Security Conference remarks](https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-munich-security-conference-0) |
+| JD Vance / `f06` | inferred | [Vice President Vance: Munich Security Conference remarks](https://www.presidency.ucsb.edu/documents/remarks-the-vice-president-the-munich-security-conference-0) |
+| Gavin Newsom / `t01` | inferred | [Newsom: SB1047 veto message](https://www.gov.ca.gov/wp-content/uploads/2024/09/SB-1047-Veto-Message.pdf); [Newsom: SB53 signing, 2025-09-29](https://www.gov.ca.gov/2025/09/29/governor-newsom-signs-sb-53-advancing-californias-world-leading-artificial-intelligence-industry/) |
+| Bernie Sanders / `f05` | documented | [Sanders: Cut the Pentagon by 10%](https://www.sanders.senate.gov/press-releases/sanders-cut-the-pentagon-by-10-to-hire-more-teachers-build-more-homes-and-create-more-jobs/) |
+| Amy Klobuchar / `f05` | documented | [Congressional Record: vote 135 on Sanders amendment 1788](https://www.congress.gov/116/crec/2020/07/22/modified/CREC-2020-07-22-pt1-PgS4365-3.htm) |
+| Elizabeth Warren / `f05` | documented | [Congressional Record: vote 135 on Sanders amendment 1788](https://www.congress.gov/116/crec/2020/07/22/modified/CREC-2020-07-22-pt1-PgS4365-3.htm) |
+| Bernie Sanders / `f07` | documented | [Sanders: USAID cuts statement](https://www.sanders.senate.gov/press-releases/news-sanders-statement-usaid-cuts-will-lead-to-millions-of-preventable-deaths/) |
+| Rand Paul / `l01` | documented | [Paul: amendments opposing expanded surveillance](https://www.paul.senate.gov/senate-to-vote-on-dr-pauls-amendments-to-eliminate-unconstitutional-practices-in-fake-fisa-reform-and-government-spying/) |
+| Bernie Sanders / `l01` | documented | [Senate vote 144: Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
+| Elizabeth Warren / `l01` | documented | [Senate vote 144: Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
+| Josh Hawley / `l01` | documented | [Senate vote 144: Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
+| Alexandria Ocasio-Cortez / `f05` | documented | [House Clerk: Ocasio-Cortez amendment 40, roll call 284](https://clerk.house.gov/Votes/2021284); [AOC foreign policy: indexed excerpt; full page unavailable](https://ocasio-cortez.house.gov/legislation/foreign-policy) |
+| Donald Trump / `f08` | documented | [White House: withdrawal from international organizations](https://www.whitehouse.gov/fact-sheets/2026/01/fact-sheet-president-donald-j-trump-withdraws-the-united-states-from-international-organizations-that-are-contrary-to-the-interests-of-the-united-states/) |
+| JD Vance / `l01` | unknown | [Senate vote 144: Fourth Amendment Is Not For Sale amendment](https://www.senate.gov/legislative/LIS/roll_call_votes/vote1182/vote_118_2_00144.htm) |
 
 AOC’s foreign-policy page returned 403 when opened. Its indexed official excerpt supplied the domestic-priorities context, while the House roll call itself was retrieved. The f05 answer remains hedged. Vance’s non-vote on the surveillance amendment does not establish an answer.
 
@@ -89,7 +89,7 @@ Other primary material opened for context, without creating an answer: the [WHO 
 | Gavin Newsom / `b07` | [Newsom signs AB1482](https://www.gov.ca.gov/2019/10/08/on-statewide-rent-housing-tour-governor-gavin-newsom-signs-nations-strongest-statewide-renter-protection-legislation/) | Primary source opened in this follow-up. Signed an annual rent-increase cap; this directly addresses rent regulation. |
 | Donald Trump / `e07r2` | [Trump child-care and paid-leave summit remarks](https://trumpwhitehouse.archives.gov/briefings-statements/remarks-president-trump-white-house-summit-child-care-paid-leave/) | Primary source opened in this follow-up. Advocated federally supported paid family leave and federal-worker leave; the cited commitment is from his first term. |
 | Donald Trump / `e15` | [Trump administration supporting working families](https://trumpwhitehouse.archives.gov/briefings-statements/president-donald-j-trump-committed-supporting-working-families/) | Primary source opened in this follow-up. The administration explicitly supported increased federal child-care assistance; this is a dated first-term record. |
-| Alexandria Ocasio-Cortez / `s09` | [House Clerk — H.R.3492 passage vote](https://clerk.house.gov/Votes/2025351); [H.R.3492 introduced text — treatment prohibitions](https://www.congress.gov/119/bills/hr3492/BILLS-119hr3492ih.pdf) | Primary House roll call read in this follow-up records a vote against the federal prohibition on puberty blockers and hormone treatment for minors. The introduced bill text explicitly includes those treatments; this is direct legislative opposition to a treatment ban. |
+| Alexandria Ocasio-Cortez / `s09` | [House Clerk: H.R.3492 passage vote](https://clerk.house.gov/Votes/2025351); [H.R.3492 introduced text: treatment prohibitions](https://www.congress.gov/119/bills/hr3492/BILLS-119hr3492ih.pdf) | Primary House roll call read in this follow-up records a vote against the federal prohibition on puberty blockers and hormone treatment for minors. The introduced bill text explicitly includes those treatments; this is direct legislative opposition to a treatment ban. |
 
 The official AOC immigration page also returned 403. The s06r2 row instead explicitly retains the individually read dossier’s stated support for expanded legal admissions, with a hedged value and no assertion of fresh external verification.
 

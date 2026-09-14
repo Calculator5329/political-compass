@@ -1,18 +1,18 @@
-# Ben Shapiro — evidence dossier
+# Ben Shapiro: evidence dossier
 Updated: 2026-07-18 · Researcher: new-2
 
 Shapiro in 2026 is the right's leading free-market institutional
 conservative: hard-right on economics (anti-tariff even against Trump,
 entitlement restructuring, anti-union) and on social issues (pro-life,
 anti-DEI, youth-transition bans), but comparatively institutionalist on the
-y-axis — he rejects stolen-election claims, urges compliance with courts,
+y-axis, he rejects stolen-election claims, urges compliance with courts,
 defends legal immigration, and condemns mass civil disobedience, while still
 distrusting mainstream media and the expert class.
 
 ## Per-question evidence
 
 ### e01 · score −2
-"The single greatest increase in taxes — because tariffs are a tax — in modern American history." — The Ben Shapiro Show, Apr 2025 (https://www.mediamatters.org/ben-shapiro/ben-shapiro-trumps-tariffs-are-massive-tax-increase-american-consumers-and-it-designed)
+"The single greatest increase in taxes — because tariffs are a tax — in modern American history." Source: The Ben Shapiro Show, Apr 2025 (https://www.mediamatters.org/ben-shapiro/ben-shapiro-trumps-tariffs-are-massive-tax-increase-american-consumers-and-it-designed)
 Repeated, emphatic 2025 attacks on Trump's tariffs as "probably unconstitutional" and "crazy" (https://www.mediaite.com/media/podcasts/ben-shapiro-hammers-trumps-tariffs-warns-they-are-likely-unconstitutional-and-based-on-backward-logic/).
 
 ### e02 · score −2
@@ -29,10 +29,10 @@ Emphatic, repeated support for market-set wages.
 
 ### e05 · score −1
 Criticizes Big Tech bias but has consistently opposed government antitrust breakups of tech firms as anti-free-market, preferring competition and transparency (https://www.isidewith.com/candidates/ben-shapiro/policies)
-Disagrees with breakup as policy while sharing the underlying grievance — hedged opposition.
+Disagrees with breakup as policy while sharing the underlying grievance, hedged opposition.
 
 ### e06 · score +1
-"No one in the US should be retiring at 65… retirement itself is a stupid idea." — The Ben Shapiro Show, via Yahoo Finance (https://finance.yahoo.com/news/ben-shapiro-says-social-security-111100729.html)
+"No one in the US should be retiring at 65… retirement itself is a stupid idea." Source: The Ben Shapiro Show, via Yahoo Finance (https://finance.yahoo.com/news/ben-shapiro-says-social-security-111100729.html)
 Wants benefit restructuring and a raised retirement age (https://www.gbnews.com/money/us/ben-shapiro-retirement-age-trump-social-security); sympathetic to individual accounts but his recent advocacy is age/solvency, so +1.
 
 ### e07 · score −2
@@ -41,15 +41,15 @@ Repeated, principled opposition to new federal social programs.
 
 ### e08 · score +1
 Endorses Bitcoin as a tool of "financial freedom" against government overreach while warning against hype (https://news.bitcoin.com/american-conservative-pundit-ben-shapiro-endorses-bitcoin-hinting-at-libertarian-holy-grail/)
-Leans against heavy regulation but hedges on crypto's value — +1.
+Leans against heavy regulation but hedges on crypto's value, +1.
 
 ### e09 · score −1
 Years of attacks on teachers' unions (COVID school closures) and public-sector unions as harming the workers and public they serve (https://www.isidewith.com/candidates/ben-shapiro/policies)
-Directionally negative on unions, though his fire concentrates on public-sector unions rather than all labor — −1.
+Directionally negative on unions, though his fire concentrates on public-sector unions rather than all labor, −1.
 
 ### e10 · score +2
 Relentless opponent of student-debt cancellation as a regressive transfer to degree-holders at taxpayers' expense; a recurring show theme through the 2022-2025 forgiveness fights (https://www.isidewith.com/candidates/ben-shapiro/policies)
-Repeated and emphatic — the statement is nearly his own framing.
+Repeated and emphatic, the statement is nearly his own framing.
 
 ### e11 · score −2
 Acknowledges warming but has ridiculed aggressive federal climate action for years (infamously suggesting coastal homeowners could sell and move), opposing Paris-style costs to growth (https://en.wikipedia.org/wiki/Ben_Shapiro)
@@ -77,11 +77,11 @@ Repeated, emphatic opposition.
 
 ### s05 · score +1
 Supports large-scale deportation of illegal immigrants but criticized the administration for defying court orders in 2025 removal cases, insisting on due process (https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump)
-Agrees with the goal, rejects "whatever it takes" — +1.
+Agrees with the goal, rejects "whatever it takes", +1.
 
 ### s06 · score +1
-"[H-1B immigrants who embrace American values are not] part of the whole screwing-America routine." — PBS Frontline interview (https://www.pbs.org/wgbh/frontline/interview/ben-shapiro/)
-Defends skilled legal immigration against the restrictionist right, distinguishing himself from the Sessions position — supportive but not an expansionist crusader.
+"[H-1B immigrants who embrace American values are not] part of the whole screwing-America routine." Source: PBS Frontline interview (https://www.pbs.org/wgbh/frontline/interview/ben-shapiro/)
+Defends skilled legal immigration against the restrictionist right, distinguishing himself from the Sessions position, supportive but not an expansionist crusader.
 
 ### s07 · score −2
 Wrote and argues constantly against the "systemic racism" framework in schools and institutions; anti-CRT is a pillar of his catalogue (https://en.wikipedia.org/wiki/Ben_Shapiro)
@@ -104,7 +104,7 @@ Merit-only hiring and the dismantling of DEI programs is a daily show theme and 
 Repeated, emphatic.
 
 ### s12 · score −1
-Supports capital punishment for heinous murders — including calling for it for Charlie Kirk's assassin in Sept 2025 — while it is not a signature crusade (https://www.isidewith.com/candidates/ben-shapiro/policies)
+Supports capital punishment for heinous murders (including calling for it for Charlie Kirk's assassin in Sept 2025) while it is not a signature crusade (https://www.isidewith.com/candidates/ben-shapiro/policies)
 Stated opposition to abolition, occasional rather than central.
 
 ### y01 · score −2
@@ -112,12 +112,12 @@ Founded the Daily Wire explicitly as a corrective to mainstream-media bias; "the
 Repeated, emphatic, acted on institutionally.
 
 ### y02 · score +1
-"I unequivocally do NOT believe the election was stolen." — public statement, 2020-2022 (https://www.dailywire.com/news/ben-shapiro-twitter-files-show-2020-was-rigged-not-stolen-but-trump-is-hurting-himself)
-Called Trump's early victory claim "deeply irresponsible" (https://www.thewrap.com/ben-shapiro-trump-election/); accepts results while calling the information environment "rigged" — agreement with caveats.
+"I unequivocally do NOT believe the election was stolen." Source: public statement, 2020-2022 (https://www.dailywire.com/news/ben-shapiro-twitter-files-show-2020-was-rigged-not-stolen-but-trump-is-hurting-himself)
+Called Trump's early victory claim "deeply irresponsible" (https://www.thewrap.com/ben-shapiro-trump-election/); accepts results while calling the information environment "rigged", agreement with caveats.
 
 ### y03 · score −1
 Recurring "two-tiered justice" segments arguing DOJ/FBI treated Trump, COVID dissenters, and conservatives more harshly than the left (https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump)
-Disagrees that enforcement is politically even-handed, but rejects full deep-state conspiracism — −1.
+Disagrees that enforcement is politically even-handed, but rejects full deep-state conspiracism, −1.
 
 ### y04 · score +1
 Supports unitary-executive civil-service reform and backed DOGE-era firings of obstructive bureaucrats, while insisting statutory and court limits be respected (https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump)
@@ -133,14 +133,14 @@ Repeated, emphatic position across 2022-2025.
 
 ### y07 · score +1
 A constitutionalist who criticizes rulings (Obergefell, Bostock) while insisting on compliance and working through appointments, and who warned Trump against defying courts in 2025 (https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump)
-Respects the Court's authority even when he thinks it errs — hedged agreement.
+Respects the Court's authority even when he thinks it errs, hedged agreement.
 
 ### y08 · score −1
 Rejects the populist "uniparty bought by donors" framing; argues parties respond to voters and ideas, and defends his own donor-funded media model (https://en.wikipedia.org/wiki/Ben_Shapiro)
 Directionally disagrees, though he criticizes specific donor-driven policy (e.g. crypto favoritism) at times.
 
 ### y09 · score −2
-"The experts" as an object of scorn is a Shapiro staple — COVID guidance, climate consensus, gender medicine — deference is exactly what he rejects (https://en.wikipedia.org/wiki/Ben_Shapiro)
+"The experts" as an object of scorn is a Shapiro staple (COVID guidance, climate consensus, gender medicine) deference is exactly what he rejects (https://en.wikipedia.org/wiki/Ben_Shapiro)
 Repeated, emphatic.
 
 ### y10 · score +1
@@ -153,12 +153,12 @@ Repeated, emphatic institutional conservatism.
 
 ### y12 · score +1
 Regularly defends incremental legislative wins and criticized burn-it-down tactics (e.g. shutdown brinkmanship, motion-to-vacate chaos) as self-defeating (https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump)
-Accepts compromise as the system working, though he polices its terms hard — hedged agreement.
+Accepts compromise as the system working, though he polices its terms hard, hedged agreement.
 
 ## Key sources
-- Media Matters: Shapiro — tariffs "a massive tax increase on American consumers" — https://www.mediamatters.org/ben-shapiro/ben-shapiro-trumps-tariffs-are-massive-tax-increase-american-consumers-and-it-designed
-- Mediaite: Shapiro hammers Trump's tariffs as likely unconstitutional — https://www.mediaite.com/media/podcasts/ben-shapiro-hammers-trumps-tariffs-warns-they-are-likely-unconstitutional-and-based-on-backward-logic/
-- Daily Wire: Shapiro — 2020 "rigged (not stolen)" — https://www.dailywire.com/news/ben-shapiro-twitter-files-show-2020-was-rigged-not-stolen-but-trump-is-hurting-himself
-- Yahoo Finance: Shapiro on Social Security and retirement age — https://finance.yahoo.com/news/ben-shapiro-says-social-security-111100729.html
-- PBS Frontline interview (legal immigration/H-1B) — https://www.pbs.org/wgbh/frontline/interview/ben-shapiro/
-- Media Matters: How Shapiro is disagreeing with Trump (2025) — https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump
+- Media Matters: Shapiro (tariffs "a massive tax increase on American consumers"): https://www.mediamatters.org/ben-shapiro/ben-shapiro-trumps-tariffs-are-massive-tax-increase-american-consumers-and-it-designed
+- Mediaite: Shapiro hammers Trump's tariffs as likely unconstitutional: https://www.mediaite.com/media/podcasts/ben-shapiro-hammers-trumps-tariffs-warns-they-are-likely-unconstitutional-and-based-on-backward-logic/
+- Daily Wire: Shapiro (2020 "rigged (not stolen)"): https://www.dailywire.com/news/ben-shapiro-twitter-files-show-2020-was-rigged-not-stolen-but-trump-is-hurting-himself
+- Yahoo Finance: Shapiro on Social Security and retirement age: https://finance.yahoo.com/news/ben-shapiro-says-social-security-111100729.html
+- PBS Frontline interview (legal immigration/H-1B): https://www.pbs.org/wgbh/frontline/interview/ben-shapiro/
+- Media Matters: How Shapiro is disagreeing with Trump (2025): https://www.mediamatters.org/ben-shapiro/how-right-wing-podcaster-ben-shapiro-disagreeing-trump
