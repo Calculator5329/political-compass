@@ -78,9 +78,11 @@ Vanilla JavaScript and Vite, no framework. Firebase Hosting, already set up.
 
 ## State of the repo
 
-Production was rolled back on 2026-09-06 to the August 1 build, the 42-question
-compass, after regressions in the multi-figure charts and save workflows. Master
-carries the Atlas rewrite described above, which has not been deployed. So the
+Production was rolled back on 2026-09-06 to the August 1 build after regressions
+in the multi-figure charts and save workflows. That build is the 42-question
+compass with 42 charted figures, and it is what the live link above serves.
+Master carries the Atlas rewrite described above, with the 69-figure evidence
+file, and it has not been deployed. So the
 live site and this source tree are not the same product right now, and the
 roadmap's open item is the deploy decision. `docs/intent.md` is the authority on
 that.
