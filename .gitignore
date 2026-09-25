@@ -2,3 +2,4 @@ node_modules
 dist
 .orc/
 .firebase/
+docs/internal/

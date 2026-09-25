@@ -1,5 +1,7 @@
 # The Political Atlas
 
+![Master build (not the live rollback), Figures view after answering the 30 core propositions: a scripted sample answer set (red cross) on the economics by social values map with the eight figures that have enough documented positions to plot](docs/hero.png)
+
 Live: https://political-test-2026.web.app
 
 A political compass for the 2026 US landscape, rendered as an ink-on-paper
@@ -64,6 +66,18 @@ Old answers migrate where they still mean the same thing. A reworded
 proposition gets a new id and asks again, and old neutral or unsure zeros come
 back as unsure rather than as a claimed neutral position. Legacy records and the
 original browser storage key are left intact.
+
+## How the agent pipeline works
+
+The figure scores came from research agents, not from me typing numbers. What the repo holds:
+
+- `docs/figures/METHOD.md` is the brief every research agent read before scoring: the answer scale, cite-or-zero rule, dossier format and the JSON each agent returned.
+- `docs/figures/<slug>.md` are the dossiers those agents wrote. Their answer sets live in `src/figures.js`, `src/figures-bench.js`, `src/figures-media.js`, `src/figures-mn.js` and `src/figure-updates.js`, and `src/scoring.js` turns them into coordinates.
+- `docs/figures/analyze.mjs` measures per-question spread, axis correlations and map crowding across figures. Its numbers drove `docs/figures/QUESTION-PROPOSALS.md`; `docs/question-expansion-2026-08.md` lists every generated candidate question with why it was kept or cut. I reviewed bank edits before they shipped.
+- Verification was more agent passes against the same rubric: `docs/figures/RECENCY-UPDATE-2026-07-18.md`, `docs/evidence-review-2026-09.md` and `docs/election-evidence-review-2026-09.md`. `docs/changelog.md` records the corrections each pass made.
+- `npm test` (45 tests in `src/*.test.js`) is the gate: every figure scored on every researched question, every figure has a dossier, pending items can't move figure scores, and unknown or inferred evidence never gets a number.
+
+Not in the repo: the dispatch prompts and run logs (they lived in my local orchestrator) and whatever script built `public/figure-evidence.json` and `docs/evidence-inventory-counts.json`.
 
 ## Running it
 
